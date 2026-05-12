@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Godaime Wagyu — Wagyu, wherever your Japan trip takes you.</title>
+<meta name="description" content="5th-generation Japanese wagyu. Locations across Tokyo, Kyoto and Osaka.">
+<link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <a href="index.html" class="brand">
+      <div class="mark">五代目</div>
+      <div class="name">Godaime <em>Wagyu</em></div>
+      <div class="since">Since 1962</div>
+    </a>
+
+    <div class="nav-label">— Navigate</div>
+    <nav>
+      <a href="index.html" class="active">
+        <span>TOP <em>·</em> <span class="jp">五代目について</span></span>
+        <span class="arrow">→</span>
+      </a>
+      <a href="oshiage.html">
+        <span>Skytree (Oshiage) <em>·</em> <span class="jp">押上店</span></span>
+        <span class="arrow">→</span>
+      </a>
+      <a href="#stores" onclick="event.preventDefault(); alert('Other stores page — coming soon.')">
+        <span>Other locations <em>·</em> <span class="jp">その他店舗</span></span>
+        <span class="arrow">→</span>
+      </a>
+    </nav>
+  </aside>
+  <button class="menu-toggle" aria-label="Menu"></button>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+    <iframe class="lp-section" data-slug="menu"    src="sections/menu.html"    style="height:2400px"></iframe>
+    <iframe class="lp-section" data-slug="story"   src="sections/story.html"   style="height:2400px"></iframe>
+    <iframe class="lp-section" data-slug="halal"   src="sections/halal.html"   style="height:2200px"></iframe>
+    <iframe class="lp-section" data-slug="exp"     src="sections/exp.html"     style="height:2400px"></iframe>
+    <iframe class="lp-section" data-slug="reviews" src="sections/reviews.html" style="height:2400px"></iframe>
+  </main>
+
+</div>
+
+<script src="sidebar.js"></script>
+</body>
+</html>
