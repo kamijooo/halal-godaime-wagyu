@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" data-slug="map">
+<head>
+<meta charset="UTF-8">
+<title>The Map — Godaime Wagyu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+.map-section{
+  position:relative;
+  padding:120px 0 130px;
+  background:
+    radial-gradient(ellipse at 90% 20%, rgba(201,163,90,0.08), transparent 50%),
+    radial-gradient(ellipse at 10% 80%, rgba(185,28,28,0.05), transparent 50%),
+    #1a120c;
+  display:grid;grid-template-columns:1fr 1.05fr;gap:0;align-items:center;
+  min-height:780px;
+}
+/* LEFT: copy */
+.map__copy{
+  padding:0 60px 0 90px;
+  position:relative;z-index:2;
+}
+.map__chip{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 18px;
+  background:var(--torii);color:var(--paper);
+  font-family:var(--serif);font-style:italic;font-size:15px;letter-spacing:0.05em;
+  margin-bottom:60px;
+}
+.map__chip .sep{color:var(--paper-dim);font-style:normal;margin:0 4px}
+.map__chip .jp{font-family:var(--jp);font-style:normal;font-size:14px;letter-spacing:0.18em}
+
+.map__title{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(54px,5.6vw,86px);line-height:1.02;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:50px;
+}
+.map__title em{
+  font-style:italic;color:var(--gold);font-weight:400;display:block;
+}
+
+.map__jp{
+  font-family:var(--jp);font-weight:500;font-size:17px;line-height:1.8;
+  color:var(--paper-dim);letter-spacing:0.22em;
+  border-left:2px solid var(--torii);padding:10px 0 10px 20px;margin-bottom:40px;
+}
+
+.map__lede{
+  font-family:var(--serif);font-size:17px;line-height:1.8;color:rgba(243,236,225,0.8);
+  max-width:540px;
+}
+.map__lede em{font-style:italic;color:var(--gold);font-weight:500}
+
+/* RIGHT: panel */
+.map__panel{
+  position:relative;
+  height:100%;min-height:780px;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(201,163,90,0.06), transparent 60%),
+    linear-gradient(135deg, #16100a, #221710);
+  border-left:1px solid rgba(201,163,90,0.18);
+  overflow:hidden;
+}
+/* corner mounting marks */
+.map__panel::before, .map__panel::after{
+  content:"";position:absolute;width:60px;height:60px;pointer-events:none;
+  border-color:var(--gold-dim);opacity:0.4;
+}
+.map__panel::before{
+  top:0;left:0;border-top:1px solid;border-left:1px solid;
+}
+.map__panel::after{
+  top:0;right:0;border-top:1px solid;border-right:1px solid;
+}
+.map__panel-corner-bl{
+  position:absolute;bottom:0;left:0;width:60px;height:60px;
+  border-bottom:1px solid rgba(122,94,41,0.4);border-left:1px solid rgba(122,94,41,0.4);
+}
+.map__panel-corner-br{
+  position:absolute;bottom:0;right:0;width:60px;height:60px;
+  border-bottom:1px solid rgba(122,94,41,0.4);border-right:1px solid rgba(122,94,41,0.4);
+}
+
+/* top header bar inside the panel */
+.map__header{
+  position:relative;z-index:3;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:34px 50px 0;
+  font-family:var(--sans);font-size:11px;letter-spacing:0.32em;color:var(--gold);
+  text-transform:uppercase;font-weight:500;
+}
+.map__header .center{
+  display:flex;align-items:center;gap:16px;
+}
+.map__header .center .dot{width:5px;height:5px;border-radius:50%;background:var(--torii)}
+.map__header .center .jp{font-family:var(--jp);font-size:13px;color:var(--paper-dim);letter-spacing:0.2em;text-transform:none}
+.map__header .right{font-family:var(--jp);font-size:13px;color:var(--paper-mute);letter-spacing:0.16em;text-transform:none}
+
+/* compass top-left of map */
+.map__compass{
+  position:absolute;top:32px;left:50px;z-index:3;
+  width:62px;height:62px;
+}
+.map__compass svg{display:block;width:100%;height:100%}
+
+/* the main map */
+.map__svg-wrap{
+  position:absolute;inset:0;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  padding:60px;
+}
+.map__svg-wrap svg{
+  width:100%;height:100%;max-width:760px;max-height:520px;
+  display:block;
+}
+
+/* islands */
+.honshu{
+  fill:rgba(122,94,41,0.10);
+  stroke:rgba(201,163,90,0.42);
+  stroke-width:0.7;stroke-linejoin:round;stroke-linecap:round;
+}
+.minor-island{
+  fill:none;
+  stroke:rgba(201,163,90,0.32);
+  stroke-width:0.7;
+  stroke-linejoin:round;
+}
+
+/* city labels */
+.city-label{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  fill:var(--paper);font-size:5px;
+  text-anchor:start;
+  dominant-baseline:middle;
+}
+.city-label.muted{
+  fill:var(--paper-mute);font-style:italic;font-weight:400;
+  font-size:3.8px;
+}
+
+/* target rings around pins */
+.target-pin{
+  cursor:pointer;
+  transition:transform 0.3s;
+  transform-origin:center;transform-box:fill-box;
+}
+.target-pin:hover{transform:scale(1.1)}
+.target-pin .ring-outer{
+  fill:rgba(243,236,225,0.95);
+  stroke:var(--torii);
+  stroke-width:0.6;
+}
+.target-pin .ring-mid{
+  fill:var(--torii);
+}
+.target-pin .ring-inner{
+  fill:rgba(243,236,225,0.95);
+}
+/* pulsing N badge next to pin */
+.n-badge{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  fill:var(--gold);font-size:7.5px;letter-spacing:0;
+}
+.n-badge.bg{
+  fill:rgba(20,14,10,0);  /* visual padding only */
+}
+
+/* dashed route */
+.golden-route{
+  fill:none;
+  stroke:var(--gold);
+  stroke-width:0.7;
+  stroke-dasharray:1.6 1.4;
+  opacity:0.7;
+}
+
+@media (max-width:1100px){
+  .map-section{grid-template-columns:1fr;min-height:auto}
+  .map__copy{padding:60px 40px 40px}
+  .map__panel{min-height:520px;border-left:0;border-top:1px solid rgba(201,163,90,0.18)}
+}
+@media (max-width:600px){
+  .map-section{padding:60px 0 80px}
+  .map__copy{padding:40px 22px 30px}
+  .map__chip{margin-bottom:30px}
+  .map__title{font-size:42px}
+  .map__header{padding:24px 22px 0;font-size:10px;letter-spacing:0.2em}
+  .map__compass{top:22px;left:22px;width:48px;height:48px}
+  .map__svg-wrap{padding:24px}
+  .map__panel{min-height:420px}
+}
+</style>
+</head>
+<body>
+
+<section class="map-section">
+
+  <!-- LEFT -->
+  <div class="map__copy">
+    <span class="map__chip">The Map<span class="sep">·</span><span class="jp">道</span></span>
+    <h2 class="map__title">
+      Wherever your trip
+      <em>takes you.</em>
+    </h2>
+    <p class="map__jp">
+      旅のどこへ行っても、<br>五代目に。
+    </p>
+    <p class="map__lede">
+      Most wagyu restaurants ask you to come to them. We do the opposite.
+      From <em>Tokyo</em> to <em>Kyoto</em> to <em>Osaka</em>, we set a table on
+      the path most travelers already walk — the <em>Golden Route</em> — so
+      wherever your Japan trip goes, dinner is two stops away.
+    </p>
+  </div>
+
+  <!-- RIGHT: map panel -->
+  <div class="map__panel">
+    <div class="map__panel-corner-bl"></div>
+    <div class="map__panel-corner-br"></div>
+
+    <!-- Compass top-left -->
+    <div class="map__compass">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="22" fill="none" stroke="rgba(201,163,90,0.55)" stroke-width="1"/>
+        <circle cx="30" cy="30" r="15" fill="none" stroke="rgba(201,163,90,0.35)" stroke-width="0.6"/>
+        <!-- N arrow -->
+        <path d="M30,12 L33,28 L30,25 L27,28 Z" fill="var(--torii)"/>
+        <path d="M30,48 L33,32 L30,35 L27,32 Z" fill="none" stroke="rgba(201,163,90,0.6)" stroke-width="0.6"/>
+        <text x="30" y="9" text-anchor="middle"
+              style="font-family:'Cormorant Garamond';font-style:italic;font-weight:500;fill:var(--gold);font-size:10px;">N</text>
+      </svg>
+    </div>
+
+    <!-- Header line -->
+    <div class="map__header">
+      <div></div>
+      <div class="center">
+        <span>HONSHŪ</span>
+        <span class="dot"></span>
+        <span class="jp">本州</span>
+        <span class="dot"></span>
+        <span>GOLDEN ROUTE</span>
+      </div>
+      <div class="right">縮尺なし</div>
+    </div>
+
+    <!-- the map SVG -->
+    <div class="map__svg-wrap">
+      <!--
+        Honshu-centered, abstract bean-shaped main island stretching W-NE.
+        viewBox 0..100 horizontal, 0..70 vertical.
+        Cities placed on Honshu:
+          Tokyo:    (78, 32) -  east end
+          Kyoto:    (40, 34) -  central
+          Osaka:    (37, 38) -  central-south
+          Sendai:   (75, 16) -  north
+          Sapporo:  (92, 8)  -  Hokkaido (separate island top-right)
+          Hiroshima:(20, 38) -  west
+          Fukuoka:  (10, 52) -  Kyushu (separate island bottom-left)
+      -->
+      <svg viewBox="0 0 100 70" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="Map of Honshu and the Golden Route">
+
+        <!-- Honshu (main island, big curved bean) -->
+        <path class="honshu" d="
+          M 8,52
+          C 4,49 5,44 11,42
+          C 16,40 22,38 28,37
+          C 34,36 40,35 46,34
+          C 52,33 58,32 64,31
+          C 70,30 76,30 82,31
+          C 87,32 90,34 88,36
+          C 86,38 80,38 74,37
+          C 68,37 62,38 56,39
+          C 50,40 44,41 38,42
+          C 32,43 26,44 20,46
+          C 14,48 10,51 8,52 Z"/>
+
+        <!-- Hokkaido (top right) -->
+        <path class="minor-island" d="
+          M 88,5 C 94,3 99,6 99,12
+          C 99,17 96,19 92,18
+          C 87,16 84,12 86,8
+          C 87,6 87,5 88,5 Z"/>
+
+        <!-- Kyushu (bottom left) -->
+        <path class="minor-island" d="
+          M 6,56 C 11,54 16,58 15,62
+          C 14,66 9,67 6,64
+          C 3,61 3,58 6,56 Z"/>
+
+        <!-- tiny extra island (Shikoku) -->
+        <path class="minor-island" d="
+          M 24,49 C 28,48 31,49 31,51
+          C 30,53 26,53 24,52 C 22,51 22,50 24,49 Z"/>
+
+        <!-- Tiny dot island bottom (Okinawa hint) -->
+        <circle cx="40" cy="63" r="0.8" fill="none" stroke="rgba(201,163,90,0.3)" stroke-width="0.5"/>
+
+        <!-- The Golden Route dashed (Tokyo → Kyoto → Osaka) -->
+        <path class="golden-route" d="M 78,32 Q 60,33 40,34 L 37,38"/>
+
+        <!-- ============ City labels (muted) ============ -->
+        <text class="city-label muted" x="89" y="9">Sapporo</text>
+        <circle cx="86" cy="9" r="0.5" fill="var(--paper-mute)"/>
+
+        <text class="city-label muted" x="77" y="17">Sendai</text>
+        <circle cx="75" cy="17" r="0.5" fill="var(--paper-mute)"/>
+
+        <text class="city-label muted" x="15" y="41">Hiroshima</text>
+        <circle cx="20" cy="38" r="0.5" fill="var(--paper-mute)"/>
+
+        <text class="city-label muted" x="2" y="60">Fukuoka</text>
+        <circle cx="10" cy="56" r="0.5" fill="var(--paper-mute)"/>
+
+        <!-- ============ Featured cities with target pins ============ -->
+        <!-- Tokyo -->
+        <a href="stores-tokyo.html" class="target-pin">
+          <circle class="ring-outer" cx="80" cy="32" r="1.8"/>
+          <circle class="ring-mid"   cx="80" cy="32" r="1.1"/>
+          <circle class="ring-inner" cx="80" cy="32" r="0.45"/>
+          <text class="city-label" x="82.5" y="30">Tokyo</text>
+          <text class="n-badge" x="82.5" y="35.5">[N]</text>
+        </a>
+
+        <!-- Kyoto -->
+        <a href="stores-kyoto.html" class="target-pin">
+          <circle class="ring-outer" cx="44" cy="33" r="1.8"/>
+          <circle class="ring-mid"   cx="44" cy="33" r="1.1"/>
+          <circle class="ring-inner" cx="44" cy="33" r="0.45"/>
+          <text class="city-label" x="46.5" y="31">Kyoto</text>
+          <text class="n-badge" x="46.5" y="36">[N]</text>
+        </a>
+
+        <!-- Osaka (south of Kyoto, label to the right to avoid overlap) -->
+        <a href="stores-osaka.html" class="target-pin">
+          <circle class="ring-outer" cx="40" cy="40" r="1.8"/>
+          <circle class="ring-mid"   cx="40" cy="40" r="1.1"/>
+          <circle class="ring-inner" cx="40" cy="40" r="0.45"/>
+          <text class="city-label" x="42.5" y="41.5">Osaka</text>
+          <text class="n-badge" x="42.5" y="46.5">[N]</text>
+        </a>
+
+      </svg>
+    </div>
+
+  </div>
+
+</section>
+
+<script src="resize.js"></script>
+</body>
+</html>

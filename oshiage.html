@@ -5,66 +5,249 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Skytree (Oshiage) · Wagyu Beef (Halal) Steak Burger Donburi Ramen · 5W-Tokyo 1962 — Godaime Wagyu</title>
 <meta name="description" content="Halal-certified Japanese wagyu — steak, hamburger, donburi and ramen — 5 minutes from Tokyo Skytree. Open 11:00 to 22:00 every day. Reservations welcome.">
-<link rel="stylesheet" href="sidebar.css">
+<link rel="stylesheet" href="nav.css">
 </head>
 <body>
 
-<div class="layout">
+<!-- ============ TOP NAV ============ -->
+<nav class="topnav">
+  <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="dropdown-menu">
+    <span class="lines"><i></i><i></i><i></i></span>
+    <span class="label">Menu</span>
+  </button>
 
-  <!-- ============ SIDEBAR ============ -->
-  <aside class="sidebar">
-    <a href="index.html" class="brand">
-      <div class="mark">五代目</div>
-      <div class="name">Godaime <em>Wagyu</em></div>
-      <div class="since">Skytree · 押上店</div>
+  <a href="index.html" class="topnav-brand">
+    五代目<small>Godaime Wagyu</small>
+  </a>
+
+  <div class="topnav-right">
+    <a class="topnav-cta"
+       href="https://www.tablecheck.com/shops/halal-ramen-skytree-5w-tokyo/reserve"
+       target="_blank" rel="noopener">
+      Reserve <span>→</span>
     </a>
+  </div>
+</nav>
 
-    <div class="nav-label">— Navigate</div>
-    <nav>
-      <a href="index.html">
-        <span>TOP <em>·</em> <span class="jp">五代目について</span></span>
+<!-- ============ DROPDOWN ============ -->
+<div class="dropdown" id="dropdown-menu" role="menu" aria-label="Site navigation">
+  <div class="dropdown__inner">
+    <div class="dropdown__label">— Navigate · ナビゲーション</div>
+    <div class="dropdown__list">
+      <a href="index.html" role="menuitem">
+        <div>
+          <span class="title">TOP <em>·</em> About <em>Godaime</em></span>
+          <span class="jp">五代目和牛について</span>
+        </div>
         <span class="arrow">→</span>
       </a>
-      <a href="oshiage.html" class="active">
-        <span>Skytree (Oshiage) <em>·</em> <span class="jp">押上店</span></span>
+      <a href="stores.html" role="menuitem">
+        <div>
+          <span class="title">Find a <em>location</em></span>
+          <span class="jp">店舗一覧 · Tokyo · Kyoto · Osaka</span>
+        </div>
         <span class="arrow">→</span>
-      </a>
-      <a href="#stores" onclick="event.preventDefault(); alert('Other stores page — coming soon.')">
-        <span>Other locations <em>·</em> <span class="jp">その他店舗</span></span>
-        <span class="arrow">→</span>
-      </a>
-    </nav>
-
-    <!-- store-specific info -->
-    <div class="store-info">
-      <div class="k">— Hours</div>
-      <div class="v">11:00 — 22:00<small>open every day</small></div>
-
-      <div class="k">— Phone</div>
-      <div class="v tel"><a href="tel:+81366585855">03-6658-5855</a></div>
-
-      <div class="k">— Address</div>
-      <div class="v">Narihira 1-13-1, Sumida-ku, Tokyo<small>5 min walk · Tokyo Skytree</small></div>
-
-      <a class="reserve-btn"
-         href="https://www.tablecheck.com/shops/halal-ramen-skytree-5w-tokyo/reserve"
-         target="_blank" rel="noopener">
-        Reserve →
       </a>
     </div>
-  </aside>
-  <button class="menu-toggle" aria-label="Menu"></button>
+    <div class="dropdown__here">
+      Currently viewing &nbsp; <em>Skytree (Oshiage) · 押上店</em>
+    </div>
+  </div>
+</div>
+<div class="dropdown-backdrop"></div>
 
-  <!-- ============ MAIN ============ -->
-  <main class="main">
-    <iframe class="lp-section" data-slug="oshiage-hero"    src="sections/oshiage-hero.html"    style="height:1100px"></iframe>
-    <iframe class="lp-section" data-slug="oshiage-menu"    src="sections/oshiage-menu.html"    style="height:2100px"></iframe>
-    <iframe class="lp-section" data-slug="oshiage-access"  src="sections/oshiage-access.html"  style="height:1100px"></iframe>
-    <iframe class="lp-section" data-slug="oshiage-reserve" src="sections/oshiage-reserve.html" style="height:900px"></iframe>
-  </main>
+<!-- ============ MAIN ============ -->
+<main class="main">
+  <iframe class="lp-section" data-slug="oshiage-hero"    src="sections/oshiage-hero.html"    style="height:1400px"></iframe>
+  <iframe class="lp-section" data-slug="oshiage-trust"   src="sections/oshiage-trust.html"   style="height:1600px"></iframe>
+  <iframe class="lp-section" data-slug="oshiage-menu"    src="sections/oshiage-menu.html"    style="height:2100px"></iframe>
+  <iframe class="lp-section" data-slug="oshiage-access"  src="sections/oshiage-access.html"  style="height:1100px"></iframe>
+  <iframe class="lp-section" data-slug="oshiage-reserve" src="sections/oshiage-reserve.html" style="height:900px"></iframe>
+</main>
 
+<!-- ============ 20-SECOND ENGAGEMENT DIALOG ============ -->
+<div class="engage-dialog" id="engageDialog" role="dialog" aria-modal="true" aria-labelledby="engageTitle" hidden>
+  <div class="engage-dialog__backdrop"></div>
+  <div class="engage-dialog__panel">
+    <button class="engage-dialog__close" aria-label="Close">✕</button>
+    <div class="engage-dialog__corner-tl"></div>
+    <div class="engage-dialog__corner-tr"></div>
+    <div class="engage-dialog__corner-bl"></div>
+    <div class="engage-dialog__corner-br"></div>
+
+    <div class="engage-dialog__chip">— Skytree (Oshiage) · 押上店</div>
+    <h2 id="engageTitle" class="engage-dialog__title">
+      Ready to <em>reserve?</em>
+    </h2>
+    <p class="engage-dialog__jp">ご予約・お問い合わせはこちらから</p>
+    <p class="engage-dialog__lede">
+      Tables fill up fast — especially weekends. Reserve in under a minute,
+      or send us a question and we'll reply within <em>24 hours</em>.
+    </p>
+
+    <div class="engage-dialog__actions">
+      <a class="engage-dialog__btn primary"
+         href="https://www.tablecheck.com/shops/halal-ramen-skytree-5w-tokyo/reserve"
+         target="_blank" rel="noopener">
+        Reserve a table <span>→</span>
+      </a>
+      <a class="engage-dialog__btn secondary"
+         href="mailto:halal@godaimewagyu.com?subject=Question%20about%20Skytree%20store">
+        Ask us a question
+      </a>
+    </div>
+
+    <div class="engage-dialog__foot">
+      Or call <a href="tel:+81366585855">03-6658-5855</a> · 11:00 – 22:00 every day
+    </div>
+  </div>
 </div>
 
-<script src="sidebar.js"></script>
+<style>
+  /* ============ Engagement dialog ============ */
+  .engage-dialog{
+    position:fixed;inset:0;z-index:200;
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+    opacity:0;pointer-events:none;
+    transition:opacity 0.4s;
+  }
+  .engage-dialog[hidden]{display:none}
+  .engage-dialog.show{opacity:1;pointer-events:auto}
+  .engage-dialog__backdrop{
+    position:absolute;inset:0;
+    background:rgba(10,8,7,0.78);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  }
+  .engage-dialog__panel{
+    position:relative;
+    max-width:520px;width:100%;
+    background:linear-gradient(135deg, #1a120c 0%, #221710 100%);
+    border:1px solid rgba(201,163,90,0.32);
+    padding:42px 38px 32px;
+    box-shadow:0 40px 80px rgba(0,0,0,0.6);
+    transform:translateY(20px) scale(0.98);
+    transition:transform 0.45s cubic-bezier(0.16,1,0.3,1);
+  }
+  .engage-dialog.show .engage-dialog__panel{
+    transform:translateY(0) scale(1);
+  }
+  /* corner marks */
+  .engage-dialog__corner-tl, .engage-dialog__corner-tr,
+  .engage-dialog__corner-bl, .engage-dialog__corner-br{
+    position:absolute;width:18px;height:18px;
+    border-color:var(--gold-dim);opacity:0.6;pointer-events:none;
+  }
+  .engage-dialog__corner-tl{top:0;left:0;border-top:1px solid;border-left:1px solid}
+  .engage-dialog__corner-tr{top:0;right:0;border-top:1px solid;border-right:1px solid}
+  .engage-dialog__corner-bl{bottom:0;left:0;border-bottom:1px solid;border-left:1px solid}
+  .engage-dialog__corner-br{bottom:0;right:0;border-bottom:1px solid;border-right:1px solid}
+
+  .engage-dialog__close{
+    position:absolute;top:14px;right:14px;
+    width:32px;height:32px;background:transparent;border:1px solid rgba(201,163,90,0.3);
+    color:var(--paper-dim);font-family:var(--sans);font-size:14px;cursor:pointer;
+    transition:color 0.3s, border-color 0.3s;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .engage-dialog__close:hover{color:var(--paper);border-color:var(--gold)}
+
+  .engage-dialog__chip{
+    font-family:var(--sans);font-size:10px;letter-spacing:0.32em;color:var(--torii);
+    text-transform:uppercase;font-weight:600;margin-bottom:18px;
+  }
+  .engage-dialog__title{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(34px,4vw,46px);line-height:1.05;letter-spacing:-0.02em;
+    color:var(--paper);margin-bottom:12px;
+  }
+  .engage-dialog__title em{font-style:italic;color:var(--gold)}
+  .engage-dialog__jp{
+    font-family:var(--jp);font-size:13.5px;color:var(--paper-dim);letter-spacing:0.22em;margin-bottom:22px;
+    border-left:2px solid var(--torii);padding-left:12px;
+  }
+  .engage-dialog__lede{
+    font-family:var(--serif);font-size:15.5px;line-height:1.65;color:rgba(243,236,225,0.8);
+    margin-bottom:28px;
+  }
+  .engage-dialog__lede em{font-style:italic;color:var(--gold);font-weight:500}
+
+  .engage-dialog__actions{
+    display:flex;flex-direction:column;gap:10px;margin-bottom:22px;
+  }
+  .engage-dialog__btn{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:16px 22px;text-decoration:none;
+    font-family:var(--sans);font-size:11px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;
+    transition:background 0.3s, border-color 0.3s, color 0.3s;
+  }
+  .engage-dialog__btn.primary{
+    background:var(--torii);color:var(--paper);border:1px solid var(--torii);
+  }
+  .engage-dialog__btn.primary:hover{
+    background:var(--torii-deep);border-color:var(--torii-deep);
+  }
+  .engage-dialog__btn.secondary{
+    background:transparent;color:var(--paper);border:1px solid rgba(201,163,90,0.4);
+  }
+  .engage-dialog__btn.secondary:hover{
+    color:var(--gold);border-color:var(--gold);
+  }
+  .engage-dialog__foot{
+    padding-top:18px;border-top:1px solid rgba(201,163,90,0.18);
+    font-family:var(--sans);font-size:10.5px;letter-spacing:0.2em;color:var(--paper-mute);
+    text-transform:uppercase;text-align:center;
+  }
+  .engage-dialog__foot a{
+    color:var(--gold);text-decoration:none;font-family:var(--serif);font-style:italic;
+    font-size:14px;letter-spacing:0;text-transform:none;
+    border-bottom:1px solid var(--gold-dim);padding-bottom:1px;
+  }
+  .engage-dialog__foot a:hover{color:var(--paper);border-color:var(--paper)}
+
+  @media (max-width:540px){
+    .engage-dialog__panel{padding:36px 24px 26px}
+  }
+</style>
+
+<script>
+  // Show the dialog 20 seconds after page load, only once per session
+  (function(){
+    var SHOWN_KEY = 'engaged-shown';
+    if (sessionStorage.getItem(SHOWN_KEY) === '1') return;
+
+    var dlg = document.getElementById('engageDialog');
+    if (!dlg) return;
+    var closeBtn = dlg.querySelector('.engage-dialog__close');
+    var backdrop = dlg.querySelector('.engage-dialog__backdrop');
+
+    function open(){
+      dlg.hidden = false;
+      // next tick so transition fires
+      requestAnimationFrame(function(){
+        dlg.classList.add('show');
+      });
+      sessionStorage.setItem(SHOWN_KEY, '1');
+    }
+    function close(){
+      dlg.classList.remove('show');
+      setTimeout(function(){ dlg.hidden = true; }, 400);
+    }
+
+    setTimeout(open, 20000);
+    closeBtn && closeBtn.addEventListener('click', close);
+    backdrop && backdrop.addEventListener('click', close);
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && !dlg.hidden) close();
+    });
+    // CTA をクリックしたらも閉じる(でも別タブ遷移する場合は意味薄いので付ける)
+    dlg.querySelectorAll('.engage-dialog__btn').forEach(function(a){
+      a.addEventListener('click', close);
+    });
+  })();
+</script>
+
+<script src="nav.js"></script>
 </body>
 </html>

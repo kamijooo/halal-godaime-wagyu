@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" data-slug="oshiage-trust">
+<head>
+<meta charset="UTF-8">
+<title>Why Skytree — Godaime Wagyu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Shippori+Mincho:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+.trust-section{
+  position:relative;
+  padding:130px 60px 130px;
+  background:
+    radial-gradient(ellipse at 25% 0%, rgba(185,28,28,0.07), transparent 55%),
+    radial-gradient(ellipse at 80% 90%, rgba(201,163,90,0.06), transparent 50%),
+    var(--ink-deep);
+}
+.trust-section::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:1px;height:60px;background:linear-gradient(180deg,var(--gold) 0%,transparent 100%);
+}
+
+/* === Story block === */
+.story-block{
+  max-width:1280px;margin:0 auto 110px;
+  display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center;
+}
+.story-block .chip{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 16px;background:var(--torii);color:var(--paper);
+  font-family:var(--sans);font-size:10px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;
+  margin-bottom:24px;
+}
+.story-block h2{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(38px,4.8vw,64px);line-height:1.04;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:18px;
+}
+.story-block h2 em{font-style:italic;color:var(--gold)}
+.story-block .jp{
+  font-family:var(--jp);font-size:15px;color:var(--paper-dim);letter-spacing:0.22em;
+  border-left:2px solid var(--torii);padding-left:14px;margin-bottom:28px;
+}
+.story-block p{
+  font-family:var(--serif);font-size:16.5px;line-height:1.75;color:rgba(243,236,225,0.78);
+  margin-bottom:22px;
+}
+.story-block p em{font-style:italic;color:var(--gold)}
+.story-block p:last-child{margin-bottom:0}
+.story-block .quote{
+  margin-top:28px;padding:20px 0 0;
+  border-top:1px solid rgba(201,163,90,0.22);
+  font-family:var(--serif);font-style:italic;font-size:20px;color:var(--gold);line-height:1.4;
+}
+.story-block .quote small{
+  display:block;
+  font-family:var(--sans);font-style:normal;font-size:9.5px;letter-spacing:0.32em;color:var(--paper-mute);
+  text-transform:uppercase;margin-top:10px;
+}
+.story-block .photo{
+  position:relative;aspect-ratio:4/5;background:#000;overflow:hidden;
+  box-shadow:0 30px 60px rgba(0,0,0,0.5);
+}
+.story-block .photo img{width:100%;height:100%;object-fit:cover}
+.story-block .photo::after{
+  content:"";position:absolute;inset:0;
+  box-shadow:inset 0 0 80px rgba(10,8,7,0.6);
+}
+.story-block .photo .tag{
+  position:absolute;top:24px;left:24px;z-index:2;
+  font-family:var(--sans);font-size:9.5px;letter-spacing:0.28em;color:var(--paper);
+  text-transform:uppercase;font-weight:600;
+  background:rgba(10,8,7,0.75);backdrop-filter:blur(6px);
+  border:1px solid rgba(201,163,90,0.4);
+  padding:7px 14px;
+}
+
+/* === Halal trust === */
+.halal-block{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center;
+}
+.halal-block .panel{
+  position:relative;aspect-ratio:4/5;
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(201,163,90,0.10), transparent 60%),
+    radial-gradient(ellipse at 75% 75%, rgba(185,28,28,0.08), transparent 65%),
+    linear-gradient(135deg, var(--ink), var(--ink-deep));
+  border:1px solid rgba(201,163,90,0.25);
+  padding:50px 40px;display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:0 30px 60px rgba(0,0,0,0.4);
+}
+.halal-block .panel::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(135deg, var(--gold-dim) 0 14px, transparent 14px) top left/26px 26px no-repeat,
+    linear-gradient(225deg, var(--gold-dim) 0 14px, transparent 14px) top right/26px 26px no-repeat,
+    linear-gradient(45deg,  var(--gold-dim) 0 14px, transparent 14px) bottom left/26px 26px no-repeat,
+    linear-gradient(315deg, var(--gold-dim) 0 14px, transparent 14px) bottom right/26px 26px no-repeat;
+  opacity:0.5;
+}
+.halal-block .panel .top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  font-family:var(--sans);font-size:10px;letter-spacing:0.32em;color:var(--gold);
+  text-transform:uppercase;font-weight:500;
+}
+.halal-block .panel .ar{
+  font-family:var(--ar);font-size:15px;color:var(--paper-dim);
+  direction:rtl;letter-spacing:0;text-transform:none;font-weight:400;
+}
+.halal-block .panel .seal{align-self:center;text-align:center;margin:auto 0}
+.halal-block .panel .ring{
+  width:180px;height:180px;border-radius:50%;
+  border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;margin:0 auto 22px;
+  background:radial-gradient(circle at 50% 50%, rgba(201,163,90,0.08), transparent 70%);
+}
+.halal-block .panel .ring::before, .halal-block .panel .ring::after{
+  content:"";position:absolute;inset:8px;border-radius:50%;
+  border:1px solid rgba(201,163,90,0.4);
+}
+.halal-block .panel .ring::after{inset:14px;border-style:dashed;opacity:0.5}
+.halal-block .panel .ring .ar-big{
+  font-family:var(--ar);font-size:64px;color:var(--gold);font-weight:700;line-height:1;direction:rtl;
+}
+.halal-block .panel .seal .label-en{
+  font-family:var(--serif);font-style:italic;font-size:22px;color:var(--paper);margin-bottom:4px;
+}
+.halal-block .panel .seal .label-jp{
+  font-family:var(--jp);font-size:12px;color:var(--paper-dim);letter-spacing:0.22em;
+}
+.halal-block .panel .bottom{
+  display:grid;grid-template-columns:1fr 1fr;gap:18px;
+  padding-top:22px;border-top:1px solid rgba(201,163,90,0.22);
+  font-family:var(--sans);font-size:10px;letter-spacing:0.16em;color:var(--paper-dim);line-height:1.6;
+}
+.halal-block .panel .bottom .k{
+  color:var(--gold);text-transform:uppercase;letter-spacing:0.28em;font-weight:500;font-size:9px;
+  display:block;margin-bottom:3px;
+}
+.halal-block .panel .bottom .v{font-family:var(--serif);font-style:italic;color:var(--paper);font-size:13px;letter-spacing:0}
+
+.halal-block .copy .chip{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 16px;background:var(--torii);color:var(--paper);
+  font-family:var(--sans);font-size:10px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;
+  margin-bottom:24px;
+}
+.halal-block .copy h2{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(38px,4.8vw,60px);line-height:1.04;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:18px;
+}
+.halal-block .copy h2 em{font-style:italic;color:var(--gold)}
+.halal-block .copy .jp{
+  font-family:var(--jp);font-size:15px;color:var(--paper-dim);letter-spacing:0.22em;
+  border-left:2px solid var(--torii);padding-left:14px;margin-bottom:28px;
+}
+.halal-block .copy ul{
+  list-style:none;padding:0;margin:24px 0 28px;
+  display:flex;flex-direction:column;gap:14px;
+}
+.halal-block .copy ul li{
+  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:flex-start;
+  padding:14px 0;border-bottom:1px solid rgba(201,163,90,0.15);
+  font-family:var(--serif);font-size:15.5px;line-height:1.55;color:var(--paper-dim);
+}
+.halal-block .copy ul li:last-child{border-bottom:0}
+.halal-block .copy ul li::before{
+  content:"";width:24px;height:24px;border-radius:50%;background:var(--torii);
+  color:var(--paper);font-family:var(--sans);font-size:11px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;line-height:1;
+  flex-shrink:0;margin-top:1px;
+  /* checkmark via gradient hack — use ✓ */
+}
+.halal-block .copy ul li.check::before{content:"✓"}
+.halal-block .copy ul li em{font-style:italic;color:var(--gold);font-weight:500}
+
+@media (max-width:1024px){
+  .story-block, .halal-block{grid-template-columns:1fr;gap:50px}
+  .story-block .photo, .halal-block .panel{max-width:520px;margin:0 auto;width:100%}
+}
+@media (max-width:600px){
+  .trust-section{padding:80px 22px 80px}
+  .halal-block .panel{padding:36px 24px}
+  .halal-block .panel .ring{width:140px;height:140px}
+  .halal-block .panel .ring .ar-big{font-size:48px}
+}
+</style>
+</head>
+<body>
+
+<section class="trust-section">
+
+  <!-- === Story === -->
+  <div class="story-block">
+    <div class="photo">
+      <span class="tag">Five generations · 五代</span>
+      <img src="../burger-image/8.jpg" alt="Five generations of wagyu">
+    </div>
+    <div>
+      <span class="chip">Why Skytree · この店について</span>
+      <h2>The wagyu we'd serve <em>our family.</em></h2>
+      <p class="jp">家族に出せる和牛を、あなたへ。</p>
+      <p>
+        Five generations ago, a small Tokyo butcher made his sons one promise —
+        <em>never sell meat he wouldn't feed his own family</em>. Three wars,
+        sixty-three years, and forty-seven countries of guests later, that rule
+        still runs this kitchen.
+      </p>
+      <p>
+        Our Skytree restaurant opened to share that wagyu with travelers — and
+        because so many of our guests are Muslim, we rebuilt the entire kitchen
+        around <em>halal certification</em>. Same family rule. Same cleaver. Wider table.
+      </p>
+      <p class="quote">
+        "Wagyu shouldn't have borders."
+        <small>— 四代目, said in 2014</small>
+      </p>
+    </div>
+  </div>
+
+  <!-- === Halal trust === -->
+  <div class="halal-block">
+    <div class="copy">
+      <span class="chip">Halal · ハラル認証</span>
+      <h2>Certified, <em>top to bottom.</em></h2>
+      <p class="jp">仕入れから調理まで、ハラル認証。</p>
+      <ul>
+        <li class="check"><div>
+          <em>100% halal-certified</em> Japanese wagyu — no exceptions, all cuts.
+        </div></li>
+        <li class="check"><div>
+          <em>No alcohol</em> in any sauce, marinade, or dashi. We reformulated every recipe.
+        </div></li>
+        <li class="check"><div>
+          <em>Separated cookware</em> — color-coded, audited monthly.
+        </div></li>
+        <li class="check"><div>
+          Original <em>certificate framed</em> at the counter. Digital copy on request.
+        </div></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <div class="top">
+        <span>Halal Certification</span>
+        <span class="ar">شهادة الحلال</span>
+      </div>
+      <div class="seal">
+        <div class="ring">
+          <span class="ar-big">حلال</span>
+        </div>
+        <div class="label-en"><em>Halal-certified Wagyu.</em></div>
+        <div class="label-jp">ハラル認証 和牛</div>
+      </div>
+      <div class="bottom">
+        <div><span class="k">Authority</span><span class="v">[認証団体]</span></div>
+        <div><span class="k">Coverage</span><span class="v">All dishes</span></div>
+        <div><span class="k">Audit</span><span class="v">Monthly</span></div>
+        <div><span class="k">Recipes</span><span class="v">Alcohol-free</span></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script src="resize.js"></script>
+</body>
+</html>
