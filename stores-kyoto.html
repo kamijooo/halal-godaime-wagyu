@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kyoto locations — Godaime Wagyu</title>
+<meta name="description" content="Godaime Wagyu locations in Kyoto — coming soon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="nav.css">
+<style>
+  .city-page{
+    padding:60px 60px 90px;min-height:calc(100vh - 64px);
+    background:
+      radial-gradient(ellipse at 18% 8%, rgba(185,28,28,0.07), transparent 55%),
+      radial-gradient(ellipse at 82% 92%, rgba(201,163,90,0.06), transparent 50%),
+      var(--ink-deep);
+  }
+  .city__breadcrumb{
+    max-width:1280px;margin:0 auto 30px;
+    font-family:var(--sans);font-size:10px;letter-spacing:0.28em;color:var(--paper-mute);
+    text-transform:uppercase;display:flex;align-items:center;gap:10px;
+  }
+  .city__breadcrumb a{color:var(--gold);text-decoration:none}
+  .city__breadcrumb .sep{color:rgba(201,163,90,0.4)}
+  .city__breadcrumb .here{color:var(--paper)}
+
+  .coming-hero{
+    max-width:960px;margin:60px auto 0;text-align:center;
+    padding:80px 60px;
+    background:linear-gradient(135deg,rgba(15,12,10,0.55),rgba(28,22,18,0.4));
+    border:1px solid rgba(201,163,90,0.22);position:relative;
+  }
+  .coming-hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      linear-gradient(135deg, var(--gold-dim) 0 16px, transparent 16px) top left/30px 30px no-repeat,
+      linear-gradient(225deg, var(--gold-dim) 0 16px, transparent 16px) top right/30px 30px no-repeat,
+      linear-gradient(45deg,  var(--gold-dim) 0 16px, transparent 16px) bottom left/30px 30px no-repeat,
+      linear-gradient(315deg, var(--gold-dim) 0 16px, transparent 16px) bottom right/30px 30px no-repeat;
+    opacity:0.5;
+  }
+  .coming-hero .pre{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:0.4em;color:var(--gold);
+    text-transform:uppercase;font-weight:500;margin-bottom:20px;
+  }
+  .coming-hero h1{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(44px,5.6vw,72px);line-height:1;letter-spacing:-0.02em;
+    color:var(--paper);margin-bottom:14px;
+  }
+  .coming-hero h1 em{font-style:italic;color:var(--gold)}
+  .coming-hero .jp{
+    font-family:var(--jp);font-size:16px;color:var(--paper-dim);letter-spacing:0.22em;margin-bottom:30px;
+  }
+  .coming-hero p{
+    font-family:var(--serif);font-size:17px;line-height:1.7;color:rgba(243,236,225,0.78);
+    max-width:540px;margin:0 auto 40px;
+  }
+  .coming-hero p em{font-style:italic;color:var(--gold)}
+  .coming-hero .actions{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
+  .coming-hero .btn{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:15px 26px;text-decoration:none;
+    font-family:var(--sans);font-size:11px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;
+  }
+  .coming-hero .btn.primary{background:var(--torii);color:var(--paper);border:1px solid var(--torii)}
+  .coming-hero .btn.primary:hover{background:var(--torii-deep);border-color:var(--torii-deep)}
+  .coming-hero .btn.secondary{background:transparent;color:var(--paper);border:1px solid var(--gold-dim)}
+  .coming-hero .btn.secondary:hover{border-color:var(--gold);color:var(--gold)}
+
+  @media (max-width:600px){
+    .city-page{padding:40px 22px 70px}
+    .coming-hero{padding:50px 26px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="dropdown-menu">
+    <span class="lines"><i></i><i></i><i></i></span><span class="label">Menu</span>
+  </button>
+  <a href="index.html" class="topnav-brand">五代目<small>Godaime Wagyu</small></a>
+  <div class="topnav-right"></div>
+</nav>
+
+<div class="dropdown" id="dropdown-menu" role="menu">
+  <div class="dropdown__inner">
+    <div class="dropdown__label">— Navigate · ナビゲーション</div>
+    <div class="dropdown__list">
+      <a href="index.html" role="menuitem"><div><span class="title">TOP <em>·</em> About <em>Godaime</em></span><span class="jp">五代目和牛について</span></div><span class="arrow">→</span></a>
+      <a href="stores.html" role="menuitem"><div><span class="title">Find a <em>location</em></span><span class="jp">店舗一覧</span></div><span class="arrow">→</span></a>
+    </div>
+    <div class="dropdown__here">Currently viewing &nbsp; <em>Kyoto · 京都</em></div>
+  </div>
+</div>
+<div class="dropdown-backdrop"></div>
+
+<main class="main">
+  <section class="city-page">
+
+    <div class="city__breadcrumb">
+      <a href="index.html">Godaime</a>
+      <span class="sep">/</span>
+      <a href="stores.html">Locations</a>
+      <span class="sep">/</span>
+      <span class="here">Kyoto · 京都</span>
+    </div>
+
+    <div class="coming-hero">
+      <div class="pre">— Kyoto · 京都</div>
+      <h1>Coming <em>soon.</em></h1>
+      <p class="jp">京都に、まもなく出店。</p>
+      <p>
+        We're preparing our first <em>Kyoto location</em>. If you'd like to be notified
+        when we open — or have a suggested neighborhood — drop us a line.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:hello@godaimewagyu.com?subject=Kyoto opening">Notify me <span>→</span></a>
+        <a class="btn secondary" href="stores.html">← Back to locations</a>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find a location — Godaime Wagyu</title>
+<meta name="description" content="Godaime Wagyu locations across Tokyo, Kyoto and Osaka. Find the nearest halal-certified wagyu restaurant.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="nav.css">
+<style>
+  /* page-specific */
+  .stores-page{
+    padding:60px 60px 90px;
+    background:
+      radial-gradient(ellipse at 18% 8%, rgba(185,28,28,0.07), transparent 55%),
+      radial-gradient(ellipse at 82% 92%, rgba(201,163,90,0.06), transparent 50%),
+      var(--ink-deep);
+    min-height:calc(100vh - 64px);
+  }
+
+  .stores__head{
+    max-width:1280px;margin:0 auto 60px;text-align:center;
+  }
+  .stores__chapter{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:0.4em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:18px;
+    display:inline-flex;align-items:center;gap:14px;
+  }
+  .stores__chapter::before, .stores__chapter::after{
+    content:"";width:30px;height:1px;background:var(--gold);
+  }
+  .stores__title{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(40px,5.6vw,76px);line-height:1.0;letter-spacing:-0.02em;
+    color:var(--paper);margin-bottom:14px;
+  }
+  .stores__title em{font-style:italic;color:var(--gold)}
+  .stores__lede{
+    font-family:var(--jp);font-size:15px;color:var(--paper-dim);letter-spacing:0.22em;
+    margin-bottom:14px;
+  }
+  .stores__hint{
+    font-family:var(--serif);font-style:italic;font-size:15px;color:var(--paper-mute);
+  }
+
+  .stores__layout{
+    max-width:1280px;margin:0 auto;
+    display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start;
+  }
+
+  /* === Japan map (minimalist constellation style) === */
+  .map-card{
+    position:relative;
+    background:linear-gradient(135deg, rgba(15,12,10,0.6), rgba(28,22,18,0.4));
+    border:1px solid rgba(201,163,90,0.22);
+    padding:30px;
+    box-shadow:0 30px 60px rgba(0,0,0,0.4);
+    aspect-ratio:1/1;
+    display:flex;flex-direction:column;
+  }
+  .map-card .map-label{
+    font-family:var(--sans);font-size:9.5px;letter-spacing:0.32em;color:var(--gold);
+    text-transform:uppercase;font-weight:500;margin-bottom:14px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .map-card .map-label::before{content:"";width:22px;height:1px;background:var(--gold)}
+  .map-card svg{
+    width:100%;flex:1;display:block;
+  }
+  /* archipelago silhouette - very abstract */
+  .map-card .archipelago{
+    fill:rgba(201,163,90,0.06);
+    stroke:rgba(201,163,90,0.35);
+    stroke-width:1.2;
+    stroke-linejoin:round;
+    stroke-linecap:round;
+  }
+  /* dashed guide line between cities (Tokaido route feel) */
+  .map-card .guide{
+    fill:none;stroke:rgba(201,163,90,0.35);
+    stroke-width:1;stroke-dasharray:3 4;
+  }
+  /* compass mark */
+  .map-card .compass{
+    fill:none;stroke:rgba(201,163,90,0.4);stroke-width:0.8;
+  }
+  .map-card .compass-label{
+    font-family:var(--sans);font-size:9px;letter-spacing:0.3em;
+    fill:var(--paper-mute);text-transform:uppercase;font-weight:500;
+  }
+  /* pin styles */
+  .pin{
+    cursor:pointer;
+    transition:transform 0.3s;
+    transform-origin:center;
+    transform-box:fill-box;
+  }
+  .pin:hover{transform:scale(1.12)}
+  .pin .pin-ring{
+    fill:none;stroke:var(--torii);stroke-width:1.4;opacity:0.6;
+    animation:pulse 2.4s ease-in-out infinite;
+    transform-origin:center;transform-box:fill-box;
+  }
+  .pin .pin-dot{
+    fill:var(--torii);
+    filter:drop-shadow(0 0 4px rgba(185,28,28,0.75));
+  }
+  .pin .pin-label-bg{
+    fill:rgba(10,8,7,0.92);
+    stroke:rgba(201,163,90,0.5);stroke-width:0.3;
+  }
+  .pin .pin-label{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+    fill:var(--paper);font-size:4.2px;
+    text-anchor:middle;
+    dominant-baseline:middle;
+  }
+  .pin:hover .pin-label{fill:var(--gold)}
+  .pin .pin-label-jp{
+    font-family:'Shippori Mincho',serif;font-weight:500;
+    fill:var(--paper-dim);font-size:3px;letter-spacing:0.1em;
+    text-anchor:middle;
+    dominant-baseline:middle;
+  }
+  .map-card .compass-label{
+    font-family:var(--sans);font-size:3px;letter-spacing:0.2em;
+    fill:var(--paper-mute);text-transform:uppercase;font-weight:500;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);opacity:0.7}
+    50%{transform:scale(1.8);opacity:0}
+  }
+  .pin-anchor{
+    fill:rgba(201,163,90,0);
+  }
+
+  /* === Location list === */
+  .loc-list{
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .loc-list .loc-head{
+    font-family:var(--sans);font-size:9.5px;letter-spacing:0.32em;color:var(--gold);
+    text-transform:uppercase;font-weight:500;margin-bottom:6px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .loc-list .loc-head::before{content:"";width:22px;height:1px;background:var(--gold)}
+  .loc-card{
+    display:flex;align-items:flex-start;justify-content:space-between;gap:18px;
+    padding:22px 24px;text-decoration:none;
+    background:var(--ink);
+    border:1px solid rgba(201,163,90,0.18);
+    transition:border-color 0.3s, background 0.3s, transform 0.3s;
+  }
+  .loc-card:hover{
+    background:rgba(201,163,90,0.04);
+    border-color:rgba(201,163,90,0.5);
+    transform:translateX(4px);
+  }
+  .loc-card .l{display:flex;flex-direction:column;gap:6px}
+  .loc-card .city{
+    font-family:var(--serif);font-weight:400;font-size:26px;line-height:1;color:var(--paper);
+    letter-spacing:-0.01em;
+  }
+  .loc-card .city em{font-style:italic;color:var(--gold)}
+  .loc-card .jp{
+    font-family:var(--jp);font-size:12px;color:var(--paper-dim);letter-spacing:0.18em;
+  }
+  .loc-card .count{
+    font-family:var(--sans);font-size:9.5px;letter-spacing:0.28em;
+    color:var(--paper-mute);text-transform:uppercase;font-weight:500;margin-top:8px;
+  }
+  .loc-card .count em{
+    font-family:var(--serif);font-style:italic;color:var(--gold);font-size:13px;letter-spacing:0;text-transform:none;
+  }
+  .loc-card .r{
+    font-family:var(--sans);font-size:10px;letter-spacing:0.32em;color:var(--paper-mute);
+    text-transform:uppercase;font-weight:500;text-align:right;line-height:1.6;
+    display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+  }
+  .loc-card .r .arrow{font-size:22px;color:var(--gold);line-height:1}
+  .loc-card:hover .r .arrow{color:var(--torii)}
+
+  @media (max-width:1024px){
+    .stores__layout{grid-template-columns:1fr;gap:50px}
+  }
+  @media (max-width:600px){
+    .stores-page{padding:40px 22px 70px}
+    .map-card{padding:20px}
+    .loc-card{padding:18px 20px}
+    .loc-card .city{font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP NAV ============ -->
+<nav class="topnav">
+  <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="dropdown-menu">
+    <span class="lines"><i></i><i></i><i></i></span>
+    <span class="label">Menu</span>
+  </button>
+  <a href="index.html" class="topnav-brand">
+    五代目<small>Godaime Wagyu</small>
+  </a>
+  <div class="topnav-right"></div>
+</nav>
+
+<div class="dropdown" id="dropdown-menu" role="menu" aria-label="Site navigation">
+  <div class="dropdown__inner">
+    <div class="dropdown__label">— Navigate · ナビゲーション</div>
+    <div class="dropdown__list">
+      <a href="index.html" role="menuitem">
+        <div>
+          <span class="title">TOP <em>·</em> About <em>Godaime</em></span>
+          <span class="jp">五代目和牛について</span>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      <a href="stores.html" class="active" role="menuitem">
+        <div>
+          <span class="title">Find a <em>location</em></span>
+          <span class="jp">店舗一覧 · Tokyo · Kyoto · Osaka</span>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+    <div class="dropdown__here">
+      Currently viewing &nbsp; <em>Find a location · 店舗一覧</em>
+    </div>
+  </div>
+</div>
+<div class="dropdown-backdrop"></div>
+
+<!-- ============ PAGE ============ -->
+<main class="main">
+  <section class="stores-page">
+
+    <div class="stores__head">
+      <div class="stores__chapter">Locations · 店舗一覧</div>
+      <h1 class="stores__title">Find a <em>location.</em></h1>
+      <p class="stores__lede">お近くの店舗を探す</p>
+      <p class="stores__hint">— Tap a pin on the map or a city below.</p>
+    </div>
+
+    <div class="stores__layout">
+
+      <!-- LEFT: Japan map -->
+      <div class="map-card">
+        <div class="map-label">— Map · 地図</div>
+        <!--
+          Minimalist constellation-style map of Japan.
+          We use a simplified archipelago shape + compass + dashed Tokaido line
+          + 3 pins. Reads as "Japan" at a glance without being a literal geography map.
+          viewBox: x=0-100, y=0-100. Cities placed by ratio:
+            Tokyo:  (76, 35)
+            Kyoto:  (45, 50)
+            Osaka:  (42, 55)
+        -->
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-label="Locations across Japan">
+
+          <!-- compass top-right -->
+          <g transform="translate(90,10)">
+            <circle class="compass" cx="0" cy="0" r="3.5"/>
+            <line class="compass" x1="0" y1="-3.5" x2="0" y2="-1.5"/>
+            <line class="compass" x1="0" y1="3.5" x2="0" y2="1.5"/>
+            <line class="compass" x1="-3.5" y1="0" x2="-1.5" y2="0"/>
+            <line class="compass" x1="3.5" y1="0" x2="1.5" y2="0"/>
+            <text class="compass-label" x="0" y="-4.5" text-anchor="middle">N</text>
+          </g>
+
+          <!-- archipelago shape: minimal abstract — 4 ellipses approximating the islands -->
+          <!-- Hokkaido (top right) -->
+          <ellipse class="archipelago" cx="83" cy="20" rx="9" ry="6" transform="rotate(-15 83 20)"/>
+          <!-- Honshu (main, elongated curved bean) -->
+          <path class="archipelago" d="
+            M76,32 Q 82,28 80,33 Q 79,38 73,42
+            Q 65,46 55,50 Q 43,55 32,62 Q 22,69 21,73
+            Q 27,72 36,68 Q 48,62 60,56 Q 72,49 80,42
+            Q 84,38 82,33 Q 80,30 76,32 Z"/>
+          <!-- Shikoku -->
+          <ellipse class="archipelago" cx="30" cy="73" rx="5" ry="2.5" transform="rotate(-10 30 73)"/>
+          <!-- Kyushu -->
+          <ellipse class="archipelago" cx="18" cy="78" rx="5.5" ry="5"/>
+
+          <!-- Tokaido dashed line: Tokyo -> Kyoto -> Osaka (history nod) -->
+          <path class="guide" d="M 76,35 Q 60,40 45,50 L 38,64"/>
+
+          <!-- Pin: Tokyo at (76, 35) -->
+          <a href="stores-tokyo.html" class="pin">
+            <circle class="pin-ring" cx="76" cy="35" r="2.2"/>
+            <circle class="pin-dot" cx="76" cy="35" r="1.1"/>
+            <rect class="pin-label-bg" x="69" y="27.2" width="14" height="5" rx="0.4"/>
+            <text class="pin-label" x="76" y="29.8">Tokyo</text>
+            <text class="pin-label-jp" x="76" y="39">東京</text>
+            <circle class="pin-anchor" cx="76" cy="35" r="5"/>
+          </a>
+
+          <!-- Pin: Kyoto at (45, 50) -->
+          <a href="stores-kyoto.html" class="pin">
+            <circle class="pin-ring" cx="45" cy="50" r="2.2"/>
+            <circle class="pin-dot" cx="45" cy="50" r="1.1"/>
+            <rect class="pin-label-bg" x="38" y="42.2" width="14" height="5" rx="0.4"/>
+            <text class="pin-label" x="45" y="44.8">Kyoto</text>
+            <text class="pin-label-jp" x="55" y="50.5">京都</text>
+            <circle class="pin-anchor" cx="45" cy="50" r="5"/>
+          </a>
+
+          <!-- Pin: Osaka at (38, 64) (south of Kyoto, well separated) -->
+          <a href="stores-osaka.html" class="pin">
+            <circle class="pin-ring" cx="38" cy="64" r="2.2"/>
+            <circle class="pin-dot" cx="38" cy="64" r="1.1"/>
+            <rect class="pin-label-bg" x="31" y="67" width="14" height="5" rx="0.4"/>
+            <text class="pin-label" x="38" y="69.6">Osaka</text>
+            <text class="pin-label-jp" x="48" y="64.5">大阪</text>
+            <circle class="pin-anchor" cx="38" cy="64" r="5"/>
+          </a>
+
+        </svg>
+      </div>
+
+      <!-- RIGHT: location list -->
+      <div class="loc-list">
+        <div class="loc-head">— By city · 都市から探す</div>
+
+        <a href="stores-tokyo.html" class="loc-card">
+          <div class="l">
+            <span class="city">Tokyo <em>·</em> <em>東京</em></span>
+            <span class="jp">スカイツリー · その他</span>
+            <span class="count"><em>1</em> location open · more coming</span>
+          </div>
+          <div class="r">
+            <span>See locations</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+
+        <a href="stores-kyoto.html" class="loc-card">
+          <div class="l">
+            <span class="city">Kyoto <em>·</em> <em>京都</em></span>
+            <span class="jp">祇園 · 河原町</span>
+            <span class="count"><em>[N]</em> locations</span>
+          </div>
+          <div class="r">
+            <span>See locations</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+
+        <a href="stores-osaka.html" class="loc-card">
+          <div class="l">
+            <span class="city">Osaka <em>·</em> <em>大阪</em></span>
+            <span class="jp">難波 · 心斎橋</span>
+            <span class="count"><em>[N]</em> locations</span>
+          </div>
+          <div class="r">
+            <span>See locations</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+/* =================================================================
+   Godaime Wagyu — top hamburger nav (drop-down)
+   各ページの先頭に読み込む。ボディの中身には影響しない。
+   ================================================================= */
+:root{
+  --nav-h: 64px;
+  --ink-deep:#0a0807;
+  --ink:#1a1410;
+  --paper:#f3ece1;
+  --paper-dim:#bfb39e;
+  --paper-mute:#8d8674;
+  --torii:#b91c1c;
+  --torii-deep:#7d1414;
+  --gold:#c9a35a;
+  --gold-dim:#7a5e29;
+  --serif:'Cormorant Garamond','Times New Roman',serif;
+  --jp:'Shippori Mincho',serif;
+  --sans:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{
+  background:var(--ink-deep);color:var(--paper);
+  font-family:var(--serif);overflow-x:hidden;color-scheme:dark;
+}
+
+/* ============================================ */
+/* TOP NAV BAR (fixed, slim)                     */
+/* ============================================ */
+.topnav{
+  position:fixed;top:0;left:0;right:0;
+  height:var(--nav-h);z-index:80;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 22px;
+  background:rgba(10,8,7,0.78);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(201,163,90,0.18);
+}
+
+/* burger button (left) */
+.burger{
+  display:flex;align-items:center;gap:12px;
+  background:transparent;border:0;color:var(--paper);cursor:pointer;
+  padding:8px 12px;
+  font-family:var(--sans);font-size:11px;letter-spacing:0.28em;
+  text-transform:uppercase;font-weight:500;
+}
+.burger:hover{color:var(--gold)}
+.burger .lines{
+  display:inline-flex;flex-direction:column;gap:4px;
+  width:20px;
+}
+.burger .lines i{
+  display:block;height:1.5px;background:currentColor;width:100%;
+  transition:transform 0.35s, opacity 0.25s;
+}
+.burger.open .lines i:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.burger.open .lines i:nth-child(2){opacity:0}
+.burger.open .lines i:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+.burger .label{display:inline-block}
+@media (max-width:540px){.burger .label{display:none}}
+
+/* center brand (always visible, small) */
+.topnav-brand{
+  display:flex;align-items:baseline;gap:10px;
+  font-family:var(--jp);font-weight:700;font-size:18px;
+  letter-spacing:0.18em;color:var(--gold);
+  text-decoration:none;
+}
+.topnav-brand small{
+  font-family:var(--serif);font-weight:400;font-style:italic;
+  font-size:14px;color:var(--paper-dim);letter-spacing:0.02em;
+}
+@media (max-width:540px){.topnav-brand small{display:none}}
+
+/* right slot (optional: reserve CTA for store pages) */
+.topnav-right{
+  display:flex;align-items:center;gap:14px;
+}
+.topnav-right .topnav-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 16px;background:var(--torii);color:var(--paper);text-decoration:none;
+  font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:0.28em;
+  text-transform:uppercase;border:1px solid var(--torii);
+  transition:background 0.3s, border-color 0.3s;
+}
+.topnav-right .topnav-cta:hover{background:var(--torii-deep);border-color:var(--torii-deep)}
+@media (max-width:540px){
+  .topnav-right .topnav-cta{padding:7px 12px;font-size:9.5px;letter-spacing:0.22em}
+}
+
+/* ============================================ */
+/* DROPDOWN PANEL (slides down from top)         */
+/* ============================================ */
+.dropdown{
+  position:fixed;top:var(--nav-h);left:0;right:0;z-index:70;
+  background:rgba(10,8,7,0.96);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(201,163,90,0.22);
+  box-shadow:0 30px 60px rgba(0,0,0,0.5);
+  /* hidden by default */
+  max-height:0;overflow:hidden;
+  transition:max-height 0.5s cubic-bezier(0.7,0,0.3,1);
+}
+.dropdown.open{max-height:600px} /* big enough for menu */
+
+.dropdown__inner{
+  max-width:920px;margin:0 auto;
+  padding:42px 40px 50px;
+}
+.dropdown__label{
+  font-family:var(--sans);font-size:10px;letter-spacing:0.4em;
+  color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:24px;
+  display:flex;align-items:center;gap:14px;
+}
+.dropdown__label::before{content:"";width:30px;height:1px;background:var(--gold)}
+
+.dropdown__list{
+  display:flex;flex-direction:column;gap:2px;
+}
+.dropdown__list a{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:20px 22px;
+  text-decoration:none;color:var(--paper);
+  border:1px solid transparent;
+  transition:background 0.25s, border-color 0.25s;
+}
+.dropdown__list a:hover{
+  background:rgba(201,163,90,0.06);
+  border-color:rgba(201,163,90,0.22);
+}
+.dropdown__list a.active{
+  background:rgba(185,28,28,0.10);
+  border-color:rgba(185,28,28,0.5);
+}
+.dropdown__list a .title{
+  font-family:var(--serif);font-size:24px;font-weight:400;line-height:1.1;
+}
+.dropdown__list a .title em{font-style:italic;color:var(--gold)}
+.dropdown__list a .jp{
+  display:block;
+  font-family:var(--jp);font-size:12px;letter-spacing:0.18em;color:var(--paper-mute);
+  margin-top:5px;
+}
+.dropdown__list a .arrow{
+  font-family:var(--sans);font-size:18px;color:var(--paper-mute);line-height:1;
+}
+.dropdown__list a:hover .arrow{color:var(--gold)}
+.dropdown__list a.active .arrow{color:var(--torii)}
+
+/* current page indicator under brand */
+.dropdown__here{
+  display:flex;align-items:center;gap:10px;
+  margin-top:30px;padding-top:22px;
+  border-top:1px solid rgba(201,163,90,0.18);
+  font-family:var(--sans);font-size:9.5px;letter-spacing:0.32em;color:var(--paper-mute);
+  text-transform:uppercase;
+}
+.dropdown__here em{
+  font-family:var(--serif);font-style:italic;color:var(--gold);
+  font-size:13px;letter-spacing:0;text-transform:none;
+}
+
+/* backdrop (click to close) */
+.dropdown-backdrop{
+  position:fixed;inset:var(--nav-h) 0 0 0;z-index:60;
+  background:rgba(10,8,7,0.45);
+  opacity:0;pointer-events:none;
+  transition:opacity 0.4s;
+}
+.dropdown-backdrop.open{opacity:1;pointer-events:auto}
+
+/* push main content below the fixed nav */
+.main{padding-top:var(--nav-h)}
+iframe.lp-section{display:block;width:100%;border:0;background:transparent}
+
+@media (max-width:540px){
+  .dropdown__inner{padding:30px 24px 36px}
+  .dropdown__list a{padding:16px 18px}
+  .dropdown__list a .title{font-size:20px}
+}
