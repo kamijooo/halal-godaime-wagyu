@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" data-slug="oshiage-reviews">
+<head>
+<meta charset="UTF-8">
+<title>Reviews — Godaime Wagyu Skytree</title>
+<link rel="stylesheet" href="common.css">
+<style>
+.reviews-section{
+  position:relative;
+  padding:120px 60px 130px;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(201,163,90,0.06), transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(185,28,28,0.06), transparent 50%),
+    var(--ink-deep);
+}
+.reviews-section::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:1px;height:60px;background:linear-gradient(180deg,var(--gold) 0%,transparent 100%);
+}
+
+.reviews__head{
+  max-width:1280px;margin:0 auto 60px;
+  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;
+  padding-bottom:28px;border-bottom:1px solid rgba(201,163,90,0.2);
+}
+.reviews__chapter{
+  font-family:var(--sans);font-size:10.5px;letter-spacing:0.32em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:18px;
+  display:flex;align-items:center;gap:14px;
+}
+.reviews__chapter::before{content:"";width:36px;height:1px;background:var(--gold)}
+.reviews__title{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(40px,4.6vw,60px);line-height:1.05;letter-spacing:-0.02em;
+  color:var(--paper);
+}
+.reviews__title em{font-style:italic;color:var(--gold)}
+.reviews__title-jp{
+  font-family:var(--jp);font-weight:500;font-size:15px;
+  color:var(--paper-dim);letter-spacing:0.22em;margin-top:12px;
+}
+
+/* overall rating block */
+.reviews__rating{
+  text-align:right;
+  font-family:var(--sans);font-size:10.5px;letter-spacing:0.22em;color:var(--paper-mute);
+  text-transform:uppercase;line-height:1.6;
+}
+.reviews__rating .stars{
+  font-family:var(--serif);font-style:italic;color:var(--gold);font-size:38px;
+  letter-spacing:0.05em;line-height:1;margin-bottom:4px;
+}
+.reviews__rating .score{
+  font-family:var(--serif);font-style:italic;color:var(--paper);font-size:22px;
+  letter-spacing:0;text-transform:none;
+}
+.reviews__rating .score em{color:var(--gold);font-style:italic}
+
+/* review grid */
+.review-grid{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+}
+.review-card{
+  background:var(--ink-card);
+  border:1px solid rgba(201,163,90,0.18);
+  padding:30px 28px;
+  display:flex;flex-direction:column;gap:18px;
+  transition:border-color 0.3s, transform 0.3s;
+  position:relative;
+}
+.review-card:hover{
+  border-color:rgba(201,163,90,0.4);transform:translateY(-4px);
+}
+.review-card::before{
+  content:"\201C";position:absolute;top:-12px;left:24px;
+  font-family:var(--serif);font-style:italic;font-size:80px;color:var(--gold);
+  line-height:1;opacity:0.4;
+}
+
+.review-card .top{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
+  margin-top:18px;
+}
+.review-card .stars{
+  font-family:var(--serif);font-style:italic;color:var(--gold);font-size:18px;letter-spacing:0.04em;
+}
+.review-card .source{
+  font-family:var(--sans);font-size:9px;letter-spacing:0.28em;color:var(--paper-mute);
+  text-transform:uppercase;font-weight:500;
+  padding:4px 10px;border:1px solid rgba(201,163,90,0.3);
+}
+
+.review-card .body{
+  font-family:var(--serif);font-size:15.5px;line-height:1.65;color:var(--paper-dim);
+  flex:1;
+}
+.review-card .body em{font-style:italic;color:var(--gold);font-weight:500}
+
+.review-card .foot{
+  padding-top:16px;border-top:1px solid rgba(201,163,90,0.15);
+  display:flex;flex-direction:column;gap:4px;
+}
+.review-card .foot .name{
+  font-family:var(--serif);font-style:italic;font-size:16px;color:var(--paper);
+}
+.review-card .foot .meta{
+  font-family:var(--sans);font-size:10px;letter-spacing:0.22em;color:var(--paper-mute);
+  text-transform:uppercase;line-height:1.6;
+}
+.review-card .foot .meta .country{color:var(--gold);font-weight:500}
+
+/* CTA below reviews */
+.reviews__cta{
+  max-width:1280px;margin:60px auto 0;text-align:center;
+  padding-top:40px;border-top:1px solid rgba(201,163,90,0.18);
+}
+.reviews__cta-text{
+  font-family:var(--serif);font-style:italic;font-size:18px;color:var(--paper-dim);
+  margin-bottom:24px;
+}
+.reviews__cta-text em{color:var(--gold)}
+.reviews__cta a{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:16px 30px;background:var(--torii);color:var(--paper);text-decoration:none;
+  font-family:var(--sans);font-size:11px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;
+  border:1px solid var(--torii);
+  transition:background 0.3s, border-color 0.3s;
+}
+.reviews__cta a:hover{background:var(--torii-deep);border-color:var(--torii-deep)}
+
+@media (max-width:1024px){
+  .review-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:680px){
+  .reviews-section{padding:80px 22px 90px}
+  .reviews__head{grid-template-columns:1fr;text-align:left;gap:20px}
+  .reviews__rating{text-align:left}
+  .review-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<section class="reviews-section">
+
+  <!-- header -->
+  <div class="reviews__head">
+    <div>
+      <div class="reviews__chapter">Reviews · お客様の声</div>
+      <h2 class="reviews__title">From <em>real travelers.</em></h2>
+      <p class="reviews__title-jp">世界中のお客様からの声</p>
+    </div>
+    <div class="reviews__rating">
+      <div class="stars">★★★★★</div>
+      <div class="score"><em>4.8</em> / 5.0</div>
+      <div style="margin-top:6px">Based on <em>200+</em> reviews</div>
+    </div>
+  </div>
+
+  <!-- review cards (6 reviews) -->
+  <div class="review-grid">
+
+    <article class="review-card">
+      <div class="top">
+        <span class="stars">★★★★★</span>
+        <span class="source">Google</span>
+      </div>
+      <p class="body">
+        Finally, <em>halal-friendly wagyu</em> in Tokyo where the staff actually
+        understands what we need. The lean ramen broth was outstanding — and
+        knowing the kitchen is alcohol-free made the whole meal feel calm.
+      </p>
+      <div class="foot">
+        <span class="name">Aisha M.</span>
+        <span class="meta"><span class="country">Kuala Lumpur</span> · Visited Oct 2025</span>
+      </div>
+    </article>
+
+    <article class="review-card">
+      <div class="top">
+        <span class="stars">★★★★★</span>
+        <span class="source">TripAdvisor</span>
+      </div>
+      <p class="body">
+        We came for the Skytree view and stayed for this. The <em>steak rice bowl</em>
+        was the best wagyu I've had in three trips to Japan. Staff spoke
+        excellent English and offered Bahasa for my husband.
+      </p>
+      <div class="foot">
+        <span class="name">Sarah L.</span>
+        <span class="meta"><span class="country">Singapore</span> · Visited Sep 2025</span>
+      </div>
+    </article>
+
+    <article class="review-card">
+      <div class="top">
+        <span class="stars">★★★★★</span>
+        <span class="source">Google</span>
+      </div>
+      <p class="body">
+        Authentic Japanese wagyu, prepared without alcohol — exactly what my
+        family needed. The team even <em>seated us away from the bar area</em>
+        without us having to ask twice. Very thoughtful service.
+      </p>
+      <div class="foot">
+        <span class="name">Yusuf A.</span>
+        <span class="meta"><span class="country">Dubai, UAE</span> · Visited Aug 2025</span>
+      </div>
+    </article>
+
+    <article class="review-card">
+      <div class="top">
+        <span class="stars">★★★★★</span>
+        <span class="source">TripAdvisor</span>
+      </div>
+      <p class="body">
+        Came with two small kids — got a quiet corner table, child-friendly
+        seating, and no rush. The wagyu burger is genuinely the best we've had.
+        <em>Will definitely return next visit to Tokyo.</em>
+      </p>
+      <div class="foot">
+        <span class="name">Maria C.</span>
+        <span class="meta"><span class="country">Madrid, Spain</span> · Visited Jul 2025</span>
+      </div>
+    </article>
+
+    <article class="review-card">
+      <div class="top">
+        <span class="stars">★★★★☆</span>
+        <span class="source">Google</span>
+      </div>
+      <p class="body">
+        The wagyu ramen is unreal — Japanese wagyu draped over the bowl, half-cooks
+        in the broth. Got a little busy on a Saturday night so service took
+        slightly longer, but <em>worth every minute</em>. Reserve ahead.
+      </p>
+      <div class="foot">
+        <span class="name">James T.</span>
+        <span class="meta"><span class="country">Sydney, Australia</span> · Visited Jun 2025</span>
+      </div>
+    </article>
+
+    <article class="review-card">
+      <div class="top">
+        <span class="stars">★★★★★</span>
+        <span class="source">TripAdvisor</span>
+      </div>
+      <p class="body">
+        As a Muslim solo traveler, finding wagyu I could eat <em>without anxiety</em>
+        was the highlight of my Tokyo trip. The owner came to our table to
+        explain his sourcing. You can feel the integrity in this place.
+      </p>
+      <div class="foot">
+        <span class="name">Fatima R.</span>
+        <span class="meta"><span class="country">Istanbul, Turkey</span> · Visited May 2025</span>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="reviews__cta">
+    <p class="reviews__cta-text">
+      Join over <em>200 satisfied travelers</em> who chose us this year.
+    </p>
+    <a href="https://www.tablecheck.com/shops/halal-ramen-skytree-5w-tokyo/reserve"
+       target="_blank" rel="noopener">
+      Reserve your table <span>→</span>
+    </a>
+  </div>
+
+</section>
+
+<script src="resize.js"></script>
+</body>
+</html>

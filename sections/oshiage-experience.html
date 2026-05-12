@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-slug="oshiage-experience">
+<head>
+<meta charset="UTF-8">
+<title>The Experience — Godaime Wagyu Skytree</title>
+<link rel="stylesheet" href="common.css">
+<style>
+.exp-section{
+  position:relative;padding:120px 60px 130px;
+  background:radial-gradient(ellipse at 80% 0%,rgba(185,28,28,.07),transparent 55%),radial-gradient(ellipse at 20% 100%,rgba(201,163,90,.06),transparent 50%),var(--ink-deep);
+}
+.exp-section::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(180deg,var(--torii) 0%,transparent 100%)}
+.exp__inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr .85fr;gap:80px;align-items:center}
+.exp__chapter{font-family:var(--sans);font-size:10.5px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;display:inline-flex;align-items:center;gap:14px}
+.exp__chapter::before{content:"";width:34px;height:1px;background:var(--gold)}
+.exp__title{font-family:var(--serif);font-weight:300;font-size:clamp(40px,5vw,68px);line-height:1.04;letter-spacing:-.02em;color:var(--paper);margin-bottom:14px}
+.exp__title em{font-style:italic;color:var(--gold)}
+.exp__lede{font-family:var(--jp);font-size:16px;color:var(--paper-dim);letter-spacing:.22em;border-left:2px solid var(--torii);padding-left:14px;margin-bottom:30px}
+.exp__intro{font-family:var(--serif);font-size:17px;line-height:1.75;color:rgba(243,236,225,.78);max-width:520px;margin-bottom:30px}
+.exp__intro em{font-style:italic;color:var(--gold);font-weight:500}
+.exp__points{display:flex;flex-direction:column;gap:14px;padding-top:24px;border-top:1px solid rgba(201,163,90,.2)}
+.exp__points .point{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:flex-start;font-family:var(--serif);font-size:15.5px;color:var(--paper-dim);line-height:1.55}
+.exp__points .point::before{content:"";width:8px;height:8px;background:var(--gold);border-radius:50%;margin-top:8px;flex-shrink:0}
+.exp__points .point em{font-style:italic;color:var(--gold);font-weight:500}
+.exp__video{position:relative;aspect-ratio:9/16;overflow:hidden;background:#000;border:1px solid rgba(201,163,90,.25);box-shadow:0 30px 60px rgba(0,0,0,.5);max-width:380px;margin:0 auto;width:100%}
+.exp__video video,.exp__video iframe{width:100%;height:100%;display:block;object-fit:cover;border:0}
+.exp__video .placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:radial-gradient(ellipse at 50% 30%,rgba(201,163,90,.12),transparent 60%),linear-gradient(135deg,#1a120c 0%,#0a0807 100%);text-align:center;padding:30px}
+.exp__video .play{width:72px;height:72px;border-radius:50%;background:rgba(201,163,90,.1);border:1px solid rgba(201,163,90,.4);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:26px}
+.exp__video .label{font-family:var(--sans);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.exp__video .duration{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--paper-mute)}
+.exp__video__badge{position:absolute;top:18px;left:18px;z-index:3;font-family:var(--sans);font-size:9px;letter-spacing:.28em;font-weight:600;text-transform:uppercase;color:var(--paper);background:rgba(185,28,28,.85);border:1px solid var(--torii);padding:6px 12px;display:inline-flex;align-items:center;gap:6px}
+.exp__video__badge .dot{width:5px;height:5px;border-radius:50%;background:#fff;animation:exp-pulse 1.4s ease-in-out infinite}
+@keyframes exp-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.exp__video__overlay{position:absolute;left:0;right:0;bottom:0;z-index:2;pointer-events:none;padding:24px 22px 22px;background:linear-gradient(180deg,transparent 0%,rgba(10,8,7,.85) 70%)}
+.exp__video__overlay h3{font-family:var(--serif);font-weight:400;font-size:22px;color:var(--paper);line-height:1.15;letter-spacing:-.01em;margin-bottom:4px}
+.exp__video__overlay h3 em{font-style:italic;color:var(--gold)}
+.exp__video__overlay .jp{font-family:var(--jp);font-size:12px;color:var(--paper-dim);letter-spacing:.18em}
+@media(max-width:1024px){.exp__inner{grid-template-columns:1fr;gap:50px}.exp__video{max-width:340px}}
+@media(max-width:600px){.exp-section{padding:80px 22px 90px}}
+</style>
+</head>
+<body>
+
+<section class="exp-section">
+  <div class="exp__inner">
+    <div>
+      <div class="exp__chapter">The Experience · 体験</div>
+      <h2 class="exp__title">Hospitality, <em>and the real taste.</em></h2>
+      <p class="exp__lede">おもてなしと、本物の和牛体験を。</p>
+      <p class="exp__intro">
+        We serve the ultra-rare <em>lean wagyu</em> — only about 5% of the
+        market — sourced directly from farms and <em>slow-cooked at low
+        temperatures</em> to draw out deep umami without excess fat.
+      </p>
+      <div class="exp__points">
+        <div class="point"><span><em>Multilingual</em> staff at the counter — English, Bahasa, Arabic on request.</span></div>
+        <div class="point"><span><em>Alcohol-free dishes</em> by default. Separated glassware and seating away from alcohol available on request.</span></div>
+        <div class="point"><span><em>Family-friendly</em> — child seating, strollers welcome, free Wi-Fi, non-smoking.</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="exp__video">
+        <div class="exp__video__badge"><span class="dot"></span> Now serving</div>
+        <!--
+          TO USE A REAL VIDEO: replace the placeholder <div> below with:
+
+          Local mp4 (put file in /videos/ folder):
+          <video autoplay muted loop playsinline poster="../burger-image/6.jpg">
+            <source src="../videos/serving.mp4" type="video/mp4">
+          </video>
+
+          Or YouTube Shorts (replace VIDEO_ID):
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        -->
+        <div class="placeholder">
+          <div class="play">▶</div>
+          <div class="label">Video coming soon</div>
+          <div class="duration">— 0:20</div>
+        </div>
+        <div class="exp__video__overlay">
+          <h3>Wagyu, <em>served.</em></h3>
+          <p class="jp">本物の和牛、提供の瞬間。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="resize.js"></script>
+</body>
+</html>
