@@ -1,0 +1,50 @@
+/* =================================================================
+   Godaime Wagyu — Common base styles (loaded by every section iframe)
+   ================================================================= */
+:root{
+  --ink-deep:#0a0807;
+  --ink:#241b14;
+  --ink-2:#2e2319;
+  --ink-3:#1a1410;
+  --ink-warm:#1a1410;
+  --ink-card:#1f1814;
+
+  --paper:#f3ece1;
+  --paper-dim:#bfb39e;
+  --paper-mute:#8d8674;
+  --paper-faint:rgba(243,236,225,0.55);
+
+  --torii:#b91c1c;
+  --torii-deep:#7d1414;
+  --torii-bright:#dc2626;
+
+  --gold:#c9a35a;
+  --gold-bright:#d4a437;
+  --gold-pale:#e6c98a;
+  --gold-dim:#7a5e29;
+
+  --green-halal:#2d6a3f;
+
+  --serif:'Cormorant Garamond','Times New Roman',serif;
+  --jp:'Shippori Mincho',serif;
+  --ar:'Amiri',serif;
+  --sans:'Inter',sans-serif;
+  --hand:'Caveat',cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{
+  background:var(--ink-deep);color:var(--paper);
+  font-family:var(--serif);overflow-x:hidden;
+  font-weight:400;line-height:1.55;
+}
+/* iframe内では 100vh があいまい。defuse する */
+html,body{overflow:hidden auto}
+body{min-height:0 !important}
+section[class*="fv"],section[class*="cv-section"]{min-height:0 !important}
+
+/* film grain overlay */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:100;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity:0.14;mix-blend-mode:overlay;
+}

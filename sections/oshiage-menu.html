@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" data-slug="oshiage-menu">
+<head>
+<meta charset="UTF-8">
+<title>Menu — Godaime Wagyu Skytree</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Shippori+Mincho:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+.menu-section{
+  background:var(--ink-deep);padding:120px 60px 130px;
+  position:relative;
+}
+.menu-section::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:1px;height:60px;background:linear-gradient(180deg,var(--gold) 0%,transparent 100%);
+}
+
+.menu__head{
+  max-width:1400px;margin:0 auto 70px;
+  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;
+  padding-bottom:28px;border-bottom:1px solid rgba(201,163,90,0.2);
+}
+.menu__chapter{
+  font-family:var(--sans);font-size:10.5px;letter-spacing:0.32em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:18px;
+  display:flex;align-items:center;gap:14px;
+}
+.menu__chapter::before{content:"";width:36px;height:1px;background:var(--gold)}
+.menu__title{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(40px,4.8vw,64px);line-height:1.05;
+  color:var(--paper);letter-spacing:-0.02em;
+}
+.menu__title em{font-style:italic;color:var(--gold)}
+.menu__title-jp{
+  font-family:var(--jp);font-weight:500;font-size:15px;
+  color:var(--paper-dim);letter-spacing:0.22em;margin-top:12px;
+}
+.menu__meta{
+  text-align:right;font-family:var(--sans);font-size:10.5px;letter-spacing:0.2em;
+  color:var(--paper-dim);text-transform:uppercase;line-height:1.9;
+}
+.menu__meta strong{color:var(--paper);font-weight:500}
+.menu__meta em{font-family:var(--serif);font-style:italic;color:var(--gold);letter-spacing:0;text-transform:none}
+
+/* Featured: Ramen hero (the only-here dish) */
+.featured{
+  display:grid;grid-template-columns:1.05fr 1fr;gap:60px;
+  align-items:center;max-width:1400px;margin:0 auto 100px;
+}
+.featured__photo{
+  position:relative;aspect-ratio:1/1;overflow:hidden;background:#000;
+}
+.featured__photo img{
+  width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease;
+}
+.featured__photo:hover img{transform:scale(1.04)}
+.featured__photo::after{
+  content:"";position:absolute;inset:0;
+  box-shadow:inset 0 0 100px rgba(10,8,7,0.55);pointer-events:none;
+}
+.featured__photo .badge{
+  position:absolute;top:24px;left:24px;
+  background:var(--torii);color:var(--paper);padding:10px 18px;
+  font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:0.24em;
+  text-transform:uppercase;z-index:2;
+}
+.featured__photo .badge .star{color:var(--gold-pale);margin-right:6px}
+.featured__photo .caption{
+  position:absolute;bottom:24px;right:24px;z-index:2;
+  background:rgba(10,8,7,0.7);backdrop-filter:blur(6px);
+  color:var(--paper);padding:10px 16px;
+  font-family:var(--serif);font-style:italic;font-size:14px;
+}
+
+.featured__txt .pos{
+  font-family:var(--serif);font-style:italic;font-size:13px;
+  color:var(--gold);letter-spacing:0.16em;margin-bottom:14px;
+}
+.featured__txt .tag{
+  font-family:var(--sans);font-size:11px;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--paper-dim);margin-bottom:24px;
+}
+.featured__txt h2{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(40px,4vw,60px);line-height:1.0;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:8px;
+}
+.featured__txt h2 em{font-style:italic;color:var(--gold)}
+.featured__txt .jp{
+  font-family:var(--jp);font-weight:600;font-size:20px;
+  color:var(--paper);letter-spacing:0.18em;margin-bottom:24px;
+}
+.featured__txt p.lede{
+  font-family:var(--serif);font-size:16.5px;line-height:1.7;
+  color:var(--paper);margin-bottom:32px;max-width:480px;
+}
+.featured__txt p.lede em{font-style:italic;color:var(--gold)}
+
+.featured__specs{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1px;background:rgba(201,163,90,0.2);
+  margin-bottom:30px;border:1px solid rgba(201,163,90,0.2);
+}
+.spec{background:var(--ink-deep);padding:16px 20px}
+.spec .k{
+  font-family:var(--sans);font-size:9.5px;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--paper-mute);margin-bottom:6px;
+}
+.spec .v{
+  font-family:var(--serif);font-size:14.5px;color:var(--paper);line-height:1.4;
+}
+.spec .v em{font-style:italic;color:var(--gold-pale)}
+
+.featured__bottom{
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  padding-top:22px;border-top:1px solid rgba(201,163,90,0.2);
+}
+.featured__price{
+  font-family:var(--serif);font-size:32px;color:var(--paper);line-height:1;
+}
+.featured__price .currency{
+  font-size:18px;color:var(--gold-pale);margin-right:4px;font-style:italic;
+}
+.featured__price .note{
+  display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--paper-mute);margin-top:6px;
+}
+
+/* dish grid */
+.dish-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:30px;max-width:1400px;margin:0 auto;
+}
+.dish{
+  background:var(--ink-card);
+  border:1px solid rgba(201,163,90,0.15);
+  transition:border-color 0.3s, transform 0.3s;
+  display:flex;flex-direction:column;
+}
+.dish:hover{
+  border-color:rgba(201,163,90,0.4);transform:translateY(-4px);
+}
+.dish__photo{
+  position:relative;aspect-ratio:4/3;overflow:hidden;background:#000;
+}
+.dish__photo img{
+  width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;
+}
+.dish:hover .dish__photo img{transform:scale(1.05)}
+.dish__photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(10,8,7,0.45) 100%);
+}
+.dish__num{
+  position:absolute;top:16px;left:16px;
+  font-family:var(--serif);font-style:italic;font-size:13px;color:var(--paper);
+  background:rgba(10,8,7,0.65);backdrop-filter:blur(4px);
+  padding:5px 12px;letter-spacing:0.14em;z-index:2;
+}
+.dish__tags{
+  position:absolute;top:16px;right:16px;z-index:2;display:flex;gap:6px;
+}
+.dish__tags span{
+  background:rgba(10,8,7,0.65);backdrop-filter:blur(4px);
+  color:var(--gold-pale);font-family:var(--sans);font-size:9px;
+  letter-spacing:0.16em;text-transform:uppercase;font-weight:500;
+  padding:5px 9px;border:1px solid rgba(201,163,90,0.3);
+}
+.dish__body{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
+.dish__body .role{
+  font-family:var(--sans);font-size:10px;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:12px;
+}
+.dish__body h3{
+  font-family:var(--serif);font-weight:400;font-size:24px;
+  color:var(--paper);line-height:1.15;margin-bottom:4px;
+}
+.dish__body h3 em{font-style:italic;color:var(--gold-pale)}
+.dish__body .jp{
+  font-family:var(--jp);font-weight:600;font-size:16px;
+  color:var(--paper);letter-spacing:0.16em;margin-bottom:14px;
+}
+.dish__body p{
+  font-family:var(--serif);font-size:14.5px;color:var(--paper-dim);
+  line-height:1.6;margin-bottom:18px;flex:1;
+}
+.dish__foot{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  padding-top:16px;border-top:1px solid rgba(201,163,90,0.18);
+}
+.dish__price{
+  font-family:var(--serif);font-size:22px;color:var(--paper);
+}
+.dish__price .currency{
+  font-size:13px;color:var(--gold-pale);margin-right:2px;font-style:italic;
+}
+.dish__cook{
+  font-family:var(--serif);font-style:italic;font-size:12.5px;
+  color:var(--paper-mute);text-align:right;line-height:1.4;
+}
+
+/* Set ribbon */
+.set-band{
+  max-width:1400px;margin:90px auto 0;padding:32px 40px;
+  background:linear-gradient(135deg,rgba(201,163,90,0.06) 0%,rgba(185,28,28,0.04) 100%);
+  border:1px solid rgba(201,163,90,0.25);
+  display:grid;grid-template-columns:1fr 1.4fr auto;gap:36px;align-items:center;
+}
+.set-band__photo{
+  width:200px;height:140px;background:#000;overflow:hidden;
+}
+.set-band__photo img{width:100%;height:100%;object-fit:cover}
+.set-band__txt .k{
+  font-family:var(--sans);font-size:10px;letter-spacing:0.32em;color:var(--gold);
+  text-transform:uppercase;font-weight:500;margin-bottom:10px;
+}
+.set-band__txt h4{
+  font-family:var(--serif);font-weight:400;font-size:22px;color:var(--paper);
+  line-height:1.2;margin-bottom:4px;
+}
+.set-band__txt h4 em{font-style:italic;color:var(--gold)}
+.set-band__txt .jp{
+  font-family:var(--jp);font-size:13px;color:var(--paper-dim);letter-spacing:0.16em;margin-bottom:8px;
+}
+.set-band__txt p{
+  font-family:var(--serif);font-size:14.5px;color:var(--paper-dim);line-height:1.5;
+}
+.set-band__price{
+  text-align:right;
+  font-family:var(--serif);font-size:28px;color:var(--paper);line-height:1;
+}
+.set-band__price .currency{
+  font-size:15px;color:var(--gold-pale);font-style:italic;margin-right:3px;
+}
+.set-band__price .note{
+  display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:0.22em;color:var(--paper-mute);
+  text-transform:uppercase;margin-top:6px;
+}
+
+@media (max-width:1100px){
+  .dish-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:880px){
+  .menu-section{padding:80px 28px 90px}
+  .menu__head{grid-template-columns:1fr;text-align:left;gap:20px}
+  .menu__meta{text-align:left}
+  .featured{grid-template-columns:1fr;gap:40px;margin-bottom:70px}
+  .dish-grid{grid-template-columns:1fr}
+  .set-band{grid-template-columns:1fr;text-align:center;gap:20px;padding:24px 24px}
+  .set-band__photo{width:100%;height:180px}
+  .set-band__price{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<section class="menu-section">
+
+  <!-- header -->
+  <div class="menu__head">
+    <div>
+      <div class="menu__chapter">Menu · お品書き</div>
+      <h2 class="menu__title">Four kinds of <em>wagyu.</em></h2>
+      <p class="menu__title-jp">和牛、四つの楽しみ方</p>
+    </div>
+    <div class="menu__meta">
+      <strong>4 signature pillars</strong><br>
+      <em>Halal-certified</em> · 11:00 – 22:00
+    </div>
+  </div>
+
+  <!-- Featured: Wagyu Ramen (Skytree-only) -->
+  <div class="featured">
+    <div class="featured__photo">
+      <span class="badge"><span class="star">★</span> Skytree exclusive</span>
+      <img src="../burger-image/6.jpg" alt="Wagyu ramen — Godaime Skytree exclusive">
+      <div class="caption">— the noodle, wrapped in wagyu</div>
+    </div>
+    <div class="featured__txt">
+      <div class="pos">— signature of this location</div>
+      <div class="tag">Most ordered · Only at Skytree</div>
+      <h2>Wagyu <em>Ramen.</em></h2>
+      <p class="jp">和牛ラーメン</p>
+      <p class="lede">
+        A bowl wrapped in thin slices of <em>A4 wagyu</em>, finished with our
+        in-house spicy broth, leek, and chili threads. The slices half-cook the
+        moment hot broth meets them — order, then watch.
+      </p>
+      <div class="featured__specs">
+        <div class="spec"><div class="k">Cut</div><div class="v"><em>A4</em> wagyu, sliced thin</div></div>
+        <div class="spec"><div class="k">Broth</div><div class="v">Spicy · alcohol-free</div></div>
+        <div class="spec"><div class="k">Halal</div><div class="v">Certified ✓</div></div>
+        <div class="spec"><div class="k">Time</div><div class="v">Served in <em>~10 min</em></div></div>
+      </div>
+      <div class="featured__bottom">
+        <div class="featured__price">
+          <span class="currency">¥</span>2,800
+          <span class="note">tax included</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 dishes: Burger / Steak / Donburi -->
+  <div class="dish-grid">
+
+    <article class="dish">
+      <div class="dish__photo">
+        <span class="dish__num">No. 02</span>
+        <div class="dish__tags"><span>Halal</span><span>Bestseller</span></div>
+        <img src="../burger-image/1.jpg" alt="Wagyu cheeseburger">
+      </div>
+      <div class="dish__body">
+        <div class="role">— the burger</div>
+        <h3>Wagyu <em>Cheeseburger</em></h3>
+        <p class="jp">和牛チーズバーガー</p>
+        <p>Triple patty of ground A5 wagyu, aged cheddar, vine-ripened tomato, and our alcohol-free signature sauce on a soft brioche bun.</p>
+        <div class="dish__foot">
+          <div class="dish__price"><span class="currency">¥</span>2,800</div>
+          <div class="dish__cook">Grilled<br>medium-rare</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="dish">
+      <div class="dish__photo">
+        <span class="dish__num">No. 03</span>
+        <div class="dish__tags"><span>Halal</span><span>Chef's pick</span></div>
+        <img src="../burger-image/3.jpg" alt="Wagyu steak">
+      </div>
+      <div class="dish__body">
+        <div class="role">— the cut</div>
+        <h3>Wagyu <em>Steak Plate</em></h3>
+        <p class="jp">和牛ステーキ</p>
+        <p>200g of dry-aged sirloin, grilled over binchotan charcoal, with seasonal grilled vegetables and a side of our house wasabi-shoyu.</p>
+        <div class="dish__foot">
+          <div class="dish__price"><span class="currency">¥</span>5,400</div>
+          <div class="dish__cook">Charcoal<br>medium-rare</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="dish">
+      <div class="dish__photo">
+        <span class="dish__num">No. 04</span>
+        <div class="dish__tags"><span>Halal</span></div>
+        <img src="../burger-image/2.jpg" alt="Wagyu donburi with egg yolk">
+      </div>
+      <div class="dish__body">
+        <div class="role">— the bowl</div>
+        <h3>Wagyu <em>Donburi</em></h3>
+        <p class="jp">和牛丼</p>
+        <p>Seared A5 sirloin over a bed of premium rice, finished with cracked black pepper, a single egg yolk, and our house-aged tare reduction.</p>
+        <div class="dish__foot">
+          <div class="dish__price"><span class="currency">¥</span>3,200</div>
+          <div class="dish__cook">Seared<br>rare to medium</div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Set band: Ramen + Donburi set -->
+  <div class="set-band">
+    <div class="set-band__photo">
+      <img src="../burger-image/7.jpg" alt="Wagyu ramen + donburi set">
+    </div>
+    <div class="set-band__txt">
+      <div class="k">— Skytree set · 押上セット</div>
+      <h4>Ramen <em>&amp;</em> Donburi set</h4>
+      <p class="jp">和牛ラーメン + 和牛重 セット</p>
+      <p>Our two heroes side by side — the spicy wagyu ramen and a wagyu donburi with raw egg yolk. The way most regulars order.</p>
+    </div>
+    <div class="set-band__price">
+      <span class="currency">¥</span>4,200
+      <span class="note">tax included · save ¥1,800</span>
+    </div>
+  </div>
+
+</section>
+
+<script src="resize.js"></script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" data-slug="menu">
+<head>
+<meta charset="UTF-8">
+<title>Menu — Godaime Wagyu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Shippori+Mincho:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+/* ============================================ */
+/* SECTION: MENU                                 */
+/* ============================================ */
+.menu-section{
+  background:var(--ink-deep);padding:140px 70px 140px;
+  position:relative;
+}
+.menu__head{
+  display:grid;grid-template-columns:1fr auto;gap:40px;
+  align-items:end;max-width:1400px;margin:0 auto 90px;
+  padding-bottom:32px;border-bottom:1px solid rgba(201,163,90,0.2);
+}
+.menu__chapter{
+  font-family:var(--sans);font-size:10.5px;letter-spacing:0.32em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:22px;
+  display:flex;align-items:center;gap:14px;
+}
+.menu__chapter::before{content:"";width:36px;height:1px;background:var(--gold)}
+.menu__title{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(40px,4.6vw,64px);line-height:1.05;
+  color:var(--paper);
+}
+.menu__title em{font-style:italic;color:var(--gold-pale)}
+.menu__title-jp{
+  font-family:var(--jp);font-weight:500;font-size:15px;
+  color:var(--paper-dim);letter-spacing:0.22em;margin-top:14px;
+}
+.menu__meta{
+  text-align:right;font-family:var(--sans);
+  color:var(--paper-dim);font-size:10.5px;letter-spacing:0.18em;
+  text-transform:uppercase;line-height:1.9;
+}
+.menu__meta strong{color:var(--paper);font-weight:500}
+
+/* === Menu hero (No.01) === */
+.dish-hero{
+  display:grid;grid-template-columns:1.1fr 1fr;gap:70px;
+  align-items:center;max-width:1400px;margin:0 auto 130px;
+}
+.dish-hero__photo{
+  position:relative;overflow:hidden;
+  background:#000;aspect-ratio:1/1;
+}
+.dish-hero__photo img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.8s ease;
+}
+.dish-hero__photo:hover img{transform:scale(1.04)}
+.dish-hero__photo::after{
+  content:"";position:absolute;inset:0;
+  box-shadow:inset 0 0 80px rgba(10,8,7,0.5);
+  pointer-events:none;
+}
+.dish-hero__badge{
+  position:absolute;top:24px;left:24px;
+  background:var(--torii);color:var(--paper);
+  padding:10px 18px;font-family:var(--sans);font-size:10px;
+  font-weight:600;letter-spacing:0.22em;text-transform:uppercase;
+  z-index:2;
+}
+.dish-hero__caption{
+  position:absolute;bottom:24px;right:24px;z-index:2;
+  background:rgba(10,8,7,0.7);backdrop-filter:blur(6px);
+  color:var(--paper);padding:10px 18px;
+  font-family:var(--serif);font-style:italic;font-size:14px;
+}
+.dish-hero__txt .pos{
+  font-family:var(--serif);font-style:italic;font-size:13px;
+  color:var(--gold);letter-spacing:0.16em;margin-bottom:14px;
+}
+.dish-hero__txt .tag{
+  font-family:var(--sans);font-size:11px;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--paper-dim);margin-bottom:24px;
+}
+.dish-hero__txt h2{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(38px,3.6vw,52px);line-height:1.05;
+  color:var(--paper);margin-bottom:8px;
+}
+.dish-hero__txt h2 em{font-style:italic;color:var(--gold-pale)}
+.dish-hero__txt .jp{
+  font-family:var(--jp);font-weight:600;font-size:22px;
+  color:var(--paper);letter-spacing:0.18em;margin-bottom:28px;
+}
+.dish-hero__txt p.lede{
+  font-family:var(--serif);font-size:17px;line-height:1.75;
+  color:var(--paper);margin-bottom:36px;max-width:480px;
+}
+.dish-hero__specs{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1px;background:rgba(201,163,90,0.2);
+  margin-bottom:36px;border:1px solid rgba(201,163,90,0.2);
+}
+.spec{background:var(--ink-deep);padding:18px 22px}
+.spec .k{
+  font-family:var(--sans);font-size:9.5px;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--paper-mute);margin-bottom:6px;
+}
+.spec .v{
+  font-family:var(--serif);font-size:15px;color:var(--paper);
+  line-height:1.4;
+}
+.spec .v em{font-style:italic;color:var(--gold-pale)}
+.dish-hero__bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:24px;border-top:1px solid rgba(201,163,90,0.2);
+}
+.dish-hero__price{
+  font-family:var(--serif);font-size:34px;color:var(--paper);
+  line-height:1;
+}
+.dish-hero__price .currency{
+  font-size:18px;color:var(--gold-pale);margin-right:4px;font-style:italic;
+}
+.dish-hero__price .note{
+  display:block;font-family:var(--sans);font-size:9.5px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--paper-mute);margin-top:6px;
+}
+.dish-hero__cta{
+  color:var(--paper);text-decoration:none;
+  font-family:var(--sans);font-size:11px;font-weight:500;
+  letter-spacing:0.22em;text-transform:uppercase;
+  border-bottom:1px solid var(--gold);padding-bottom:4px;
+}
+
+/* === Other dishes (No.02 - 04) === */
+.dish-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:36px;max-width:1400px;margin:0 auto;
+}
+.dish{
+  background:var(--ink-card);
+  border:1px solid rgba(201,163,90,0.15);
+  transition:border-color 0.3s,transform 0.3s;
+}
+.dish:hover{
+  border-color:rgba(201,163,90,0.4);
+  transform:translateY(-4px);
+}
+.dish__photo{
+  position:relative;aspect-ratio:4/3;overflow:hidden;background:#000;
+}
+.dish__photo img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.7s ease;
+}
+.dish:hover .dish__photo img{transform:scale(1.05)}
+.dish__photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(10,8,7,0.4) 100%);
+}
+.dish__num{
+  position:absolute;top:18px;left:18px;
+  font-family:var(--serif);font-style:italic;font-size:14px;
+  color:var(--paper);
+  background:rgba(10,8,7,0.65);backdrop-filter:blur(4px);
+  padding:6px 14px;letter-spacing:0.14em;z-index:2;
+}
+.dish__tags{
+  position:absolute;top:18px;right:18px;z-index:2;
+  display:flex;gap:6px;
+}
+.dish__tags span{
+  background:rgba(10,8,7,0.65);backdrop-filter:blur(4px);
+  color:var(--gold-pale);font-family:var(--sans);font-size:9px;
+  letter-spacing:0.16em;text-transform:uppercase;font-weight:500;
+  padding:5px 9px;border:1px solid rgba(201,163,90,0.3);
+}
+.dish__body{padding:26px 28px 28px}
+.dish__body .role{
+  font-family:var(--sans);font-size:10px;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:14px;
+}
+.dish__body h3{
+  font-family:var(--serif);font-weight:400;font-size:26px;
+  color:var(--paper);line-height:1.15;margin-bottom:4px;
+}
+.dish__body h3 em{font-style:italic;color:var(--gold-pale)}
+.dish__body .jp{
+  font-family:var(--jp);font-weight:600;font-size:17px;
+  color:var(--paper);letter-spacing:0.16em;margin-bottom:18px;
+}
+.dish__body p{
+  font-family:var(--serif);font-size:15px;color:var(--paper-dim);
+  line-height:1.65;margin-bottom:22px;min-height:78px;
+}
+.dish__foot{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  padding-top:18px;border-top:1px solid rgba(201,163,90,0.18);
+}
+.dish__price{
+  font-family:var(--serif);font-size:24px;color:var(--paper);
+}
+.dish__price .currency{
+  font-size:14px;color:var(--gold-pale);margin-right:2px;font-style:italic;
+}
+.dish__cook{
+  font-family:var(--serif);font-style:italic;font-size:13px;
+  color:var(--paper-mute);text-align:right;line-height:1.4;
+}
+
+/* レスポンシブ */
+@media (max-width:1100px){
+  .dish-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:880px){
+  .menu-section{padding:90px 32px}
+  .dish-hero{grid-template-columns:1fr;gap:40px}
+  .dish-grid{grid-template-columns:1fr}
+  .menu__head{grid-template-columns:1fr}
+  .menu__meta{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<section class="menu-section">
+
+  <!-- Section head -->
+  <div class="menu__head">
+    <div>
+      <div class="menu__chapter">Chapter 05 · 第五章</div>
+      <h2 class="menu__title">The <em>menu.</em></h2>
+      <p class="menu__title-jp">お品書き</p>
+    </div>
+    <div class="menu__meta">
+      <strong>04 signature dishes</strong><br>
+      Halal-certified · Tokyo / Kyoto / Osaka
+    </div>
+  </div>
+
+  <!-- No.01 — Hero dish -->
+  <div class="dish-hero">
+    <div class="dish-hero__photo">
+      <span class="dish-hero__badge">No. 01 · Signature</span>
+      <img src="../burger-image/5.jpg" alt="Godaime Wagyu — signature pair">
+      <div class="dish-hero__caption">— the pair that started everything</div>
+    </div>
+    <div class="dish-hero__txt">
+      <div class="pos">— the centerpiece</div>
+      <div class="tag">Most ordered · Available at all locations</div>
+      <h2>The <em>Godaime</em> Pair.</h2>
+      <p class="jp">五代目セット</p>
+      <p class="lede">
+        Our signature 和牛 burger paired with the wagyu donburi — the two dishes
+        that travelers from over sixty countries have flown in for. Halal-certified
+        wagyu, no alcohol, served on cedar.
+      </p>
+      <div class="dish-hero__specs">
+        <div class="spec"><div class="k">Cut</div><div class="v"><em>A5</em> wagyu, ground &amp; sliced</div></div>
+        <div class="spec"><div class="k">Aging</div><div class="v">28 days dry-aged</div></div>
+        <div class="spec"><div class="k">Halal</div><div class="v">Certified · since [年]</div></div>
+        <div class="spec"><div class="k">Time</div><div class="v">Served in <em>~15 min</em></div></div>
+      </div>
+      <div class="dish-hero__bottom">
+        <div class="dish-hero__price">
+          <span class="currency">¥</span>4,800
+          <span class="note">tax included · per set</span>
+        </div>
+        <a href="#reserve" class="dish-hero__cta">Reserve →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- No.02 - 04 -->
+  <div class="dish-grid">
+
+    <article class="dish">
+      <div class="dish__photo">
+        <span class="dish__num">No. 02</span>
+        <div class="dish__tags"><span>Halal</span><span>Bestseller</span></div>
+        <img src="../burger-image/1.jpg" alt="Wagyu cheeseburger">
+      </div>
+      <div class="dish__body">
+        <div class="role">— the burger</div>
+        <h3>Wagyu <em>Cheeseburger</em></h3>
+        <p class="jp">和牛チーズバーガー</p>
+        <p>Triple patty of ground A5 wagyu, aged cheddar, lettuce, vine-ripened tomato, and our alcohol-free signature sauce on a soft brioche bun.</p>
+        <div class="dish__foot">
+          <div class="dish__price"><span class="currency">¥</span>2,800</div>
+          <div class="dish__cook">Grilled<br>medium-rare</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="dish">
+      <div class="dish__photo">
+        <span class="dish__num">No. 03</span>
+        <div class="dish__tags"><span>Halal</span></div>
+        <img src="../burger-image/2.jpg" alt="Wagyu donburi with egg yolk">
+      </div>
+      <div class="dish__body">
+        <div class="role">— the bowl</div>
+        <h3>Wagyu <em>Donburi</em></h3>
+        <p class="jp">和牛丼</p>
+        <p>Seared A5 sirloin over a bed of premium rice, finished with cracked black pepper, a single egg yolk, and our house-aged tare reduction.</p>
+        <div class="dish__foot">
+          <div class="dish__price"><span class="currency">¥</span>3,200</div>
+          <div class="dish__cook">Seared<br>rare to medium</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="dish">
+      <div class="dish__photo">
+        <span class="dish__num">No. 04</span>
+        <div class="dish__tags"><span>Halal</span><span>Chef's pick</span></div>
+        <img src="../burger-image/3.jpg" alt="Wagyu steak with grilled vegetables">
+      </div>
+      <div class="dish__body">
+        <div class="role">— the cut</div>
+        <h3>Wagyu <em>Steak Plate</em></h3>
+        <p class="jp">和牛ステーキ</p>
+        <p>200g of dry-aged sirloin, grilled over binchotan charcoal, with seasonal grilled vegetables and a side of our house wasabi-shoyu.</p>
+        <div class="dish__foot">
+          <div class="dish__price"><span class="currency">¥</span>5,400</div>
+          <div class="dish__cook">Charcoal<br>medium-rare</div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+</section>
+
+<script src="resize.js"></script>
+</body>
+</html>

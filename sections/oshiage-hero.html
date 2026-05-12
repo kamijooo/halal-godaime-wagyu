@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" data-slug="oshiage-hero">
+<head>
+<meta charset="UTF-8">
+<title>Skytree (Oshiage) — Godaime Wagyu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Shippori+Mincho:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+.hero{
+  position:relative;
+  background:
+    radial-gradient(ellipse at 25% 0%, rgba(185,28,28,0.10), transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(201,163,90,0.07), transparent 50%),
+    var(--ink-deep);
+  padding:80px 60px 0;
+}
+.hero__inner{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center;
+}
+
+/* left: copy block */
+.hero__copy{position:relative;z-index:2}
+.hero__crumb{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--sans);font-size:10px;letter-spacing:0.32em;color:var(--paper-mute);
+  text-transform:uppercase;margin-bottom:24px;
+}
+.hero__crumb a{color:var(--gold);text-decoration:none}
+.hero__crumb .sep{color:rgba(201,163,90,0.4)}
+.hero__crumb .here{color:var(--paper)}
+
+.hero__badges{
+  display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;
+}
+.hero__badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 14px;border:1px solid var(--gold-dim);
+  font-family:var(--sans);font-size:10px;letter-spacing:0.28em;color:var(--paper);
+  text-transform:uppercase;font-weight:500;
+  background:rgba(201,163,90,0.05);
+}
+.hero__badge.open{
+  border-color:var(--torii);background:rgba(185,28,28,0.10);color:var(--paper);
+}
+.hero__badge.open .dot{
+  width:7px;height:7px;border-radius:50%;background:#4ade80;
+  box-shadow:0 0 8px rgba(74,222,128,0.6);
+}
+.hero__badge.halal{border-color:var(--gold);color:var(--gold)}
+.hero__badge .ar{font-family:var(--ar);font-size:13px;letter-spacing:0;direction:rtl;color:var(--gold)}
+
+h1.hero__title{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(40px,5.2vw,72px);line-height:0.98;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:14px;
+}
+h1.hero__title em{font-style:italic;color:var(--gold);font-weight:400}
+.hero__title-jp{
+  font-family:var(--jp);font-weight:500;font-size:17px;
+  color:var(--paper-dim);letter-spacing:0.22em;line-height:1.5;
+  margin-bottom:30px;
+  border-left:2px solid var(--torii);padding-left:14px;
+}
+.hero__lede{
+  font-family:var(--serif);font-size:17px;line-height:1.7;
+  color:rgba(243,236,225,0.78);max-width:520px;margin-bottom:34px;
+}
+.hero__lede em{font-style:italic;color:var(--gold)}
+
+/* CTA row */
+.hero__ctas{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:40px}
+.btn-reserve{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:17px 30px;background:var(--torii);color:var(--paper);text-decoration:none;
+  font-family:var(--sans);font-size:11.5px;letter-spacing:0.3em;text-transform:uppercase;font-weight:600;
+  border:1px solid var(--torii);transition:background 0.3s, border-color 0.3s;
+}
+.btn-reserve:hover{background:var(--torii-deep);border-color:var(--torii-deep)}
+.btn-tel{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--serif);font-style:italic;font-size:20px;color:var(--paper);text-decoration:none;
+  border-bottom:1px solid var(--gold-dim);padding:6px 0;
+  transition:color 0.3s, border-color 0.3s;
+}
+.btn-tel:hover{color:var(--gold);border-color:var(--gold)}
+.btn-tel .icon{font-style:normal;color:var(--gold)}
+.btn-tel small{
+  display:block;font-family:var(--sans);font-style:normal;font-size:9px;letter-spacing:0.3em;color:var(--paper-mute);
+  text-transform:uppercase;margin-top:2px;line-height:1;
+}
+
+/* quick info grid in hero */
+.hero__info{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1px;background:rgba(201,163,90,0.18);
+  border:1px solid rgba(201,163,90,0.18);
+}
+.hero__info > div{
+  background:var(--ink-deep);padding:18px 22px;
+}
+.hero__info .k{
+  font-family:var(--sans);font-size:9.5px;letter-spacing:0.28em;color:var(--gold);
+  text-transform:uppercase;font-weight:500;margin-bottom:6px;
+}
+.hero__info .v{
+  font-family:var(--serif);font-size:15px;color:var(--paper);line-height:1.45;
+}
+.hero__info .v em{font-style:italic;color:var(--gold-pale)}
+.hero__info .v a{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--gold-dim)}
+.hero__info .v a:hover{color:var(--gold)}
+.hero__info .v small{
+  display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:0.2em;color:var(--paper-mute);
+  text-transform:uppercase;margin-top:4px;
+}
+
+/* right: photo panel */
+.hero__photo{
+  position:relative;aspect-ratio:4/5;
+  overflow:hidden;background:#000;
+  box-shadow:0 30px 80px rgba(0,0,0,0.55);
+}
+.hero__photo img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s ease;
+}
+.hero__photo:hover img{transform:scale(1.04)}
+.hero__photo::before{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg, transparent 60%, rgba(10,8,7,0.7) 100%);
+}
+.hero__photo::after{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  box-shadow:inset 0 0 80px rgba(10,8,7,0.6);
+}
+.hero__photo .tag{
+  position:absolute;top:24px;left:24px;z-index:3;
+  background:var(--torii);color:var(--paper);
+  padding:9px 16px;font-family:var(--sans);font-size:10px;
+  font-weight:600;letter-spacing:0.28em;text-transform:uppercase;
+}
+.hero__photo .caption{
+  position:absolute;bottom:24px;left:24px;right:24px;z-index:3;
+}
+.hero__photo .caption .name{
+  font-family:var(--serif);font-style:italic;font-size:22px;color:var(--paper);
+  line-height:1.2;margin-bottom:4px;
+}
+.hero__photo .caption .jp{
+  font-family:var(--jp);font-size:12px;color:var(--paper-dim);letter-spacing:0.16em;
+}
+
+/* responsive */
+@media (max-width:1024px){
+  .hero{padding:60px 32px 0}
+  .hero__inner{grid-template-columns:1fr;gap:50px}
+  .hero__photo{aspect-ratio:16/10;max-width:600px;margin:0 auto}
+}
+@media (max-width:600px){
+  .hero{padding:40px 22px 0}
+  .hero__info{grid-template-columns:1fr}
+  .hero__ctas{gap:14px}
+  .btn-reserve{padding:14px 22px;font-size:10.5px}
+  .btn-tel{font-size:17px}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero__inner">
+
+    <!-- LEFT: copy -->
+    <div class="hero__copy">
+      <div class="hero__crumb">
+        <a href="../index.html">Godaime Wagyu</a>
+        <span class="sep">/</span>
+        <span class="here">Skytree (Oshiage) · 押上店</span>
+      </div>
+
+      <div class="hero__badges">
+        <span class="hero__badge open"><span class="dot"></span> Open now · 11:00 – 22:00</span>
+        <span class="hero__badge halal">Halal-certified <span class="ar">حلال</span></span>
+        <span class="hero__badge">5 min walk from Tokyo Skytree</span>
+      </div>
+
+      <h1 class="hero__title">
+        Wagyu Beef <em>(Halal)</em><br>
+        Steak · Hamburger · Donburi · Ramen
+      </h1>
+      <p class="hero__title-jp">
+        和牛(ハラル) · ステーキ・バーガー・丼・ラーメン<br>
+        東京スカイツリー店 5W-Tokyo 1962
+      </p>
+
+      <p class="hero__lede">
+        Five minutes from Tokyo Skytree, our Oshiage location serves the full
+        Godaime menu — wagyu hamburger, dry-aged steak, donburi over premium rice,
+        and our signature wagyu ramen — all <em>halal-certified</em>, in a single
+        sitting.
+      </p>
+
+      <div class="hero__ctas">
+        <a href="https://www.tablecheck.com/shops/halal-ramen-skytree-5w-tokyo/reserve"
+           class="btn-reserve" target="_blank" rel="noopener">
+          Reserve a table <span>→</span>
+        </a>
+        <a href="tel:+81366585855" class="btn-tel">
+          <span class="icon">☎</span>
+          <span>
+            03-6658-5855
+            <small>Or call us</small>
+          </span>
+        </a>
+      </div>
+
+      <div class="hero__info">
+        <div>
+          <div class="k">Address</div>
+          <div class="v">
+            <em>1-13-1</em> Narihira, Sumida-ku, Tokyo<br>
+            <small>〒130-0002 · 住建第8ハイプレース</small>
+          </div>
+        </div>
+        <div>
+          <div class="k">Hours</div>
+          <div class="v">
+            11:00 — 22:00<br>
+            <small>Open every day · 年中無休</small>
+          </div>
+        </div>
+        <div>
+          <div class="k">Nearest stations</div>
+          <div class="v">
+            <em>Oshiage</em> Sta. · 4 min walk<br>
+            <small>Tokyo Skytree Sta. · 5 min</small>
+          </div>
+        </div>
+        <div>
+          <div class="k">Map</div>
+          <div class="v">
+            <a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%A2%A8%E7%94%B0%E5%8C%BA%E6%A5%AD%E5%B9%B31-13-1+%E4%BD%8F%E5%BB%BA%E7%AC%AC8%E3%83%8F%E3%82%A4%E3%83%97%E3%83%AC%E3%83%BC%E3%82%B9"
+               target="_blank" rel="noopener">Open in Google Maps</a><br>
+            <small>↗ Directions</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: photo -->
+    <div class="hero__photo">
+      <span class="tag">Skytree · 押上</span>
+      <img src="../burger-image/6.jpg" alt="Wagyu ramen — Godaime Skytree">
+      <div class="caption">
+        <div class="name">Wagyu <em>Ramen</em></div>
+        <div class="jp">和牛ラーメン — このお店だけ</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="resize.js"></script>
+</body>
+</html>

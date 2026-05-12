@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-slug="oshiage-reserve">
+<head>
+<meta charset="UTF-8">
+<title>Reserve — Godaime Wagyu Skytree</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Shippori+Mincho:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+.reserve-section{
+  position:relative;
+  padding:130px 60px 70px;
+  background:
+    radial-gradient(ellipse at 25% 100%, rgba(185,28,28,0.10), transparent 55%),
+    radial-gradient(ellipse at 75% 0%, rgba(201,163,90,0.06), transparent 50%),
+    var(--ink-deep);
+}
+.reserve-section::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:1px;height:60px;background:linear-gradient(180deg,var(--torii) 0%,transparent 100%);
+}
+.reserve__inner{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center;
+}
+
+.reserve__copy .micro{
+  font-family:var(--sans);font-size:11px;letter-spacing:0.4em;color:var(--torii);
+  text-transform:uppercase;font-weight:600;margin-bottom:22px;
+}
+.reserve__copy h2{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(42px,5vw,68px);line-height:1.0;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:18px;
+}
+.reserve__copy h2 em{font-style:italic;color:var(--gold)}
+.reserve__copy .jp-line{
+  font-family:var(--jp);font-size:16px;color:var(--paper-dim);letter-spacing:0.22em;margin-bottom:28px;
+  border-left:2px solid var(--torii);padding-left:14px;
+}
+.reserve__copy p.lede{
+  font-family:var(--serif);font-size:17px;line-height:1.7;
+  color:rgba(243,236,225,0.78);max-width:520px;margin-bottom:36px;
+}
+.reserve__copy p.lede em{font-style:italic;color:var(--gold)}
+
+.reserve__buttons{display:flex;flex-direction:column;gap:14px}
+.btn-large-primary{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:22px 30px;background:var(--torii);color:var(--paper);text-decoration:none;
+  border:1px solid var(--torii);
+  font-family:var(--sans);font-size:12px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;
+  transition:background 0.3s, border-color 0.3s;
+}
+.btn-large-primary:hover{background:var(--torii-deep);border-color:var(--torii-deep)}
+.btn-large-primary .arrow{font-size:18px}
+.btn-large-primary .sub{
+  display:block;font-family:var(--serif);font-style:italic;font-size:13px;
+  color:rgba(243,236,225,0.7);letter-spacing:0;text-transform:none;font-weight:400;margin-top:4px;
+}
+
+.btn-large-secondary{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:22px 30px;background:transparent;color:var(--paper);text-decoration:none;
+  border:1px solid var(--gold-dim);
+  font-family:var(--sans);font-size:12px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;
+  transition:border-color 0.3s, color 0.3s;
+}
+.btn-large-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.btn-large-secondary .tel{
+  font-family:var(--serif);font-style:italic;font-size:18px;letter-spacing:0;text-transform:none;font-weight:400;
+}
+.btn-large-secondary .sub{
+  display:block;font-family:var(--serif);font-style:italic;font-size:13px;
+  color:rgba(243,236,225,0.55);letter-spacing:0;text-transform:none;font-weight:400;margin-top:4px;
+}
+
+/* right: info panel */
+.reserve__panel{
+  position:relative;
+  background:linear-gradient(135deg, rgba(15,12,10,0.6), rgba(28,22,18,0.6));
+  border:1px solid rgba(201,163,90,0.22);
+  padding:46px 40px;
+  box-shadow:0 30px 60px rgba(0,0,0,0.4);
+}
+.reserve__panel::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(135deg, var(--gold-dim) 0 14px, transparent 14px) top left/26px 26px no-repeat,
+    linear-gradient(225deg, var(--gold-dim) 0 14px, transparent 14px) top right/26px 26px no-repeat,
+    linear-gradient(45deg, var(--gold-dim) 0 14px, transparent 14px) bottom left/26px 26px no-repeat,
+    linear-gradient(315deg, var(--gold-dim) 0 14px, transparent 14px) bottom right/26px 26px no-repeat;
+  opacity:0.5;
+}
+.reserve__panel .pname{
+  font-family:var(--sans);font-size:10.5px;letter-spacing:0.36em;color:var(--gold);
+  text-transform:uppercase;font-weight:500;margin-bottom:10px;
+}
+.reserve__panel h3{
+  font-family:var(--serif);font-weight:400;font-size:24px;color:var(--paper);
+  line-height:1.3;margin-bottom:6px;
+}
+.reserve__panel h3 em{font-style:italic;color:var(--gold)}
+.reserve__panel .pjp{
+  font-family:var(--jp);font-size:13px;color:var(--paper-dim);letter-spacing:0.18em;margin-bottom:24px;
+}
+.reserve__panel .prow{
+  display:grid;grid-template-columns:auto 1fr;gap:16px 20px;
+  padding:14px 0;border-top:1px solid rgba(201,163,90,0.2);align-items:baseline;
+}
+.reserve__panel .prow .k{
+  font-family:var(--sans);font-size:9.5px;letter-spacing:0.3em;color:var(--gold);
+  text-transform:uppercase;font-weight:500;min-width:80px;
+}
+.reserve__panel .prow .v{
+  font-family:var(--serif);font-size:15px;color:var(--paper);line-height:1.5;
+}
+.reserve__panel .prow .v em{font-style:italic;color:var(--gold-pale)}
+.reserve__panel .prow .v small{
+  display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:0.18em;color:var(--paper-mute);
+  text-transform:uppercase;margin-top:2px;
+}
+
+/* footer credit */
+.reserve__footer{
+  max-width:1400px;margin:80px auto 0;padding-top:30px;
+  border-top:1px solid rgba(201,163,90,0.15);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+  font-family:var(--sans);font-size:10px;letter-spacing:0.28em;color:var(--paper-mute);
+  text-transform:uppercase;
+}
+.reserve__footer .brand{
+  font-family:var(--jp);font-size:13px;color:var(--gold);letter-spacing:0.22em;
+}
+.reserve__footer a{color:var(--paper-dim);text-decoration:none;transition:color 0.3s}
+.reserve__footer a:hover{color:var(--gold)}
+
+@media (max-width:1024px){
+  .reserve__inner{grid-template-columns:1fr;gap:50px}
+}
+@media (max-width:600px){
+  .reserve-section{padding:80px 22px 50px}
+  .reserve__panel{padding:32px 24px}
+  .btn-large-primary, .btn-large-secondary{padding:18px 22px;font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<section class="reserve-section">
+  <div class="reserve__inner">
+
+    <!-- left: copy + CTAs -->
+    <div class="reserve__copy">
+      <div class="micro">— Reserve · ご予約</div>
+      <h2>Book a <em>table.</em></h2>
+      <p class="jp-line">スカイツリー店のご予約はこちらから。</p>
+      <p class="lede">
+        Reserve a table online in <em>under a minute</em> — or call us directly.
+        Walk-ins welcome too, but reservations get priority seating, especially
+        on weekends.
+      </p>
+
+      <div class="reserve__buttons">
+        <a class="btn-large-primary"
+           href="https://www.tablecheck.com/shops/halal-ramen-skytree-5w-tokyo/reserve"
+           target="_blank" rel="noopener">
+          <span>
+            Reserve online via TableCheck
+            <span class="sub">— Open in a new tab. English available.</span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="btn-large-secondary" href="tel:+81366585855">
+          <span>
+            Call <span class="tel">03-6658-5855</span>
+            <span class="sub">— 11:00 – 22:00 every day</span>
+          </span>
+          <span class="arrow">☎</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- right: store panel -->
+    <div class="reserve__panel">
+      <div class="pname">Skytree (Oshiage)</div>
+      <h3>Wagyu Beef <em>(Halal)</em> · Skytree Restaurant.</h3>
+      <p class="pjp">五代目和牛 スカイツリー店</p>
+
+      <div class="prow">
+        <span class="k">Hours</span>
+        <span class="v"><em>11:00 — 22:00</em> · every day</span>
+      </div>
+      <div class="prow">
+        <span class="k">Address</span>
+        <span class="v">
+          Narihira <em>1-13-1</em>, Sumida-ku, Tokyo 130-0002
+          <small>住建第8ハイプレース</small>
+        </span>
+      </div>
+      <div class="prow">
+        <span class="k">Halal</span>
+        <span class="v">Certified ✓</span>
+      </div>
+      <div class="prow">
+        <span class="k">Languages</span>
+        <span class="v">English · 日本語</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- footer credit -->
+  <div class="reserve__footer">
+    <div class="brand">五代目和牛 · Godaime Wagyu</div>
+    <div>
+      <a href="../index.html">← Back to TOP</a>
+      &nbsp; · &nbsp;
+      <a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%A2%A8%E7%94%B0%E5%8C%BA%E6%A5%AD%E5%B9%B31-13-1"
+         target="_blank" rel="noopener">Directions</a>
+    </div>
+  </div>
+
+</section>
+
+<script src="resize.js"></script>
+</body>
+</html>

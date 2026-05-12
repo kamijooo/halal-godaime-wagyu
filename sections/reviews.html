@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" data-slug="reviews">
+<head>
+<meta charset="UTF-8">
+<title>Reviews — Godaime Wagyu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Shippori+Mincho:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+.reviews-section{
+  position:relative;padding:140px 0 130px;
+  background:
+    radial-gradient(ellipse at 18% 5%, rgba(201,163,90,0.08), transparent 55%),
+    radial-gradient(ellipse at 82% 95%, rgba(185,28,28,0.06), transparent 50%),
+    var(--ink);
+}
+.chapter-mark{
+  max-width:1320px;margin:0 auto 80px;padding:0 60px;
+  display:flex;align-items:center;gap:24px;
+}
+.chapter-mark .badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:7px 16px;background:var(--torii);color:var(--paper);
+  font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;
+}
+.chapter-mark .badge .jp{font-family:var(--jp);font-weight:500;letter-spacing:0.16em;font-size:12px}
+.chapter-mark .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent)}
+.chapter-mark .num{font-family:var(--serif);font-style:italic;font-weight:300;font-size:42px;color:var(--gold);line-height:1}
+
+.reviews-head{
+  max-width:1440px;margin:0 auto 80px;padding:0 60px;
+  display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:end;
+}
+.reviews-head .left .badge-since{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:8px 18px;background:var(--torii);color:var(--paper);
+  font-family:var(--serif);font-style:italic;font-size:14px;letter-spacing:0.05em;
+  margin-bottom:30px;
+}
+.reviews-head .left .badge-since .jp{font-family:var(--jp);font-style:normal;font-size:13px;letter-spacing:0.12em}
+.reviews-head h2{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(48px,5.6vw,82px);line-height:1.0;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:30px;
+}
+.reviews-head h2 em{font-style:italic;color:var(--gold);font-weight:400}
+.reviews-head .jp-sub{
+  font-family:var(--jp);font-size:18px;color:var(--paper-dim);letter-spacing:0.18em;line-height:1.7;
+  border-left:2px solid var(--torii);padding-left:18px;
+}
+.reviews-head .right{padding-bottom:14px}
+.reviews-head .right .lede{
+  font-family:var(--serif);font-size:17px;line-height:1.75;color:rgba(243,236,225,0.78);max-width:460px;
+}
+.reviews-head .right .lede em{font-style:italic;color:var(--torii);font-weight:500}
+
+.filters{
+  max-width:1320px;margin:0 auto 50px;padding:24px 60px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
+  border-top:1px solid rgba(201,163,90,0.18);
+  border-bottom:1px solid rgba(201,163,90,0.18);
+}
+.filters .filter-label{
+  font-family:var(--sans);font-size:10.5px;letter-spacing:0.34em;color:var(--gold);
+  text-transform:uppercase;font-weight:500;
+}
+.filters .pills{display:flex;gap:8px;flex-wrap:wrap}
+.filters .pill{
+  padding:8px 16px;font-family:var(--sans);font-size:11px;letter-spacing:0.22em;
+  color:var(--paper);text-transform:uppercase;font-weight:500;
+  background:transparent;border:1px solid rgba(201,163,90,0.25);
+  cursor:pointer;transition:all 0.3s;
+}
+.filters .pill:hover{border-color:var(--gold);color:var(--gold)}
+.filters .pill.active{background:var(--torii);border-color:var(--torii);color:var(--paper)}
+.filters .pill .star{color:var(--gold);margin-right:5px;font-size:11px}
+.filters .pill.active .star{color:var(--paper)}
+.filters .pill .count{
+  font-family:var(--serif);font-style:italic;color:var(--paper-dim);
+  font-size:11px;margin-left:6px;letter-spacing:0;
+}
+.filters .pill.active .count{color:var(--paper-dim)}
+.filters .right-meta{
+  font-family:var(--sans);font-size:10.5px;letter-spacing:0.32em;color:var(--paper-dim);
+  text-transform:uppercase;font-weight:500;
+}
+.filters .right-meta em{
+  font-family:var(--serif);font-style:italic;font-size:14px;color:var(--gold);
+  letter-spacing:0;text-transform:none;font-weight:400;margin:0 4px;
+}
+
+.reviews-grid{
+  max-width:1440px;margin:0 auto;padding:0 60px;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:36px 32px;
+}
+
+.review{
+  position:relative;background:var(--ink-2);
+  border:1px solid rgba(201,163,90,0.15);overflow:hidden;
+}
+.review .customer{
+  padding:32px 32px 26px;border-bottom:1px solid rgba(201,163,90,0.18);
+}
+.review .customer .meta-row{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:18px;gap:16px;
+}
+.review .customer .stars{
+  font-family:var(--sans);color:var(--gold);font-size:14px;letter-spacing:2px;line-height:1;
+}
+.review .customer .stars .filled{color:var(--gold)}
+.review .customer .stars .empty{color:rgba(201,163,90,0.25)}
+.review .customer .source{
+  display:inline-flex;align-items:center;gap:6px;padding:4px 10px;
+  border:1px solid rgba(201,163,90,0.25);
+  font-family:var(--sans);font-size:9px;letter-spacing:0.24em;
+  color:var(--paper-dim);text-transform:uppercase;font-weight:500;
+}
+.review .customer .source .dot{width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.review .customer .body{
+  font-family:var(--serif);font-size:16px;line-height:1.7;color:var(--paper);
+  margin-bottom:20px;font-style:italic;font-weight:400;
+}
+.review .customer .body .quote-mark{
+  font-family:var(--serif);font-size:36px;color:var(--torii);line-height:0;
+  vertical-align:-12px;margin-right:6px;font-style:normal;
+}
+.review .customer .author{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  font-family:var(--sans);font-size:11px;letter-spacing:0.18em;color:var(--paper-dim);
+}
+.review .customer .author .name{
+  color:var(--paper);font-family:var(--serif);font-style:italic;font-size:15px;
+  letter-spacing:0;font-weight:400;
+}
+.review .customer .author .where{text-transform:uppercase;font-size:10px;letter-spacing:0.32em}
+.review .customer .author .date{font-size:10px;letter-spacing:0.28em;text-transform:uppercase}
+
+.review .reply{
+  background:rgba(185,28,28,0.06);padding:24px 32px 28px;position:relative;
+}
+.review .reply::before{
+  content:"";position:absolute;left:32px;top:0;width:40px;height:2px;background:var(--torii);
+}
+.review .reply .reply-meta{
+  display:flex;align-items:center;gap:10px;margin-bottom:14px;margin-top:8px;
+}
+.review .reply .reply-meta .label{
+  font-family:var(--sans);font-size:9.5px;letter-spacing:0.34em;color:var(--torii);
+  text-transform:uppercase;font-weight:600;
+}
+.review .reply .reply-meta .name{
+  font-family:var(--serif);font-style:italic;font-size:14px;color:var(--gold);
+  letter-spacing:-0.005em;
+}
+.review .reply .reply-meta .date{
+  margin-left:auto;
+  font-family:var(--sans);font-size:9.5px;letter-spacing:0.28em;color:var(--paper-dim);
+  text-transform:uppercase;
+}
+.review .reply .reply-body{
+  font-family:var(--serif);font-size:15px;line-height:1.7;color:rgba(243,236,225,0.82);
+  font-weight:400;
+}
+.review .reply .reply-body em{font-style:italic;color:var(--gold)}
+
+.review.critical .customer .stars .filled{color:var(--torii)}
+.review.critical .customer{background:linear-gradient(135deg, rgba(185,28,28,0.04), transparent 60%)}
+
+.policy-band{
+  max-width:1320px;margin:80px auto 60px;padding:36px 60px;
+  background:var(--ink-3);border:1px solid rgba(201,163,90,0.15);
+  display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;
+}
+.policy-band .icon{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:64px;color:var(--torii);line-height:1;letter-spacing:-0.03em;
+}
+.policy-band .icon .pct{font-size:0.5em;color:var(--gold);font-style:normal;vertical-align:top;margin-left:2px}
+.policy-band .text{font-family:var(--serif);font-size:18px;line-height:1.5;color:var(--paper)}
+.policy-band .text em{font-style:italic;color:var(--gold);font-weight:500}
+.policy-band .text .jp{
+  display:block;margin-top:6px;
+  font-family:var(--jp);font-size:13px;color:var(--paper-dim);letter-spacing:0.18em;
+}
+.policy-band .by{
+  text-align:right;
+  font-family:var(--sans);font-size:9.5px;letter-spacing:0.32em;color:var(--paper-dim);
+  text-transform:uppercase;line-height:1.6;
+}
+.policy-band .by em{
+  font-family:var(--serif);font-style:italic;color:var(--gold);font-size:14px;
+  letter-spacing:0;text-transform:none;display:block;margin-top:4px;
+}
+
+.reviews-cta{position:relative;padding:90px 60px 40px;text-align:center}
+.reviews-cta .micro{
+  font-family:var(--sans);font-size:11px;letter-spacing:0.4em;color:var(--torii);
+  text-transform:uppercase;font-weight:600;margin-bottom:20px;
+}
+.reviews-cta h3{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(36px,4vw,56px);line-height:1.05;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:14px;
+}
+.reviews-cta h3 em{font-style:italic;color:var(--gold);font-weight:400}
+.reviews-cta .jp-line{
+  font-family:var(--jp);font-size:14px;color:var(--paper-dim);letter-spacing:0.2em;margin-bottom:36px;
+}
+.reviews-cta .cta-row{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+.reviews-cta .cta-primary{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:18px 32px;background:transparent;
+  border:1px solid var(--gold);color:var(--paper);
+  font-family:var(--sans);font-size:11px;letter-spacing:0.34em;text-transform:uppercase;font-weight:600;
+  text-decoration:none;transition:all 0.4s;
+}
+.reviews-cta .cta-primary:hover{background:var(--gold);color:var(--ink)}
+.reviews-cta .cta-primary .count{font-family:var(--serif);font-style:italic;font-weight:400;font-size:14px;letter-spacing:0;color:var(--gold);margin:0 4px}
+.reviews-cta .cta-primary:hover .count{color:var(--ink)}
+.reviews-cta .cta-link{
+  font-family:var(--serif);font-style:italic;font-size:14px;color:var(--paper-dim);
+  text-decoration:none;border-bottom:1px solid var(--gold-dim);padding-bottom:2px;
+  transition:color 0.3s, border-color 0.3s;
+}
+.reviews-cta .cta-link:hover{color:var(--gold);border-color:var(--gold)}
+
+@media (max-width:1100px){
+  .reviews-head{grid-template-columns:1fr;gap:30px;padding:0 40px;margin-bottom:60px}
+  .reviews-head .right{padding-bottom:0}
+  .filters{padding:24px 40px;flex-direction:column;align-items:flex-start;gap:18px}
+  .reviews-grid{grid-template-columns:1fr;padding:0 40px;gap:28px}
+  .policy-band{grid-template-columns:1fr;text-align:center;gap:18px;padding:32px 40px}
+  .policy-band .by{text-align:center}
+}
+@media (max-width:600px){
+  .chapter-mark{flex-wrap:wrap;padding:0 30px}
+  .review .customer,.review .reply{padding-left:24px;padding-right:24px}
+  .reviews-cta{padding:70px 30px 30px}
+}
+</style>
+</head>
+<body>
+
+<section class="reviews-section">
+
+  <div class="chapter-mark">
+    <span class="badge">Chapter 09 <span class="jp">第九章</span></span>
+    <div class="rule"></div>
+    <span class="num">09</span>
+  </div>
+
+  <div class="reviews-head">
+    <div class="left">
+      <div class="badge-since">Reviews · <span class="jp">お客さまの声</span></div>
+      <h2>Every voice. <em>Every reply.</em></h2>
+      <div class="jp-sub">すべての声に、<br>必ず返信を。</div>
+    </div>
+    <div class="right">
+      <p class="lede">
+        We don't curate the reviews you see here. Five-stars and one-stars,
+        love letters and complaints — all of them get published, and all of
+        them get an <em>owner reply promptly</em>. The good ones tell
+        you we're worth a visit. The hard ones tell you who we are when things
+        go wrong.
+      </p>
+    </div>
+  </div>
+
+  <div class="filters">
+    <span class="filter-label">— Filter by rating</span>
+    <div class="pills">
+      <button class="pill active">All <span class="count">[N,XXX]</span></button>
+      <button class="pill"><span class="star">★</span>5 <span class="count">[N,XXX]</span></button>
+      <button class="pill"><span class="star">★</span>4 <span class="count">[N]</span></button>
+      <button class="pill"><span class="star">★</span>3 <span class="count">[N]</span></button>
+      <button class="pill"><span class="star">★</span>2 <span class="count">[N]</span></button>
+      <button class="pill"><span class="star">★</span>1 <span class="count">[N]</span></button>
+    </div>
+    <span class="right-meta">Showing <em>4</em> of <em>[N,XXX]</em></span>
+  </div>
+
+  <div class="reviews-grid">
+
+    <article class="review">
+      <div class="customer">
+        <div class="meta-row">
+          <div class="stars"><span class="filled">★★★★★</span></div>
+          <div class="source"><span class="dot"></span>Google · Tokyo Ginza</div>
+        </div>
+        <p class="body">
+          <span class="quote-mark">"</span>Found them on our first day in Tokyo and ended up coming back in Kyoto, then again in Osaka. The burger in Ginza was the best meal of our entire trip. Halal-certified meant my wife and I could finally eat together without the usual fifteen-minute interrogation about ingredients. Staff spoke English, hijabs were everywhere, and the bun had 和牛 burned into it.
+        </p>
+        <div class="author">
+          <span class="name">Marcus &amp; Aisha</span>
+          <span class="where">Sydney, AU</span>
+          <span class="date">3 days ago</span>
+        </div>
+      </div>
+      <div class="reply">
+        <div class="reply-meta">
+          <span class="label">Reply from</span>
+          <span class="name">[現店主]</span>
+          <span class="date">2 days ago</span>
+        </div>
+        <p class="reply-body">
+          Marcus, Aisha — thank you for trusting us three times in one trip. The Kyoto and Osaka teams have been told. We hope <em>your next visit</em> finds us again.
+        </p>
+      </div>
+    </article>
+
+    <article class="review">
+      <div class="customer">
+        <div class="meta-row">
+          <div class="stars"><span class="filled">★★★★★</span></div>
+          <div class="source"><span class="dot"></span>TripAdvisor · Kyoto</div>
+        </div>
+        <p class="body">
+          <span class="quote-mark">"</span>The wagyu donburi here changed my understanding of what beef can be. Soft, with a single egg yolk on top that you break with your spoon. The staff explained every ingredient when I asked about halal — they brought out the certificate without me even pushing.
+        </p>
+        <div class="author">
+          <span class="name">Fatima A.</span>
+          <span class="where">Kuala Lumpur, MY</span>
+          <span class="date">1 week ago</span>
+        </div>
+      </div>
+      <div class="reply">
+        <div class="reply-meta">
+          <span class="label">Reply from</span>
+          <span class="name">[現店主]</span>
+          <span class="date">5 days ago</span>
+        </div>
+        <p class="reply-body">
+          Fatima — the donburi is my grandfather's recipe, minus the mirin. We're glad the <em>egg-yolk moment</em> still works. Until next time.
+        </p>
+      </div>
+    </article>
+
+    <article class="review critical">
+      <div class="customer">
+        <div class="meta-row">
+          <div class="stars"><span class="filled">★★★</span><span class="empty">★★</span></div>
+          <div class="source"><span class="dot"></span>Google · Osaka</div>
+        </div>
+        <p class="body">
+          <span class="quote-mark">"</span>Food was excellent but we waited 40 minutes past our reservation time on a Saturday night. No one apologized until I asked. Three stars because the burger is genuinely one of the best I've had, but the service tonight was not what I expect from a place at this price point.
+        </p>
+        <div class="author">
+          <span class="name">David K.</span>
+          <span class="where">Singapore, SG</span>
+          <span class="date">2 weeks ago</span>
+        </div>
+      </div>
+      <div class="reply">
+        <div class="reply-meta">
+          <span class="label">Reply from</span>
+          <span class="name">[Osaka店長]</span>
+          <span class="date">2 weeks ago</span>
+        </div>
+        <p class="reply-body">
+          David — you're right, and I'm sorry. Saturday was a kitchen issue I should have caught earlier, and the lack of an apology on the floor was a failure that's on me. We've changed how we communicate delays to waiting guests. If you'll let us, I'd like to <em>buy you the next visit personally</em>.
+        </p>
+      </div>
+    </article>
+
+    <article class="review">
+      <div class="customer">
+        <div class="meta-row">
+          <div class="stars"><span class="filled">★★★★★</span></div>
+          <div class="source"><span class="dot"></span>Google · Tokyo Ginza</div>
+        </div>
+        <p class="body">
+          <span class="quote-mark">"</span>Traveled with my elderly mother who has dietary restrictions. The staff sat with us, went through every dish, brought out an English ingredient list, and let her try a small portion before committing to a full order. We ended up staying two hours and ordering everything she could eat. The owner came out at the end to thank us in person.
+        </p>
+        <div class="author">
+          <span class="name">Sarah M.</span>
+          <span class="where">London, UK</span>
+          <span class="date">3 weeks ago</span>
+        </div>
+      </div>
+      <div class="reply">
+        <div class="reply-meta">
+          <span class="label">Reply from</span>
+          <span class="name">[現店主]</span>
+          <span class="date">3 weeks ago</span>
+        </div>
+        <p class="reply-body">
+          Sarah — please send our regards to your mother. We hope she's well. The English ingredient list was your idea, by the way — a guest before you asked, and now we keep it ready. <em>Thank you for that, too.</em>
+        </p>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="policy-band">
+    <div class="icon">100<span class="pct">%</span></div>
+    <div class="text">
+      <em>Every review gets a reply.</em> Good, bad, in between — signed by name, never a template.
+      <span class="jp">どのレビューにも、必ず本人が返信します。</span>
+    </div>
+    <div class="by">
+      Owner-reply rate · since 2014<br>
+      <em>[現店主]</em>
+    </div>
+  </div>
+
+  <div class="reviews-cta">
+    <span class="micro">— See them all</span>
+    <h3>Read every <em>review</em>, every reply.</h3>
+    <p class="jp-line">すべて、ありのままに公開しています。</p>
+    <div class="cta-row">
+      <a href="#all-reviews" class="cta-primary">View all <span class="count">[N,XXX]</span> reviews <span>→</span></a>
+      <a href="#leave-review" class="cta-link">— or leave one yourself</a>
+    </div>
+  </div>
+
+</section>
+
+<script src="resize.js"></script>
+</body>
+</html>

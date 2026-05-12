@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" data-slug="exp">
+<head>
+<meta charset="UTF-8">
+<title>The Experience — Godaime Wagyu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Shippori+Mincho:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+:root{--polaroid:#e8dfd0}
+.exp-section{
+  position:relative;padding:120px 0 130px;
+  background:radial-gradient(ellipse at 50% 0%, rgba(201,163,90,0.08), transparent 50%), var(--ink);
+}
+.chapter-mark{
+  max-width:1320px;margin:0 auto 50px;padding:0 60px;
+  display:flex;align-items:center;gap:24px;
+}
+.chapter-mark .badge{
+  display:inline-flex;align-items:center;gap:10px;padding:7px 16px;background:var(--torii);color:var(--paper);
+  font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;
+}
+.chapter-mark .badge .jp{font-family:var(--jp);font-weight:500;letter-spacing:0.16em;font-size:12px}
+.chapter-mark .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent)}
+.chapter-mark .num{font-family:var(--serif);font-style:italic;font-weight:300;font-size:42px;color:var(--gold);line-height:1}
+
+.exp-head{
+  max-width:1100px;margin:0 auto 90px;padding:0 60px;
+  text-align:center;position:relative;
+}
+.exp-head .micro{
+  display:inline-block;padding:5px 14px;background:var(--torii);color:var(--paper);
+  font-family:var(--sans);font-size:10px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;
+  margin-bottom:24px;transform:rotate(-2deg);
+}
+.exp-head h2{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(46px,5.4vw,76px);line-height:1.05;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:18px;
+}
+.exp-head h2 em{font-style:italic;color:var(--gold);font-weight:400}
+.exp-head .jp-line{
+  font-family:var(--jp);font-size:16px;color:var(--paper-dim);letter-spacing:0.2em;margin-bottom:24px;
+}
+.exp-head .lede{
+  font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.7;color:rgba(243,236,225,0.78);
+  max-width:580px;margin:0 auto;
+}
+.exp-head .hand-note{
+  display:inline-block;margin-top:30px;padding:8px 16px;
+  font-family:var(--hand);font-size:22px;color:var(--gold);
+  transform:rotate(-1deg);
+  border-bottom:2px solid rgba(201,163,90,0.4);
+}
+
+.timeline{
+  max-width:1280px;margin:0 auto;padding:0 60px;position:relative;
+}
+.timeline::before{
+  content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;
+  background:linear-gradient(180deg,
+    transparent 0%, rgba(201,163,90,0.4) 6%,
+    rgba(201,163,90,0.4) 94%, transparent 100%);
+  transform:translateX(-50%);
+}
+.entry{
+  position:relative;
+  display:grid;grid-template-columns:1fr 80px 1fr;
+  gap:0;align-items:center;margin-bottom:60px;
+}
+.entry:last-child{margin-bottom:0}
+.entry .node{
+  grid-column:2;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;z-index:2;padding:14px 0;
+}
+.entry .node::before{
+  content:"";width:14px;height:14px;border-radius:50%;
+  background:var(--torii);border:3px solid var(--ink);
+  box-shadow:0 0 0 1px var(--gold);
+}
+.entry .node .month{
+  font-family:var(--serif);font-style:italic;font-size:18px;color:var(--gold);
+  margin-top:10px;letter-spacing:-0.01em;line-height:1;
+}
+.entry .node .year{
+  font-family:var(--sans);font-size:9px;letter-spacing:0.32em;color:var(--paper-dim);
+  text-transform:uppercase;font-weight:500;margin-top:4px;
+}
+.polaroid{
+  position:relative;background:var(--polaroid);padding:14px 14px 56px;
+  box-shadow:0 14px 40px rgba(0,0,0,0.5),0 4px 10px rgba(0,0,0,0.3);
+  color:var(--ink-deep);transition:transform 0.4s ease;
+}
+.polaroid:hover{transform:rotate(0deg)!important;z-index:5}
+.entry.left .polaroid{
+  grid-column:1;justify-self:end;width:90%;max-width:480px;transform:rotate(-1.5deg);
+}
+.entry.right .polaroid{
+  grid-column:3;justify-self:start;width:90%;max-width:480px;transform:rotate(1.5deg);
+}
+.polaroid::before{
+  content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-3deg);
+  width:80px;height:22px;
+  background:rgba(201,163,90,0.35);box-shadow:0 1px 3px rgba(0,0,0,0.2);
+  border-left:1px solid rgba(255,255,255,0.15);border-right:1px solid rgba(255,255,255,0.15);
+}
+.polaroid .photo{
+  aspect-ratio:4/3;background:var(--ink-3);position:relative;overflow:hidden;margin-bottom:14px;
+}
+.polaroid .photo .grad{
+  position:absolute;inset:0;background-size:cover;background-position:center;
+}
+.polaroid .photo img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+}
+.polaroid .photo .tbd{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  text-align:center;color:var(--paper-faint);
+  font-family:var(--sans);font-size:9px;letter-spacing:0.32em;text-transform:uppercase;font-weight:500;
+}
+.polaroid .photo .tbd .icon{
+  display:inline-block;width:28px;height:28px;
+  border:1px solid rgba(243,236,225,0.3);line-height:26px;
+  font-family:var(--serif);font-style:italic;font-size:14px;color:var(--gold);margin-bottom:6px;
+}
+.polaroid .platform{
+  position:absolute;top:8px;right:8px;z-index:2;padding:4px 9px;
+  background:rgba(10,8,7,0.7);backdrop-filter:blur(6px);
+  border:1px solid rgba(243,236,225,0.15);
+  font-family:var(--sans);font-size:8.5px;letter-spacing:0.28em;color:var(--paper);
+  text-transform:uppercase;font-weight:500;
+}
+.polaroid .platform .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--gold);margin-right:5px;vertical-align:middle}
+.polaroid .play-overlay{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(10,8,7,0.55);backdrop-filter:blur(8px);
+  border:1px solid rgba(243,236,225,0.2);
+  display:flex;align-items:center;justify-content:center;color:var(--paper);font-size:14px;
+}
+.polaroid .play-overlay::before{content:"▶"}
+.polaroid .caption{
+  font-family:var(--hand);font-weight:600;font-size:20px;line-height:1.2;color:var(--ink-deep);
+  padding:0 6px;margin-bottom:8px;
+}
+.polaroid .caption em{color:var(--torii);font-style:italic}
+.polaroid .meta{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:0 6px;
+  font-family:var(--sans);font-size:9px;letter-spacing:0.18em;color:#5a4830;
+  text-transform:uppercase;font-weight:500;
+}
+.polaroid .meta .stat{display:inline-flex;align-items:center;gap:5px}
+.polaroid .meta .stat .icon{color:var(--torii);font-size:11px}
+
+.entry .side-note{
+  padding:0 30px;
+  font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.6;color:rgba(243,236,225,0.7);
+  max-width:340px;
+}
+.entry .side-note .label{
+  display:block;
+  font-family:var(--sans);font-style:normal;font-size:9px;letter-spacing:0.32em;color:var(--torii);
+  text-transform:uppercase;font-weight:600;margin-bottom:8px;
+}
+.entry .side-note em{color:var(--gold);font-style:italic;font-weight:500}
+.entry.left .side-note{grid-column:3;justify-self:start;text-align:left}
+.entry.right .side-note{grid-column:1;justify-self:end;text-align:right}
+
+.exp-cta{
+  max-width:900px;margin:120px auto 0;padding:60px 60px 0;text-align:center;
+  border-top:1px solid rgba(201,163,90,0.18);
+}
+.exp-cta .micro{
+  font-family:var(--sans);font-size:10px;letter-spacing:0.4em;color:var(--torii);
+  text-transform:uppercase;font-weight:600;margin-bottom:18px;
+}
+.exp-cta h3{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(34px,4vw,52px);line-height:1.1;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:18px;
+}
+.exp-cta h3 em{font-style:italic;color:var(--gold);font-weight:400}
+.exp-cta .jp-line{
+  font-family:var(--jp);font-size:13px;color:var(--paper-dim);letter-spacing:0.2em;margin-bottom:34px;
+}
+.exp-cta .cta-row{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+.exp-cta .cta-primary{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:16px 30px;background:var(--torii);border:1px solid var(--torii);color:var(--paper);
+  font-family:var(--sans);font-size:11px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;
+  text-decoration:none;transition:all 0.4s;
+}
+.exp-cta .cta-primary:hover{background:var(--torii-deep);border-color:var(--torii-deep)}
+.exp-cta .cta-link{
+  font-family:var(--serif);font-style:italic;font-size:14px;color:var(--paper-dim);
+  text-decoration:none;border-bottom:1px solid var(--gold-dim);padding-bottom:2px;transition:color 0.3s;
+}
+.exp-cta .cta-link:hover{color:var(--gold);border-color:var(--gold)}
+
+@media (max-width:1100px){
+  .exp-head,.timeline,.exp-cta{padding-left:40px;padding-right:40px}
+  .entry{grid-template-columns:1fr 60px 1fr}
+  .entry .side-note{padding:0 14px;font-size:14px}
+}
+@media (max-width:760px){
+  .exp-section{padding:80px 0 90px}
+  .chapter-mark,.exp-head,.timeline,.exp-cta{padding-left:22px;padding-right:22px}
+  .exp-head{margin-bottom:60px}
+  .exp-head h2{font-size:34px}
+  .timeline::before{left:24px;transform:none}
+  .entry{display:block;margin-bottom:40px;padding-left:54px;position:relative}
+  .entry .node{
+    position:absolute;left:24px;top:14px;transform:translateX(-50%);
+    grid-column:auto;padding:0;align-items:flex-start;
+  }
+  .entry .node .month,.entry .node .year{display:none}
+  .entry .polaroid,.entry.left .polaroid,.entry.right .polaroid{
+    grid-column:auto;justify-self:auto;width:auto;max-width:none;transform:none;margin-bottom:14px;
+  }
+  .entry .polaroid{padding:10px 10px 16px}
+  .entry .polaroid::before{display:none}
+  .entry .polaroid .caption{font-size:18px}
+  .entry .side-note,.entry.left .side-note,.entry.right .side-note{
+    grid-column:auto;justify-self:auto;text-align:left;padding:6px 0 0;font-size:14px;max-width:none;
+    display:flex;flex-direction:column;gap:4px;
+  }
+  .entry::before{
+    content:attr(data-date);display:block;margin-bottom:10px;
+    font-family:var(--sans);font-size:9.5px;letter-spacing:0.32em;color:var(--gold);
+    text-transform:uppercase;font-weight:600;
+  }
+  .exp-cta{margin-top:70px;padding:50px 22px 0}
+  .exp-cta h3{font-size:28px}
+  .exp-cta .cta-row{flex-direction:column;gap:16px}
+  .exp-cta .cta-primary{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<section class="exp-section">
+
+  <div class="chapter-mark">
+    <span class="badge">Chapter 08 <span class="jp">第八章</span></span>
+    <div class="rule"></div>
+    <span class="num">08</span>
+  </div>
+
+  <div class="exp-head">
+    <span class="micro">Behind the counter</span>
+    <h2>From <em>our</em> side<br>of the counter.</h2>
+    <p class="jp-line">五代目から、お客様へ。</p>
+    <p class="lede">What we cooked, who came in, where we went last week. Posted by us — read by you.</p>
+    <span class="hand-note">— follow along on @godaimewagyu</span>
+  </div>
+
+  <div class="timeline">
+
+    <div class="entry left" data-date="May 2026">
+      <div class="polaroid">
+        <div class="photo">
+          <img src="../burger-image/1.jpg" alt="">
+          <span class="platform"><span class="dot"></span>Instagram</span>
+        </div>
+        <p class="caption">New summer bun — same <em>和牛</em> brand mark, lighter crumb.</p>
+        <div class="meta">
+          <span class="stat"><span class="icon">♥</span> 8.4k</span>
+          <span class="stat"><span class="icon">💬</span> 234</span>
+          <span>posted may 02</span>
+        </div>
+      </div>
+      <div class="node"><span class="month">May</span><span class="year">2026</span></div>
+      <div class="side-note">
+        <span class="label">— Note from the shopkeeper</span>
+        <p>Took us <em>three months</em> of trials before this bun was good enough to put under the brand mark. Worth it.</p>
+      </div>
+    </div>
+
+    <div class="entry right" data-date="Apr 2026">
+      <div class="side-note">
+        <span class="label">— Why this matters</span>
+        <p>Annual halal audit, all [N] stores. <em>Same certificate, same authority</em>, no shortcuts.</p>
+      </div>
+      <div class="node"><span class="month">Apr</span><span class="year">2026</span></div>
+      <div class="polaroid">
+        <div class="photo">
+          <div class="grad" style="background-image:linear-gradient(135deg, rgba(201,163,90,0.25), rgba(0,0,0,0.45)), radial-gradient(ellipse at 50% 50%, rgba(185,28,28,0.12), transparent 65%), linear-gradient(160deg, #3a2e1a, #15100a);"></div>
+          <span class="platform"><span class="dot"></span>Instagram</span>
+          <div class="tbd"><span class="icon">P</span>Certificate TBD</div>
+        </div>
+        <p class="caption">Halal audit passed — all [N] stores recertified.</p>
+        <div class="meta">
+          <span class="stat"><span class="icon">♥</span> 5.2k</span>
+          <span class="stat"><span class="icon">💬</span> 187</span>
+          <span>posted apr 14</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry left" data-date="Mar 2026">
+      <div class="polaroid">
+        <div class="photo">
+          <img src="../burger-image/4.jpg" alt="">
+          <span class="platform"><span class="dot"></span>TikTok</span>
+          <div class="play-overlay"></div>
+        </div>
+        <p class="caption">[四代目] showing how to <em>fold</em> a paper crane — at the counter, between courses.</p>
+        <div class="meta">
+          <span class="stat"><span class="icon">♥</span> 22k</span>
+          <span class="stat"><span class="icon">▶</span> 156k</span>
+          <span>posted mar 22</span>
+        </div>
+      </div>
+      <div class="node"><span class="month">Mar</span><span class="year">2026</span></div>
+      <div class="side-note">
+        <span class="label">— Quiet tradition</span>
+        <p>The crane folding started as a thing for kids. Now adults ask too. We let them.</p>
+      </div>
+    </div>
+
+    <div class="entry right" data-date="Feb 2026">
+      <div class="side-note">
+        <span class="label">— Milestone</span>
+        <p>Our 23rd store. Kawaramachi — old machiya building, 130 years old.</p>
+      </div>
+      <div class="node"><span class="month">Feb</span><span class="year">2026</span></div>
+      <div class="polaroid">
+        <div class="photo">
+          <div class="grad" style="background-image:linear-gradient(135deg, rgba(185,28,28,0.16), rgba(0,0,0,0.48)), radial-gradient(ellipse at 60% 40%, rgba(201,163,90,0.20), transparent 65%), linear-gradient(160deg, #3a2418, #15100a);"></div>
+          <span class="platform"><span class="dot"></span>Instagram</span>
+          <div class="tbd"><span class="icon">P</span>Storefront TBD</div>
+        </div>
+        <p class="caption">Kyoto Kawaramachi — open. <em>Soft launch</em> tonight, family only.</p>
+        <div class="meta">
+          <span class="stat"><span class="icon">♥</span> 12k</span>
+          <span class="stat"><span class="icon">💬</span> 543</span>
+          <span>posted feb 08</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry left" data-date="Jan 2026">
+      <div class="polaroid">
+        <div class="photo">
+          <div class="grad" style="background-image:linear-gradient(135deg, rgba(201,163,90,0.18), rgba(0,0,0,0.50)), radial-gradient(ellipse at 50% 50%, rgba(185,28,28,0.16), transparent 65%), linear-gradient(160deg, #2a1f15, #15100a);"></div>
+          <span class="platform"><span class="dot"></span>X (Twitter)</span>
+          <div class="tbd"><span class="icon">P</span>Screenshot TBD</div>
+        </div>
+        <p class="caption">2025 in review — <em>2,847 reviews</em>, 100% replied.</p>
+        <div class="meta">
+          <span class="stat"><span class="icon">♥</span> 3.1k</span>
+          <span class="stat"><span class="icon">↗</span> 412</span>
+          <span>posted jan 03</span>
+        </div>
+      </div>
+      <div class="node"><span class="month">Jan</span><span class="year">2026</span></div>
+      <div class="side-note">
+        <span class="label">— Year-end accounting</span>
+        <p>Every review, signed by name. <em>No template replies, no exceptions.</em></p>
+      </div>
+    </div>
+
+    <div class="entry right" data-date="Dec 2025">
+      <div class="side-note">
+        <span class="label">— [Shop note]</span>
+        <p>Five generations at one table. the grandfather of the current shopkeeper still came down for new year.</p>
+      </div>
+      <div class="node"><span class="month">Dec</span><span class="year">2025</span></div>
+      <div class="polaroid">
+        <div class="photo">
+          <img src="../burger-image/5.jpg" alt="">
+          <span class="platform"><span class="dot"></span>Instagram</span>
+        </div>
+        <p class="caption">New year's eve, all five gens at the Ginza counter. <em>Closed</em> for one night.</p>
+        <div class="meta">
+          <span class="stat"><span class="icon">♥</span> 18k</span>
+          <span class="stat"><span class="icon">💬</span> 892</span>
+          <span>posted dec 31</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="exp-cta">
+    <span class="micro">— Read every post</span>
+    <h3>The full story is <em>updated weekly.</em></h3>
+    <p class="jp-line">毎週、五代目の今を。</p>
+    <div class="cta-row">
+      <a href="https://instagram.com/godaimewagyu" class="cta-primary">Follow on Instagram <span>→</span></a>
+      <a href="#all-platforms" class="cta-link">— or find us on TikTok &amp; X</a>
+    </div>
+  </div>
+
+</section>
+
+<script src="resize.js"></script>
+</body>
+</html>

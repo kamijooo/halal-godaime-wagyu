@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en" data-slug="halal">
+<head>
+<meta charset="UTF-8">
+<title>Halal &amp; Muslim-friendly — Godaime Wagyu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Shippori+Mincho:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+.halal{
+  position:relative;padding:140px 0 0;
+  background:
+    radial-gradient(ellipse at 18% 8%, rgba(185,28,28,0.07), transparent 55%),
+    radial-gradient(ellipse at 82% 92%, rgba(201,163,90,0.06), transparent 50%),
+    var(--ink-deep);
+}
+.chapter-mark{
+  max-width:1320px;margin:0 auto 80px;padding:0 60px;
+  display:flex;align-items:center;gap:24px;
+}
+.chapter-mark .badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:7px 16px;background:var(--torii);color:var(--paper);
+  font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;
+}
+.chapter-mark .badge .jp{font-family:var(--jp);font-weight:500;letter-spacing:0.16em;font-size:12px}
+.chapter-mark .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent)}
+.chapter-mark .num{font-family:var(--serif);font-style:italic;font-weight:300;font-size:42px;color:var(--gold);line-height:1}
+
+/* HERO */
+.halal-hero{
+  position:relative;max-width:1440px;margin:0 auto;padding:0 60px 100px;
+  display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:center;
+}
+.halal-hero .copy{position:relative;z-index:2}
+.halal-hero .badge-since{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:8px 18px;background:var(--torii);color:var(--paper);
+  font-family:var(--serif);font-style:italic;font-size:14px;letter-spacing:0.05em;
+  margin-bottom:36px;
+}
+.halal-hero .badge-since .jp{font-family:var(--jp);font-style:normal;font-size:13px;letter-spacing:0.12em}
+.halal-hero h2{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(56px,6.8vw,92px);line-height:0.96;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:30px;
+}
+.halal-hero h2 em{font-style:italic;color:var(--gold);font-weight:400;display:block}
+.halal-hero .jp-sub{
+  font-family:var(--jp);font-size:18px;font-weight:400;
+  color:var(--paper-dim);letter-spacing:0.18em;line-height:1.7;
+  border-left:2px solid var(--torii);padding-left:18px;margin-bottom:30px;
+}
+.halal-hero .callback{
+  display:flex;align-items:center;gap:18px;
+  padding:18px 0;margin-bottom:30px;
+  border-top:1px solid rgba(201,163,90,0.25);
+  border-bottom:1px solid rgba(201,163,90,0.25);
+}
+.halal-hero .callback .qmark{
+  font-family:var(--serif);font-size:50px;color:var(--torii);opacity:0.7;line-height:0.6;
+}
+.halal-hero .callback .text{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(20px,2.1vw,28px);line-height:1.3;color:var(--gold);
+}
+.halal-hero .callback .ref{
+  display:block;margin-top:8px;
+  font-family:var(--sans);font-size:10px;letter-spacing:0.32em;
+  color:var(--paper-faint);text-transform:uppercase;font-weight:500;font-style:normal;
+}
+.halal-hero .lede{
+  font-family:var(--serif);font-size:17px;line-height:1.75;
+  color:rgba(243,236,225,0.78);max-width:520px;
+}
+
+.halal-hero .panel{
+  position:relative;aspect-ratio:4/5;
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(201,163,90,0.10), transparent 60%),
+    radial-gradient(ellipse at 75% 75%, rgba(185,28,28,0.08), transparent 65%),
+    linear-gradient(135deg, var(--ink-2) 0%, var(--ink-deep) 100%);
+  border:1px solid rgba(201,163,90,0.22);padding:50px 40px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:0 30px 60px rgba(0,0,0,0.4);
+}
+.halal-hero .panel::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(135deg, var(--gold-dim) 0 16px, transparent 16px) top left/30px 30px no-repeat,
+    linear-gradient(225deg, var(--gold-dim) 0 16px, transparent 16px) top right/30px 30px no-repeat,
+    linear-gradient(45deg,  var(--gold-dim) 0 16px, transparent 16px) bottom left/30px 30px no-repeat,
+    linear-gradient(315deg, var(--gold-dim) 0 16px, transparent 16px) bottom right/30px 30px no-repeat;
+  opacity:0.5;
+}
+.halal-hero .panel .top-row{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  font-family:var(--sans);font-size:10px;letter-spacing:0.34em;
+  color:var(--gold);text-transform:uppercase;font-weight:500;
+}
+.halal-hero .panel .ar{
+  font-family:var(--ar);font-size:15px;color:var(--paper-dim);letter-spacing:0;
+  text-transform:none;font-weight:400;direction:rtl;
+}
+.halal-hero .seal{align-self:center;text-align:center;margin:auto 0;position:relative}
+.halal-hero .seal .ring{
+  width:200px;height:200px;border-radius:50%;
+  border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;margin:0 auto 24px;
+  background:radial-gradient(circle at 50% 50%, rgba(201,163,90,0.08), transparent 70%);
+}
+.halal-hero .seal .ring::before,.halal-hero .seal .ring::after{
+  content:"";position:absolute;inset:8px;border-radius:50%;
+  border:1px solid rgba(201,163,90,0.4);
+}
+.halal-hero .seal .ring::after{inset:14px;border-style:dashed;opacity:0.5}
+.halal-hero .seal .ring .ar-big{
+  font-family:var(--ar);font-size:74px;color:var(--gold);font-weight:700;line-height:1;direction:rtl;
+}
+.halal-hero .seal .label-en{
+  font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;
+  color:var(--paper);letter-spacing:0.02em;margin-bottom:6px;
+}
+.halal-hero .seal .label-jp{
+  font-family:var(--jp);font-size:13px;color:var(--paper-dim);letter-spacing:0.2em;
+}
+.halal-hero .panel .bottom-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:18px;
+  padding-top:24px;border-top:1px solid rgba(201,163,90,0.22);
+  font-family:var(--sans);font-size:10.5px;letter-spacing:0.18em;
+  color:var(--paper-dim);font-weight:400;line-height:1.7;
+}
+.halal-hero .panel .bottom-row .k{
+  color:var(--gold);text-transform:uppercase;letter-spacing:0.32em;font-weight:500;font-size:9.5px;
+  display:block;margin-bottom:4px;
+}
+.halal-hero .panel .bottom-row .v{color:var(--paper)}
+.halal-hero .panel .bottom-row .pending{color:var(--torii);font-style:italic;letter-spacing:0.05em;font-size:11px}
+
+/* FACT RIBBON */
+.fact-ribbon{
+  position:relative;
+  border-top:1px solid rgba(201,163,90,0.2);
+  border-bottom:1px solid rgba(201,163,90,0.2);
+  background:linear-gradient(180deg, transparent, rgba(185,28,28,0.03) 50%, transparent), var(--ink-deep);
+  padding:32px 60px;
+}
+.fact-ribbon .inner{
+  max-width:1320px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:40px;
+}
+.fact-ribbon .fact{text-align:center;position:relative}
+.fact-ribbon .fact + .fact::before{
+  content:"";position:absolute;left:-20px;top:50%;transform:translateY(-50%);
+  width:1px;height:48px;background:rgba(201,163,90,0.25);
+}
+.fact-ribbon .fact .label{
+  font-family:var(--sans);font-size:10px;letter-spacing:0.36em;color:var(--gold);
+  text-transform:uppercase;font-weight:500;margin-bottom:6px;display:block;
+}
+.fact-ribbon .fact .value{
+  font-family:var(--serif);font-weight:300;font-size:22px;color:var(--paper);letter-spacing:-0.005em;
+}
+.fact-ribbon .fact .value em{font-style:italic;color:var(--gold);font-weight:400}
+.fact-ribbon .fact .pending{font-size:14px;color:var(--torii);font-style:italic;font-family:var(--serif)}
+
+/* 6-ITEM CHECKLIST */
+.checklist-wrap{position:relative;padding:120px 0 100px;background:var(--ink-deep)}
+.checklist-wrap .label-row{
+  max-width:1320px;margin:0 auto 70px;padding:0 60px;
+  display:flex;justify-content:space-between;align-items:baseline;
+}
+.checklist-wrap .label-row .l{font-family:var(--sans);font-size:11px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;font-weight:500}
+.checklist-wrap .label-row .l .num{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0;margin-right:10px;text-transform:none;font-size:14px}
+.checklist-wrap .label-row .r{font-family:var(--jp);font-size:13px;color:var(--paper-dim);letter-spacing:0.22em}
+
+.checklist{
+  max-width:1440px;margin:0 auto;padding:0 60px;
+  display:grid;grid-template-columns:repeat(2, 1fr);gap:0;
+  border-top:1px solid rgba(201,163,90,0.18);
+  border-left:1px solid rgba(201,163,90,0.18);
+}
+.check{
+  position:relative;padding:50px 40px 50px 40px;
+  border-right:1px solid rgba(201,163,90,0.18);
+  border-bottom:1px solid rgba(201,163,90,0.18);
+  transition:background 0.4s ease;
+  display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:flex-start;
+}
+.check:hover{background:rgba(201,163,90,0.025)}
+.check .roman{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:48px;color:var(--gold);line-height:1;letter-spacing:-0.02em;min-width:60px;
+}
+.check .roman .check-mark{
+  display:flex;width:24px;height:24px;border-radius:50%;
+  background:var(--torii);color:var(--paper);
+  font-family:var(--sans);font-style:normal;font-size:11px;font-weight:600;
+  align-items:center;justify-content:center;margin-top:14px;
+}
+.check .body-col h4{
+  font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.2;letter-spacing:-0.01em;
+  color:var(--paper);margin-bottom:6px;
+}
+.check .body-col h4 em{font-style:italic;color:var(--torii);font-weight:500}
+.check .body-col .jp-title{
+  font-family:var(--jp);font-size:13px;color:var(--paper-dim);letter-spacing:0.12em;margin-bottom:20px;
+}
+.check .body-col .desc{
+  font-family:var(--serif);font-size:15.5px;line-height:1.7;color:rgba(243,236,225,0.78);margin-bottom:18px;
+}
+.check .body-col .specifics{
+  display:flex;flex-direction:column;gap:8px;
+  font-family:var(--sans);font-size:11.5px;letter-spacing:0.12em;color:var(--paper-dim);line-height:1.6;
+}
+.check .body-col .specifics .sp-row{
+  display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:baseline;
+}
+.check .body-col .specifics .sp-row .k{
+  color:var(--gold);text-transform:uppercase;letter-spacing:0.3em;font-size:9.5px;font-weight:500;
+}
+.check .body-col .specifics .sp-row .v{color:var(--paper);font-family:var(--serif);font-size:14.5px;letter-spacing:0;font-weight:400}
+.check .body-col .specifics .sp-row .pending{color:var(--torii);font-style:italic}
+
+/* BORDER QUOTE */
+.border-quote{
+  position:relative;padding:110px 60px;
+  background:radial-gradient(ellipse at 50% 50%, rgba(185,28,28,0.06), transparent 60%), var(--ink-deep);
+  border-top:1px solid rgba(201,163,90,0.22);
+  border-bottom:1px solid rgba(201,163,90,0.22);
+  overflow:hidden;
+}
+.border-quote::before,.border-quote::after{
+  content:"";position:absolute;left:50%;width:80px;height:1px;background:var(--torii);transform:translateX(-50%);
+}
+.border-quote::before{top:-1px}.border-quote::after{bottom:-1px}
+.border-quote .wm{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:var(--ar);font-weight:700;font-size:clamp(160px,18vw,280px);
+  color:rgba(201,163,90,0.04);letter-spacing:0;line-height:1;direction:rtl;
+  pointer-events:none;
+}
+.border-quote .inner{
+  max-width:1100px;margin:0 auto;text-align:center;position:relative;z-index:2;
+}
+.border-quote .ref-up{
+  font-family:var(--sans);font-size:10.5px;letter-spacing:0.4em;color:var(--gold);
+  text-transform:uppercase;font-weight:500;margin-bottom:30px;
+}
+.border-quote .ref-up .dot{display:inline-block;width:3px;height:3px;background:var(--torii);border-radius:50%;margin:0 12px;vertical-align:middle;transform:translateY(-2px)}
+.border-quote .qmark{
+  font-family:var(--serif);font-size:90px;color:var(--torii);opacity:0.45;
+  line-height:0.5;display:block;margin-bottom:10px;
+}
+.border-quote .en-q{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(34px,3.6vw,56px);line-height:1.25;color:var(--paper);margin-bottom:24px;
+}
+.border-quote .en-q .accent{color:var(--gold);font-weight:400}
+.border-quote .ar-q{
+  font-family:var(--ar);font-size:18px;color:var(--paper-dim);
+  direction:rtl;line-height:1.7;margin-bottom:14px;
+}
+.border-quote .jp-q{font-family:var(--jp);font-size:15px;color:var(--paper-dim);letter-spacing:0.16em;margin-bottom:20px}
+.border-quote .attr{
+  font-family:var(--sans);font-size:10.5px;letter-spacing:0.34em;
+  color:var(--gold);text-transform:uppercase;font-weight:500;
+}
+
+/* CONTACT CTA */
+.contact-cta{
+  position:relative;padding:130px 60px;
+  background:
+    radial-gradient(ellipse at 30% 100%, rgba(185,28,28,0.08), transparent 55%),
+    radial-gradient(ellipse at 70% 0%, rgba(201,163,90,0.05), transparent 50%),
+    var(--ink-deep);
+}
+.contact-cta .inner{
+  max-width:1320px;margin:0 auto;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;
+}
+.contact-cta .micro{
+  font-family:var(--sans);font-size:11px;letter-spacing:0.4em;color:var(--torii);
+  text-transform:uppercase;font-weight:600;margin-bottom:24px;
+}
+.contact-cta h3{
+  font-family:var(--serif);font-weight:300;font-size:clamp(46px,5vw,72px);line-height:1.05;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:18px;
+}
+.contact-cta h3 em{font-style:italic;color:var(--gold);font-weight:400}
+.contact-cta .ar-line{font-family:var(--ar);font-size:22px;color:var(--paper-dim);direction:rtl;margin-bottom:8px}
+.contact-cta .jp-line{font-family:var(--jp);font-size:15px;color:var(--paper-dim);letter-spacing:0.2em;margin-bottom:36px}
+.contact-cta .lede{
+  font-family:var(--serif);font-size:17px;line-height:1.75;color:rgba(243,236,225,0.78);max-width:500px;margin-bottom:36px;
+}
+.contact-cta .lede em{font-style:italic;color:var(--gold)}
+.contact-cta .cta-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.contact-cta .cta{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:18px 32px;background:var(--torii);color:var(--paper);
+  font-family:var(--sans);font-size:11.5px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;
+  text-decoration:none;transition:background 0.4s;
+}
+.contact-cta .cta:hover{background:var(--torii-deep)}
+.contact-cta .panel{
+  background:linear-gradient(135deg, rgba(15,12,10,0.6), rgba(28,22,18,0.6));
+  border:1px solid rgba(201,163,90,0.22);padding:50px 40px;
+  box-shadow:0 30px 60px rgba(0,0,0,0.4);position:relative;
+}
+.contact-cta .panel .ph{
+  font-family:var(--sans);font-size:10.5px;letter-spacing:0.36em;color:var(--gold);
+  text-transform:uppercase;font-weight:500;margin-bottom:8px;
+}
+.contact-cta .panel .email{
+  font-family:var(--serif);font-size:30px;color:var(--paper);font-weight:400;letter-spacing:-0.005em;
+  margin-bottom:36px;word-break:break-all;
+}
+.contact-cta .panel .email em{font-style:italic;color:var(--gold)}
+.contact-cta .panel .row{
+  display:grid;grid-template-columns:auto 1fr;gap:14px 20px;
+  padding:18px 0;border-top:1px solid rgba(201,163,90,0.2);align-items:baseline;
+}
+.contact-cta .panel .row .k{
+  font-family:var(--sans);font-size:10px;letter-spacing:0.3em;color:var(--gold);
+  text-transform:uppercase;font-weight:500;min-width:120px;
+}
+.contact-cta .panel .row .v{
+  font-family:var(--serif);font-size:15.5px;color:var(--paper);line-height:1.5;
+}
+.contact-cta .panel .row .v .ar{font-family:var(--ar);font-size:15px;color:var(--paper-dim)}
+.contact-cta .panel .langs{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px}
+.contact-cta .panel .langs .chip{
+  padding:5px 12px;border:1px solid rgba(201,163,90,0.3);
+  font-family:var(--sans);font-size:10px;letter-spacing:0.18em;color:var(--paper);
+  background:rgba(201,163,90,0.04);
+}
+
+@media (max-width:1024px){
+  .halal-hero{grid-template-columns:1fr;gap:60px;padding:0 40px 80px}
+  .halal-hero .panel{aspect-ratio:auto;padding:40px 30px}
+  .fact-ribbon .inner{grid-template-columns:repeat(2,1fr);gap:30px 40px}
+  .fact-ribbon .fact + .fact::before{display:none}
+  .checklist{grid-template-columns:1fr}
+  .contact-cta{padding:80px 40px}
+  .contact-cta .inner{grid-template-columns:1fr;gap:50px}
+}
+@media (max-width:600px){
+  .check{padding:40px 24px;gap:20px}
+  .check .roman{font-size:36px;min-width:48px}
+  .chapter-mark{padding:0 30px;flex-wrap:wrap}
+  .checklist{padding:0 24px}
+  .border-quote{padding:80px 24px}
+  .checklist-wrap .label-row{padding:0 30px}
+}
+</style>
+</head>
+<body>
+
+<section class="halal">
+
+  <div class="chapter-mark">
+    <span class="badge">Chapter 02 <span class="jp">第二章</span></span>
+    <div class="rule"></div>
+    <span class="num">02</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="halal-hero">
+    <div class="copy">
+      <div class="badge-since">Halal-friendly · <span class="jp">ハラル対応</span></div>
+      <h2>For Muslim <em>travelers.</em></h2>
+      <div class="jp-sub">ムスリムの旅人へ。</div>
+
+      <div class="callback">
+        <span class="qmark">❝</span>
+        <div>
+          <div class="text">Wagyu shouldn't have borders.</div>
+          <span class="ref">— From Chapter 01 · 第一章より</span>
+        </div>
+      </div>
+
+      <p class="lede">
+        When the world started finding us, we made a quiet decision —
+        Wagyu shouldn't have borders. We rebuilt our supply chain around
+        halal certification, redesigned our kitchens, and now welcome
+        travelers from over <em>60 countries</em> every year. Below is everything
+        you would want to verify before booking, laid out plainly.
+      </p>
+    </div>
+
+    <div class="panel">
+      <div class="top-row">
+        <span>Halal Certification</span>
+        <span class="ar">شهادة الحلال</span>
+      </div>
+      <div class="seal">
+        <div class="ring">
+          <span class="ar-big">حلال</span>
+        </div>
+        <div class="label-en"><em>Halal-certified Wagyu.</em></div>
+        <div class="label-jp">ハラル認証 和牛</div>
+      </div>
+      <div class="bottom-row">
+        <div><span class="k">Authority</span><span class="v pending">[認証団体名]</span></div>
+        <div><span class="k">Last verified</span><span class="v pending">[最終更新日]</span></div>
+        <div><span class="k">Coverage</span><span class="v pending">[認証範囲]</span></div>
+        <div><span class="k">Cert No.</span><span class="v pending">[認証番号]</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FACT RIBBON -->
+  <div class="fact-ribbon">
+    <div class="inner">
+      <div class="fact"><span class="label">Authority</span><span class="value pending">[JAKIM / NAHA]</span></div>
+      <div class="fact"><span class="label">Certified since</span><span class="value pending">[認証取得年]</span></div>
+      <div class="fact"><span class="label">Coverage</span><span class="value"><em>All locations</em></span></div>
+      <div class="fact"><span class="label">Reply within</span><span class="value">24<em>h</em> · EN / AR</span></div>
+    </div>
+  </div>
+
+  <!-- 6-ITEM CHECKLIST -->
+  <div class="checklist-wrap">
+    <div class="label-row">
+      <span class="l"><span class="num">II.i</span> What we promise · 私たちの6つの約束</span>
+      <span class="r">ستة التزامات · Six commitments</span>
+    </div>
+
+    <div class="checklist">
+
+      <article class="check">
+        <div class="roman">Ⅰ<span class="check-mark">✓</span></div>
+        <div class="body-col">
+          <h4>Halal-certified <em>Wagyu only.</em></h4>
+          <p class="jp-title">ハラル認証の和牛のみ使用。</p>
+          <p class="desc">Every cut we serve comes from halal-certified Japanese Wagyu farms. We do not stock, store, or prepare any meat that is not halal — anywhere in the kitchen.</p>
+          <div class="specifics">
+            <div class="sp-row"><span class="k">Authority</span><span class="v pending">[JAKIM / NAHA / JMA]</span></div>
+            <div class="sp-row"><span class="k">Farms</span><span class="v pending">[協力農家数]</span></div>
+            <div class="sp-row"><span class="k">Audit</span><span class="v">Annually</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="check">
+        <div class="roman">Ⅱ<span class="check-mark">✓</span></div>
+        <div class="body-col">
+          <h4>No alcohol in <em>any dish.</em></h4>
+          <p class="jp-title">どの料理にもアルコール不使用。</p>
+          <p class="desc">No sake, mirin, or cooking wine is used in any of our recipes. We have rebuilt every sauce, marinade, and dashi to be alcohol-free without compromising the taste.</p>
+          <div class="specifics">
+            <div class="sp-row"><span class="k">Substitute</span><span class="v">Apple &amp; rice vinegar reductions</span></div>
+            <div class="sp-row"><span class="k">Sauces</span><span class="v">Re-formulated since <span class="pending">[年]</span></span></div>
+            <div class="sp-row"><span class="k">Dashi</span><span class="v">Pure katsuo &amp; konbu only</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="check">
+        <div class="roman">Ⅲ<span class="check-mark">✓</span></div>
+        <div class="body-col">
+          <h4>Separate cookware, <em>color-coded.</em></h4>
+          <p class="jp-title">調理器具は分離・色分け管理。</p>
+          <p class="desc">Halal cookware, knives, cutting boards, and pans are color-coded and stored separately. Staff are trained to never cross-use them — and we audit this monthly.</p>
+          <div class="specifics">
+            <div class="sp-row"><span class="k">System</span><span class="v">Green — halal · White — neutral</span></div>
+            <div class="sp-row"><span class="k">Storage</span><span class="v">Dedicated halal-only cabinet</span></div>
+            <div class="sp-row"><span class="k">Audit</span><span class="v">Monthly internal · annual external</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="check">
+        <div class="roman">Ⅳ<span class="check-mark">✓</span></div>
+        <div class="body-col">
+          <h4>Alcohol on premises — <em>fully disclosed.</em></h4>
+          <p class="jp-title">店内のアルコール提供状況を明示。</p>
+          <p class="desc">We tell you the truth, location by location. Some shops serve no alcohol at all; others serve it but keep it physically separated from the halal kitchen and seating.</p>
+          <div class="specifics">
+            <div class="sp-row"><span class="k">Type A</span><span class="v">Alcohol-free location · <span class="pending">[店舗数]</span></span></div>
+            <div class="sp-row"><span class="k">Type B</span><span class="v">Separated zone · <span class="pending">[店舗数]</span></span></div>
+            <div class="sp-row"><span class="k">Filter</span><span class="v">Selectable on the store map</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="check">
+        <div class="roman">Ⅴ<span class="check-mark">✓</span></div>
+        <div class="body-col">
+          <h4>Prayer space — <em>varies by location.</em></h4>
+          <p class="jp-title">祈祷スペース(店舗による)。</p>
+          <p class="desc">Some of our locations have a private prayer corner with qibla direction and a wudu-friendly washroom. We list which ones do, plainly, on the store page.</p>
+          <div class="specifics">
+            <div class="sp-row"><span class="k">Available</span><span class="v pending">[祈祷スペースあり店舗数]</span></div>
+            <div class="sp-row"><span class="k">Qibla</span><span class="v">Marked &amp; verified</span></div>
+            <div class="sp-row"><span class="k">Wudu</span><span class="v pending">[対応洗面台 有/無]</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="check">
+        <div class="roman">Ⅵ<span class="check-mark">✓</span></div>
+        <div class="body-col">
+          <h4>Certificate — <em>shown on request.</em></h4>
+          <p class="jp-title">認証書はご請求にて提示。</p>
+          <p class="desc">Ask any host for the original halal certificate at the table. You can also request a digital copy by email before you book — we send it promptly.</p>
+          <div class="specifics">
+            <div class="sp-row"><span class="k">In-store</span><span class="v">Original framed at counter</span></div>
+            <div class="sp-row"><span class="k">By email</span><span class="v">PDF · promptly</span></div>
+            <div class="sp-row"><span class="k">Languages</span><span class="v">EN · AR · JA · MS</span></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- BORDER QUOTE -->
+  <div class="border-quote">
+    <div class="wm">حلال</div>
+    <div class="inner">
+      <div class="ref-up">A line from Chapter 01 <span class="dot"></span> 第一章より</div>
+      <span class="qmark">❝</span>
+      <p class="en-q">Wagyu <span class="accent">shouldn't have</span> borders.</p>
+      <p class="ar-q">الواغيو لا يعرف الحدود.</p>
+      <p class="jp-q">和牛に、国境はいらない。</p>
+      <p class="attr">— Said by the fourth generation, 2014</p>
+    </div>
+  </div>
+
+  <!-- CONTACT CTA -->
+  <div class="contact-cta">
+    <div class="inner">
+      <div class="copy">
+        <div class="micro">— Halal team · ハラル専用窓口</div>
+        <h3>Ask us <em>anything.</em></h3>
+        <p class="ar-line">اسألنا أي شيء.</p>
+        <p class="jp-line">どんなことでも、お聞きください。</p>
+        <p class="lede">
+          Dietary needs differ from family to family. If something on the
+          checklist isn't enough — tell us. We reply <em>promptly</em>
+          in English or Arabic, and we will tell you what we can and cannot
+          guarantee, plainly.
+        </p>
+        <div class="cta-row">
+          <a href="#stores?filter=halal" class="cta">Find a halal-friendly location <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="ph">Direct line · ハラル専用</div>
+        <div class="email"><em>halal</em>@godaimewagyu.com</div>
+        <div class="row">
+          <span class="k">Reply</span>
+          <span class="v">Within <em>24 hours</em>, every day</span>
+        </div>
+        <div class="row">
+          <span class="k">Languages</span>
+          <span class="v">
+            English · <span class="ar">العربية</span> · 日本語 · Bahasa
+            <div class="langs">
+              <span class="chip">EN</span>
+              <span class="chip">AR</span>
+              <span class="chip">JA</span>
+              <span class="chip">MS</span>
+            </div>
+          </span>
+        </div>
+        <div class="row">
+          <span class="k">Will answer</span>
+          <span class="v">Ingredients · cookware · prayer · alcohol policy · group bookings</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script src="resize.js"></script>
+</body>
+</html>

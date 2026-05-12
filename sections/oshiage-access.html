@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-slug="oshiage-access">
+<head>
+<meta charset="UTF-8">
+<title>Access — Godaime Wagyu Skytree</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+.access-section{
+  position:relative;
+  padding:110px 60px 110px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(201,163,90,0.06), transparent 50%),
+    var(--ink-deep);
+}
+.access-section::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:1px;height:60px;background:linear-gradient(180deg,var(--gold) 0%,transparent 100%);
+}
+.access__head{
+  max-width:1400px;margin:0 auto 60px;text-align:center;
+}
+.access__chapter{
+  font-family:var(--sans);font-size:10.5px;letter-spacing:0.32em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:18px;
+  display:inline-flex;align-items:center;gap:14px;
+}
+.access__chapter::before, .access__chapter::after{
+  content:"";width:30px;height:1px;background:var(--gold);
+}
+.access__title{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(36px,4.6vw,60px);line-height:1.05;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:12px;
+}
+.access__title em{font-style:italic;color:var(--gold)}
+.access__title-jp{
+  font-family:var(--jp);font-weight:500;font-size:15px;
+  color:var(--paper-dim);letter-spacing:0.22em;
+}
+
+.access__grid{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:50px;
+}
+
+/* map column */
+.map-wrap{
+  position:relative;aspect-ratio:5/4;overflow:hidden;
+  border:1px solid rgba(201,163,90,0.22);
+  background:#0f0c0a;
+}
+.map-wrap iframe{
+  width:100%;height:100%;border:0;
+  filter:grayscale(0.2) contrast(1.05) brightness(0.9);
+}
+.map-overlay{
+  position:absolute;left:18px;bottom:18px;z-index:2;
+  background:rgba(10,8,7,0.85);backdrop-filter:blur(8px);
+  border:1px solid rgba(201,163,90,0.3);
+  padding:14px 18px;
+  color:var(--paper);
+}
+.map-overlay .label{
+  font-family:var(--sans);font-size:9px;letter-spacing:0.32em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:4px;
+}
+.map-overlay .addr{
+  font-family:var(--serif);font-size:14px;color:var(--paper);line-height:1.4;
+}
+.map-overlay .addr em{font-style:italic;color:var(--gold-pale)}
+.map-overlay a{
+  display:inline-block;margin-top:8px;
+  font-family:var(--sans);font-size:10px;letter-spacing:0.24em;color:var(--gold);
+  text-transform:uppercase;font-weight:500;text-decoration:none;
+  border-bottom:1px solid var(--gold-dim);padding-bottom:2px;
+}
+.map-overlay a:hover{color:var(--paper);border-color:var(--paper)}
+
+/* info column */
+.access__info{display:flex;flex-direction:column;gap:20px}
+
+.info-card{
+  background:var(--ink-card);
+  border:1px solid rgba(201,163,90,0.18);
+  padding:24px 26px;
+}
+.info-card .k{
+  font-family:var(--sans);font-size:10px;letter-spacing:0.32em;color:var(--gold);
+  text-transform:uppercase;font-weight:500;margin-bottom:10px;
+  display:flex;align-items:center;gap:10px;
+}
+.info-card .k::before{
+  content:"";width:24px;height:1px;background:var(--gold);
+}
+.info-card h3{
+  font-family:var(--serif);font-weight:400;font-size:22px;color:var(--paper);
+  line-height:1.25;margin-bottom:6px;
+}
+.info-card h3 em{font-style:italic;color:var(--gold-pale)}
+.info-card .jp{
+  font-family:var(--jp);font-size:12.5px;color:var(--paper-dim);letter-spacing:0.18em;margin-bottom:14px;
+}
+.info-card p{
+  font-family:var(--serif);font-size:15px;color:var(--paper-dim);line-height:1.65;
+}
+.info-card p em{font-style:italic;color:var(--gold)}
+
+.info-card .rows{
+  display:flex;flex-direction:column;gap:8px;
+}
+.info-card .rows .row{
+  display:grid;grid-template-columns:100px 1fr;gap:14px;align-items:baseline;
+  padding:8px 0;border-bottom:1px solid rgba(201,163,90,0.12);
+}
+.info-card .rows .row:last-child{border-bottom:0}
+.info-card .rows .row .rk{
+  font-family:var(--sans);font-size:9.5px;letter-spacing:0.28em;color:var(--paper-mute);
+  text-transform:uppercase;font-weight:500;
+}
+.info-card .rows .row .rv{
+  font-family:var(--serif);font-size:14.5px;color:var(--paper);line-height:1.4;
+}
+.info-card .rows .row .rv em{font-style:italic;color:var(--gold)}
+.info-card .rows .row .rv small{
+  display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:0.18em;color:var(--paper-mute);
+  text-transform:uppercase;margin-top:2px;
+}
+
+@media (max-width:1024px){
+  .access__grid{grid-template-columns:1fr;gap:40px}
+  .map-wrap{aspect-ratio:4/3}
+}
+@media (max-width:600px){
+  .access-section{padding:70px 22px 70px}
+}
+</style>
+</head>
+<body>
+
+<section class="access-section">
+
+  <div class="access__head">
+    <div class="access__chapter">Access · アクセス</div>
+    <h2 class="access__title">5 minutes from <em>Tokyo Skytree.</em></h2>
+    <p class="access__title-jp">東京スカイツリーから徒歩5分</p>
+  </div>
+
+  <div class="access__grid">
+
+    <!-- Map -->
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%A2%A8%E7%94%B0%E5%8C%BA%E6%A5%AD%E5%B9%B31-13-1+%E4%BD%8F%E5%BB%BA%E7%AC%AC8%E3%83%8F%E3%82%A4%E3%83%97%E3%83%AC%E3%83%BC%E3%82%B9&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Godaime Wagyu Skytree — map"></iframe>
+      <div class="map-overlay">
+        <div class="label">Godaime Wagyu · Skytree</div>
+        <div class="addr">
+          〒130-0002 Tokyo, Sumida-ku<br>
+          Narihira <em>1-13-1</em>, 住建第8ハイプレース
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%A2%A8%E7%94%B0%E5%8C%BA%E6%A5%AD%E5%B9%B31-13-1+%E4%BD%8F%E5%BB%BA%E7%AC%AC8%E3%83%8F%E3%82%A4%E3%83%97%E3%83%AC%E3%83%BC%E3%82%B9"
+           target="_blank" rel="noopener">Open in Google Maps →</a>
+      </div>
+    </div>
+
+    <!-- Info column -->
+    <div class="access__info">
+
+      <div class="info-card">
+        <div class="k">— By train</div>
+        <h3>From the <em>nearest stations</em>.</h3>
+        <p class="jp">最寄駅から</p>
+        <div class="rows">
+          <div class="row">
+            <span class="rk">Oshiage</span>
+            <span class="rv">
+              <em>4 min</em> walk
+              <small>Asakusa · Hanzomon · Keisei Line</small>
+            </span>
+          </div>
+          <div class="row">
+            <span class="rk">Tokyo Skytree</span>
+            <span class="rv">
+              <em>5 min</em> walk
+              <small>Tobu Skytree Line</small>
+            </span>
+          </div>
+          <div class="row">
+            <span class="rk">Honjo-Azumabashi</span>
+            <span class="rv">
+              10 min walk
+              <small>Toei Asakusa Line</small>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="k">— Hours &amp; contact</div>
+        <h3>Open every day.</h3>
+        <p class="jp">年中無休</p>
+        <div class="rows">
+          <div class="row">
+            <span class="rk">Hours</span>
+            <span class="rv"><em>11:00 — 22:00</em></span>
+          </div>
+          <div class="row">
+            <span class="rk">Last order</span>
+            <span class="rv">21:00 (food) · 21:30 (drinks)</span>
+          </div>
+          <div class="row">
+            <span class="rk">Phone</span>
+            <span class="rv"><em>03-6658-5855</em></span>
+          </div>
+          <div class="row">
+            <span class="rk">Languages</span>
+            <span class="rv">English · 日本語</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script src="resize.js"></script>
+</body>
+</html>

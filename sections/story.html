@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" data-slug="story">
+<head>
+<meta charset="UTF-8">
+<title>Story — Sixty-three years, one bloodline.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+:root{
+  --era-1962:#6b4a28;
+  --era-1980:#a4642a;
+  --era-2010:#8a96a0;
+  --era-today:#c93428;
+}
+.story{
+  position:relative;padding:120px 0 160px;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(160,26,26,0.08), transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(180,138,60,0.06), transparent 50%),
+    var(--ink-deep);
+}
+.chapter-mark{
+  max-width:1280px;margin:0 auto 80px;padding:0 60px;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:40px;
+}
+.chapter-mark .rule{height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim) 30%,var(--gold-dim) 70%,transparent)}
+.chapter-mark .label{
+  font-family:var(--sans);font-size:11px;font-weight:400;
+  letter-spacing:0.42em;color:var(--gold);text-transform:uppercase;
+  white-space:nowrap;
+}
+.chapter-mark .label .dot{display:inline-block;width:4px;height:4px;background:var(--torii);border-radius:50%;margin:0 14px;vertical-align:middle;transform:translateY(-2px)}
+
+.headline{
+  max-width:1280px;margin:0 auto 100px;padding:0 60px;
+  display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:end;
+}
+.headline .en{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(54px,7vw,96px);line-height:0.95;letter-spacing:-0.02em;
+  color:var(--paper);
+}
+.headline .en em{font-style:italic;color:var(--torii);font-weight:400;display:inline-block}
+.headline .jp{
+  font-family:var(--jp);font-weight:500;
+  font-size:clamp(28px,3.4vw,44px);line-height:1.4;letter-spacing:0.04em;
+  color:var(--paper-dim);text-align:right;
+  writing-mode:vertical-rl;justify-self:end;
+}
+
+.quote{
+  max-width:920px;margin:0 auto 120px;padding:40px 60px;
+  border-left:2px solid var(--torii);position:relative;
+}
+.quote::before{
+  content:"❝";position:absolute;left:30px;top:-20px;
+  font-size:80px;color:var(--torii);opacity:0.3;font-family:var(--serif);
+}
+.quote .en-q{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(26px,2.6vw,38px);line-height:1.35;color:var(--paper);margin-bottom:18px;
+}
+.quote .jp-q{font-family:var(--jp);font-size:15px;color:var(--paper-dim);letter-spacing:0.08em}
+.quote .attr{
+  margin-top:24px;font-family:var(--sans);font-size:11px;letter-spacing:0.3em;
+  color:var(--gold);text-transform:uppercase;
+}
+
+.timeline{
+  max-width:1440px;margin:0 auto;padding:0 60px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;
+}
+.timeline::before{
+  content:"";position:absolute;left:60px;right:60px;top:60px;height:1px;
+  background:linear-gradient(90deg,
+    var(--era-1962) 0%, var(--era-1980) 33%,
+    var(--era-2010) 66%, var(--era-today) 100%);
+  opacity:0.5;
+}
+.era{position:relative;padding:0 18px}
+.era .year-mark{
+  position:relative;z-index:2;
+  height:120px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  padding-top:30px;
+}
+.era .year-dot{
+  width:13px;height:13px;border-radius:50%;
+  border:2px solid var(--ink-deep);margin-bottom:24px;
+  box-shadow:0 0 0 1px currentColor;
+}
+.era .year{
+  font-family:var(--serif);font-weight:300;font-size:42px;letter-spacing:-0.01em;line-height:1;
+}
+.era .year .sub{
+  display:block;font-family:var(--sans);font-size:10px;letter-spacing:0.32em;
+  color:var(--gold);text-transform:uppercase;margin-top:10px;font-weight:400;
+}
+.era .frame{
+  position:relative;aspect-ratio:3/4;overflow:hidden;margin-bottom:28px;
+  box-shadow:0 0 0 1px rgba(180,138,60,0.15),inset 0 0 80px rgba(0,0,0,0.4);
+  background:#1a0f08;
+}
+.era .frame .photo{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  font-family:var(--sans);font-size:9.5px;letter-spacing:0.32em;text-transform:uppercase;
+  color:rgba(243,236,225,0.4);font-weight:500;
+}
+.era .frame .photo span{
+  display:inline-block;padding:8px 16px;
+  border:1px solid rgba(243,236,225,0.2);
+}
+.era .frame::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(135deg, rgba(0,0,0,0.6) 0 12px, transparent 12px) top left/24px 24px no-repeat,
+    linear-gradient(225deg, rgba(0,0,0,0.6) 0 12px, transparent 12px) top right/24px 24px no-repeat,
+    linear-gradient(45deg, rgba(0,0,0,0.6) 0 12px, transparent 12px) bottom left/24px 24px no-repeat,
+    linear-gradient(315deg, rgba(0,0,0,0.6) 0 12px, transparent 12px) bottom right/24px 24px no-repeat;
+  opacity:0.5;
+}
+.era .title-en{
+  font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.15;
+  margin-bottom:6px;letter-spacing:-0.01em;
+}
+.era .title-en em{font-style:italic;color:var(--torii);font-weight:400}
+.era .title-jp{
+  font-family:var(--jp);font-size:13px;color:var(--paper-dim);
+  margin-bottom:18px;letter-spacing:0.06em;
+}
+.era .body{
+  font-family:var(--serif);font-weight:400;font-size:15.5px;line-height:1.65;
+  color:rgba(243,236,225,0.78);
+}
+.era .body em{font-style:italic;color:var(--torii);font-weight:500}
+
+.era-1{color:var(--era-1962)}
+.era-1 .frame{background:linear-gradient(135deg, #6b4a28 0%, #2a1810 100%)}
+.era-1 .frame{filter:contrast(0.95)}
+.era-2{color:var(--era-1980)}
+.era-2 .frame{background:linear-gradient(135deg, #a4642a 0%, #3a2010 100%)}
+.era-3{color:var(--era-2010)}
+.era-3 .frame{background:linear-gradient(135deg, #8a96a0 0%, #20303a 100%)}
+.era-4{color:var(--era-today)}
+.era-4 .frame{
+  background:linear-gradient(135deg, #c93428 0%, #4a0a05 100%);
+  box-shadow:0 0 0 1px rgba(201,52,40,0.4),0 20px 60px rgba(201,52,40,0.15),inset 0 0 80px rgba(0,0,0,0.3);
+}
+
+.watermark{
+  position:absolute;right:-30px;bottom:80px;
+  font-family:var(--jp);font-weight:700;
+  font-size:clamp(180px,22vw,340px);line-height:0.85;
+  color:rgba(180,138,60,0.04);
+  letter-spacing:-0.05em;pointer-events:none;
+  writing-mode:vertical-rl;
+}
+
+.closing{
+  max-width:1280px;margin:140px auto 0;padding:60px 60px 0;
+  display:flex;justify-content:space-between;align-items:center;gap:60px;
+  border-top:1px solid rgba(180,138,60,0.2);position:relative;
+}
+.closing::before{
+  content:"";position:absolute;left:50%;top:-1px;width:80px;height:1px;background:var(--torii);transform:translateX(-50%);
+}
+.closing .line-en{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(28px,3vw,42px);color:var(--paper);
+}
+.closing .line-en::before{content:"— ";color:var(--torii);font-style:normal}
+.closing .line-jp{
+  font-family:var(--jp);font-size:15px;color:var(--paper-dim);margin-top:8px;letter-spacing:0.1em;
+}
+.closing .cta{
+  display:inline-flex;align-items:center;gap:18px;
+  padding:22px 40px;background:var(--torii);color:var(--paper);
+  font-family:var(--sans);font-size:12px;letter-spacing:0.32em;text-transform:uppercase;font-weight:500;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:background 0.4s ease;white-space:nowrap;
+}
+.closing .cta:hover{background:var(--torii-deep)}
+.closing .cta .arrow{font-size:16px;letter-spacing:0}
+
+@media (max-width:1100px){
+  .timeline{grid-template-columns:repeat(2,1fr);gap:40px 30px}
+  .timeline::before{display:none}
+  .headline{grid-template-columns:1fr;gap:40px}
+  .headline .jp{writing-mode:horizontal-tb;text-align:left;justify-self:start}
+}
+@media (max-width:640px){
+  .timeline{grid-template-columns:1fr}
+  .closing{flex-direction:column;align-items:flex-start}
+  .chapter-mark{padding:0 30px}
+  .headline,.quote,.timeline,.closing{padding-left:30px;padding-right:30px}
+}
+</style>
+</head>
+<body>
+
+<section class="story">
+
+  <div class="chapter-mark">
+    <div class="rule"></div>
+    <div class="label">Chapter 01<span class="dot"></span>The Bloodline<span class="dot"></span>第一章 · 血統</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="headline">
+    <h2 class="en">Sixty-three years,<br><em>one bloodline.</em></h2>
+    <div class="jp">六十三年、<br>ひと筋の血統。</div>
+  </div>
+
+  <blockquote class="quote">
+    <div class="en-q">"Never sell meat he wouldn't feed his own family."</div>
+    <div class="jp-q">— 自分の家族に食べさせられない肉は、決して売らない。</div>
+    <div class="attr">House Rule · 家訓 · Since 1962</div>
+  </blockquote>
+
+  <div class="timeline">
+
+    <article class="era era-1">
+      <div class="year-mark">
+        <div class="year-dot"></div>
+        <div class="year">1962<span class="sub">The Founding</span></div>
+      </div>
+      <div class="frame"><div class="photo"><span>Photo TBD</span></div></div>
+      <h3 class="title-en">The first shop.</h3>
+      <p class="title-jp">最初の店。</p>
+      <p class="body">A six-tatami butcher's shop in post-war Tokyo. Hand-written prices, a single cleaver, and one promise to the neighborhood — meat you would feed your own children.</p>
+    </article>
+
+    <article class="era era-2">
+      <div class="year-mark">
+        <div class="year-dot"></div>
+        <div class="year">1980s<span class="sub">The Craft</span></div>
+      </div>
+      <div class="frame"><div class="photo"><span>Photo TBD</span></div></div>
+      <h3 class="title-en">The slow way.</h3>
+      <p class="title-jp">手間をかける道。</p>
+      <p class="body">While the country chased speed, the second generation chose the opposite — longer aging, smaller cuts, customers known by name. The shop did not grow. The reputation did.</p>
+    </article>
+
+    <article class="era era-3">
+      <div class="year-mark">
+        <div class="year-dot"></div>
+        <div class="year">2010s<span class="sub">The Crossing</span></div>
+      </div>
+      <div class="frame"><div class="photo"><span>Photo TBD</span></div></div>
+      <h3 class="title-en">Without borders.</h3>
+      <p class="title-jp">国境を越えて。</p>
+      <p class="body">A traveler from Jakarta walked in and asked, "Is any of this halal?" The fourth-generation owner closed the shop early that night. <em>"Wagyu shouldn't have borders."</em></p>
+    </article>
+
+    <article class="era era-4">
+      <div class="year-mark">
+        <div class="year-dot"></div>
+        <div class="year">Today<span class="sub">The Fifth</span></div>
+      </div>
+      <div class="frame">
+        <img src="../burger-image/4.jpg" alt="Today's wagyu" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;">
+      </div>
+      <h3 class="title-en">The fifth.</h3>
+      <p class="title-jp">五代目。</p>
+      <p class="body">Same cleaver. Same family rule. A new generation cooking for guests from forty-seven countries — and still, the meat is what we would serve our own.</p>
+    </article>
+
+  </div>
+
+  <div class="closing">
+    <div>
+      <div class="line-en">Welcome to our table.</div>
+      <div class="line-jp">私たちの食卓へ、ようこそ。</div>
+    </div>
+    <a href="#reserve" class="cta">Reserve a seat <span class="arrow">→</span></a>
+  </div>
+
+  <div class="watermark">五代</div>
+
+</section>
+
+<script src="resize.js"></script>
+</body>
+</html>
